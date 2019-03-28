@@ -51,14 +51,9 @@ kubectl create -f kubespray-internal/sanger/sites/secrets.yaml --save-config
 # deploy jupyters
 pushd `dirname $0`
 cd kubespray/internal
-# deploy jupyter
-helm upgrade --install jpt jupyterhub/jupyterhub --namespace jpt --version 0.7.0 --values jupyter-github-auth.yaml
-# JUPYTER-GITHUB-AUTH MUST BE UPGRADED TO USE VERSION 0.8.0 - SEE https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/master/CHANGELOG.md#080---richie-benaud---2019-01-24
-# helm upgrade --install jpt jupyterhub/jupyterhub --namespace jpt --version 0.8.0 --values jupyter-github-auth.yaml
-# deploy jupyter-large
-helm upgrade --install jptl jupyterhub/jupyterhub --namespace jptl --version 0.7.0 --values jupyter-large-config.yaml
-# deploy jupyter-test
-helm upgrade --install jptt jupyterhub/jupyterhub --namespace jptt --version 0.7.0 --values jupyter-test.yaml
+helm upgrade --install jpt jupyterhub/jupyterhub --namespace jpt --version 0.8.0 --values jupyter-github-auth.yaml
+helm upgrade --install jptl jupyterhub/jupyterhub --namespace jptl --version 0.8.0 --values jupyter-large-config.yaml
+helm upgrade --install jptt jupyterhub/jupyterhub --namespace jptt --version 0.8.0 --values jupyter-test.yaml
 popd
 
 
