@@ -1,6 +1,141 @@
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: jupyter
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-backend
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-new
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter-new.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-new-backend
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-large
+  namespace: jptl
+spec:
+  virtualhost:
+    fqdn: jupyter-large.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-large-backend
+  namespace: jptl
+spec:
+  virtualhost:
+    fqdn: jupyter-large-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-large-new
+  namespace: jptl
+spec:
+  virtualhost:
+    fqdn: jupyter-large-new.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-large-new-backend
+  namespace: jptl
+spec:
+  virtualhost:
+    fqdn: jupyter-large-new-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jup-test
+  namespace: jptt
+spec:
+  virtualhost:
+    fqdn: jupyter-test.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: isee
 spec:
   virtualhost:

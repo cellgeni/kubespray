@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 
+# notes before starting 
 
 # MAKE SURE YOU ARE ON THE RIGHT K8S CLUSTER CONTEXT
-# # create temp dir
-# cd `mktemp -d`
+# MAKE SURE KUBECTL VERSION IS AT MOST ONE MINOR REALEASE DIFFERENT FROM THE CLUSTER VERSION
+# MAKE SURE HELM VERSION (IF EXISTS LOCALLY) IS >=2.11 (FOR JUPYTERHUB RELEASE 0.8.0)
+
+
+# possible problems
+
+# LoadBalancer quota exceeded
+# someone already installed stuff on k8s that might clash with this script's installation
+
+
+
+# create temp dir
+cd `mktemp -d`
+
 
 # install helm
-
 install_helm(){
     curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
     kubectl --namespace kube-system create serviceaccount tiller
@@ -30,78 +42,75 @@ if [ ! -d "kubespray-internal" ] ; then
 fi
 if [ ! -d "kubespray" ] ; then
     git clone https://github.com/cellgeni/kubespray.git 
+    pushd kubespray
+    git fetch && git checkout k8s-1.13
+    popd
 fi
 
-# deploy contour
-kubectl apply -f https://j.hept.io/contour-deployment-rbac
-# activate ingresses
-kubectl apply -f kubespray/sanger/ingress/contour-ws.yaml --save-config
-kubectl apply -f kubespray/sanger/ingress/ingress-default-new-cluster.yaml --save-config
-
-
 # deploy storage classes
-kubectl apply -f kubespray/sanger/storage/glustesfs/glusterfs-sc.yaml --save-config
-kubectl apply -f kubespray/sanger/storage/sc-rw-once.yaml --save-config
-
-
-# create secrets
-kubectl create -f kubespray-internal/sanger/sites/secrets.yaml --save-config
+kubectl apply -f kubespray/sanger/storage/glusterfs/glusterfs-sc.yaml
+kubectl apply -f kubespray/sanger/storage/sc-rw-once.yaml
 
 
 # deploy jupyters
-pushd `dirname $0`
-cd kubespray/internal
-helm upgrade --install jpt jupyterhub/jupyterhub --namespace jpt --version 0.8.0 --values jupyter-github-auth.yaml
-helm upgrade --install jptl jupyterhub/jupyterhub --namespace jptl --version 0.8.0 --values jupyter-large-config.yaml
-helm upgrade --install jptt jupyterhub/jupyterhub --namespace jptt --version 0.8.0 --values jupyter-test.yaml
-popd
+helm upgrade --install jpt jupyterhub/jupyterhub --namespace jpt --version 0.8.0 --values kubespray-internal/sanger/sites/jupyter-github-auth.yaml
+helm upgrade --install jptl jupyterhub/jupyterhub --namespace jptl --version 0.8.0 --values kubespray-internal/sanger/sites/jupyter-large-config.yaml
+helm upgrade --install jptt jupyterhub/jupyterhub --namespace jptt --version 0.8.0 --values kubespray-internal/sanger/sites/jupyter-test.yaml
 
+apply_all(){
+    directory=$1
+    pushd $directory 
+    for filename in $(ls); do
+        kubectl apply -f $filename;
+    done;
+    popd 
+}
 
 # deploy partslab
 if [ ! -d "FORECasT" ] ; then
     git clone  https://github.com/cellgeni/FORECasT
 fi
-pushd `dirname $0`
-cd FORECasT/k8s
-for filename in $(ls); do
-    kubectl apply -f $filename;
-done;
-popd 
+apply_all FORECasT/k8s
 
 
 # deploy isee
 if [ ! -d "isee-shiny" ] ; then
     git clone  https://github.com/cellgeni/isee-shiny
 fi
-pushd `dirname $0`
-cd isee-shiny/k8s
-for filename in $(ls); do
-    kubectl apply -f $filename;
-done;
+pushd isee-shiny/k8s
+kubectl apply -f pvc.yaml;
+kubectl apply -f deployment.yaml;
+kubectl apply -f service.yaml;
 popd 
 
 # deploy scfind
-for filename in $(ls kubespray/sites/scfind); do
-    kubectl apply -f $filename --save-config;
-done;
+apply_all kubespray/sanger/sites/scfind
 
 
 # deploy asthma
-for filename in $(ls kubespray/sites/asthma); do
-    kubectl apply -f $filename --save-config;
-done;
+apply_all kubespray/sanger/sites/asthma
 
 
 # deploy spatial-transcriptomics
-for filename in $(ls kubespray/sites/spatial_transcriptomics); do
-    kubectl apply -f $filename --save-config;
-done;
+apply_all kubespray/sanger/sites/spatial_transcriptomics
 
 
 # deploy nextflow-web
 # deploy nextflow
-kubectl apply -f kubespray/sanger/storage/NF-pvc.yaml --save-config
+kubectl apply -f kubespray/sanger/storage/NF-pvc.yaml
+
 
 # deploy prometheus & grafana
 helm install --name grafana --namespace monitoring --values kubespray/sanger/services/monitoring/grafana.yaml stable/grafana
 helm install --name prometheus --namespace monitoring -f kubespray/sanger/services/monitoring/prometheus.yaml stable/prometheus
+
+
+# deploy contour
+kubectl apply -f https://j.hept.io/contour-deployment-rbac
+# activate ingresses for all installed deployments
+kubectl apply -f kubespray/sanger/ingress/contour-ws.yaml
+kubectl apply -f kubespray/sanger/ingress/ingress-default-new-cluster.yaml
+
+
+# create secrets - must be created after namespaces exist
+kubectl create -f kubespray-internal/sanger/sites/secrets.yaml
