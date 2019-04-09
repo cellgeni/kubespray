@@ -293,6 +293,21 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: grafana-old
+  namespace: monitoring
+spec:
+  virtualhost:
+    fqdn: grafana-old.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: grafana
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: grafana-backend
   namespace: monitoring
 spec:
