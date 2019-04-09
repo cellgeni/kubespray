@@ -31,6 +31,21 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: jupyter-backend-new
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: jupyter-new
   namespace: jpt
 spec:
@@ -193,6 +208,8 @@ apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
   name: asthma-backend
+  annotations:
+    contour.heptio.com/request-timeout: infinity
 spec:
   virtualhost:
     fqdn: asthma-backend.cellgeni.sanger.ac.uk
@@ -207,6 +224,8 @@ apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
   name: asthma
+  annotations:
+    contour.heptio.com/request-timeout: infinity
 spec:
   virtualhost:
     fqdn: asthma.cellgeni.sanger.ac.uk
@@ -283,6 +302,21 @@ metadata:
 spec:
   virtualhost:
     fqdn: grafana-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: grafana
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: grafana-new-backend
+  namespace: monitoring
+spec:
+  virtualhost:
+    fqdn: grafana-new-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true

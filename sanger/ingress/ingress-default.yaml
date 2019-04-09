@@ -4,10 +4,11 @@ metadata:
   name: cellgeni
   annotations:
     contour.heptio.com/request-timeout: "2000s"
+    kubernetes.io/ingress.class: contour
 spec:
   rules:
-  - host: partslab.cellgeni.sanger.ac.uk
-    http: &jacks
+  - host: partslab.sanger.ac.uk
+    http: &partslab
       paths:
       - path: /JACKS
         backend:
@@ -15,58 +16,7 @@ spec:
           servicePort: 8005
       - path: /
         backend:
-          serviceName: mprofile-web
-          servicePort: 8000
-  - host: partslab-proxy.cellgeni.sanger.ac.uk
-    http: *jacks
-  - host: partslab.sanger.ac.uk
-    http: *jacks
-
-  - host: forecast-partslab.cellgeni.sanger.ac.uk
-    http: 
-      paths:
-      - backend:
-          serviceName: mprofile-web
-          servicePort: 8000
-  - host: jacks-partslab.cellgeni.sanger.ac.uk
-    http: 
-      paths:
-      - backend:
-          serviceName: jacks
+          serviceName: forecast
           servicePort: 8005
-  - host: sample-tracker.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: sample-tracker
-            servicePort: 8000
-  - host: jupyter.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: proxy-public
-            servicePort: 80
-  - host: jupyter-ingress.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: proxy-public
-            servicePort: 80
-  - host: galaxy.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: glx-galaxy-stable
-            servicePort: 80
-  - host: scfind-ingress.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: scfind-np
-            servicePort: 9000
-  - host: asthma-ingress.cellgeni.sanger.ac.uk
-    http:
-        paths:
-        - backend:
-            serviceName: asthma
-            servicePort: 9001
+  - host: partslab.cellgeni.sanger.ac.uk
+    http: *partslab
