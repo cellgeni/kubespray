@@ -95,6 +95,10 @@ apply_all kubespray/sanger/sites/asthma
 apply_all kubespray/sanger/sites/spatial_transcriptomics
 
 
+# deploy metabase
+apply_all kubespray/sanger/sites/metabase
+
+
 # deploy nextflow-web
 # deploy nextflow
 kubectl apply -f kubespray/sanger/storage/NF-pvc.yaml
