@@ -2,6 +2,7 @@
 web/
 sanger/jupyter/jupyter-github-auth.yaml
 sanger/jupyter/jupyter-large-config.yaml
+sanger/jupyter/jupyter-test.yaml
 
 
 .vagrant

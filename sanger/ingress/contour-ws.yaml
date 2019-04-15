@@ -11,7 +11,7 @@ spec:
       enableWebsockets: true
       services:
         - name: proxy-public
-          port: 8003
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -26,37 +26,52 @@ spec:
       enableWebsockets: true
       services:
         - name: proxy-public
-          port: 8003
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: jupyter-old
+  name: jupyter-backend-new
   namespace: jpt
 spec:
   virtualhost:
-    fqdn: jupyter-old.cellgeni.sanger.ac.uk
+    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
       services:
         - name: proxy-public
-          port: 8003
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: jupyter-old-backend
+  name: jupyter-new
   namespace: jpt
 spec:
   virtualhost:
-    fqdn: jupyter-old-backend.cellgeni.sanger.ac.uk
+    fqdn: jupyter-new.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
       services:
         - name: proxy-public
-          port: 8003
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-new-backend
+  namespace: jpt
+spec:
+  virtualhost:
+    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -91,11 +106,11 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: jupyter-large-old
+  name: jupyter-large-new
   namespace: jptl
 spec:
   virtualhost:
-    fqdn: jupyter-large-old.cellgeni.sanger.ac.uk
+    fqdn: jupyter-large-new.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
@@ -106,11 +121,11 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: jupyter-large-old-backend
+  name: jupyter-large-new-backend
   namespace: jptl
 spec:
   virtualhost:
-    fqdn: jupyter-large-old-backend.cellgeni.sanger.ac.uk
+    fqdn: jupyter-large-new-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
@@ -164,6 +179,34 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: metabase
+spec:
+  virtualhost:
+    fqdn: metabase.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: metabase
+          port: 3000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: metabase-backend
+spec:
+  virtualhost:
+    fqdn: metabase-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: metabase
+          port: 3000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: transcriptomics
 spec:
   virtualhost:
@@ -193,6 +236,8 @@ apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
   name: asthma-backend
+  annotations:
+    contour.heptio.com/request-timeout: infinity
 spec:
   virtualhost:
     fqdn: asthma-backend.cellgeni.sanger.ac.uk
@@ -207,6 +252,8 @@ apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
   name: asthma
+  annotations:
+    contour.heptio.com/request-timeout: infinity
 spec:
   virtualhost:
     fqdn: asthma.cellgeni.sanger.ac.uk
@@ -248,21 +295,6 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: websocket
-  namespace: jptt
-spec:
-  virtualhost:
-    fqdn: jupyter-test.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
   name: prometheus
   namespace: monitoring
 spec:
@@ -293,11 +325,11 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: grafana-old
+  name: grafana-backend
   namespace: monitoring
 spec:
   virtualhost:
-    fqdn: grafana-old.cellgeni.sanger.ac.uk
+    fqdn: grafana-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
@@ -308,11 +340,11 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: grafana-backend
+  name: grafana-new-backend
   namespace: monitoring
 spec:
   virtualhost:
-    fqdn: grafana-backend.cellgeni.sanger.ac.uk
+    fqdn: grafana-new-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true

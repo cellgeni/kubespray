@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metabase
+spec:
+  selector:
+    matchLabels:
+      app: metabase
+  replicas: 1
+  template:
+    metadata:
+      name: metabase
+      labels:
+        app: metabase
+    spec:
+      containers:
+      - image: metabase/metabase
+        imagePullPolicy: IfNotPresent
+        name: metabase
+        ports:
+        - containerPort: 3000
+          hostPort: 9698
+          name: metabase
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
