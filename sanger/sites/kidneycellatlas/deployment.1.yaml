@@ -1,0 +1,314 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mature-kidney-myeloid
+spec:
+  selector:
+    matchLabels:
+      app: mature-kidney-myeloid
+  replicas: 1
+  template:
+    metadata: 
+      name: mature-kidney-myeloid
+      labels:
+        app: mature-kidney-myeloid
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: mature-kidney-myeloid
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/mature_kidney_myeloid.h5ad", "-t", "Mature kidney myeloid", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/mature_kidney_myeloid.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mature-kidney-immune
+spec:
+  selector:
+    matchLabels:
+      app: mature-kidney-immune
+  replicas: 1
+  template:
+    metadata: 
+      name: mature-kidney-immune
+      labels:
+        app: mature-kidney-immune
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: mature-kidney-immune
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_Immune_v2.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mature-kidney-global
+spec:
+  selector:
+    matchLabels:
+      app: mature-kidney-global
+  replicas: 1
+  template:
+    metadata: 
+      name: mature-kidney-global
+      labels:
+        app: mature-kidney-global
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: mature-kidney-global
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/mature_kidney_global.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/mature_kidney_global.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-kidney-stroma
+spec:
+  selector:
+    matchLabels:
+      app: fetal-kidney-stroma
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-kidney-stroma
+      labels:
+        app: fetal-kidney-stroma
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: fetal-kidney-stroma
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_kidney_stroma.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/fetal_kidney_stroma.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-kidney-global
+spec:
+  selector:
+    matchLabels:
+      app: fetal-kidney-global
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-kidney-global
+      labels:
+        app: fetal-kidney-global
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: fetal-kidney-global
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_kidney_global.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/fetal_kidney_global.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-kidney-developing-nephron
+spec:
+  selector:
+    matchLabels:
+      app: fetal-kidney-developing-nephron
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-kidney-developing-nephron
+      labels:
+        app: fetal-kidney-developing-nephron
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: fetal-kidney-developing-nephron
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_kidney_developing_nephron.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/fetal_kidney_developing_nephron.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data   
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-kidney-immune
+spec:
+  selector:
+    matchLabels:
+      app: fetal-kidney-immune
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-kidney-immune
+      labels:
+        app: fetal-kidney-immune
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: fetal-kidney-immune
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_kidney_immune.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/fetal_kidney_immune.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data

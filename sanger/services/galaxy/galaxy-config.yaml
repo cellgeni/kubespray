@@ -2,14 +2,14 @@
 init:
   image:
     repository: quay.io/ebigxa/galaxy-sc-tertiary
-    tag: develop
-    pullPolicy: Always
-  force_copy: "__venv__,__config__,__galaxy-central__,__tools__,__welcome__"
+    tag: 1.0.0
+    pullPolicy: IfNotPresent
+  force_copy: "__config__,__galaxy-central__,__tools__,__welcome__"
 
 image:
-  repository: pcm32/galaxy-web-k8s
+  repository: quay.io/ebigxa/galaxy-web-k8s
   tag: v18.05
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 admin:
   email: cellgeni-su@sanger.ac.uk
@@ -18,11 +18,12 @@ admin:
   username: admin
 
 galaxy_conf:
-  brand: "scRNA-Seq Tertiary A."
+  brand: "HX Single Cell"
   admin_users: cellgeni-su@sanger.ac.uk
   allow_user_creation: true
   allow_user_deletion: true
-  cleanup_job: onSuccess
+  cleanup_job: never
+  enable_beta_mulled_containers: true
 
 
 job_conf:
@@ -31,10 +32,11 @@ job_conf:
     enable_k8: "true"
   destinations:
     default: "docker_dispatch"
-    docker_default: "k8s_default"
+    # docker_default: "k8s_default"
     no_docker_default: "local_no_container"
 
 service:
+  name: galaxy-svc
   type: NodePort
 
 ingress:
@@ -53,5 +55,6 @@ persistence:
     enabled: false
 
 proftpd:
+  enabled: flase
   service:
     type: NodePort

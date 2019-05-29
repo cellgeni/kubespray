@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hemocytes
+spec:
+  selector:
+    matchLabels:
+      app: hemocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: hemocytes
+      labels:
+        app: hemocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: hemocytes-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: hemocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/hemocytes.h5ad", "-t", "Atlas of Anopheles hemocytes", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/hemocytes', '-O', '/data/hemocytes.h5ad']
+        volumeMounts:
+          - name: data
+            mountPath: /data

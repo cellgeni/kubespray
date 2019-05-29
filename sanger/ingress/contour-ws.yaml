@@ -31,51 +31,6 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: jupyter-backend-new
-  namespace: jpt
-spec:
-  virtualhost:
-    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter-new
-  namespace: jpt
-spec:
-  virtualhost:
-    fqdn: jupyter-new.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter-new-backend
-  namespace: jpt
-spec:
-  virtualhost:
-    fqdn: jupyter-new-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
   name: jupyter-large
   namespace: jptl
 spec:
@@ -101,6 +56,93 @@ spec:
       enableWebsockets: true
       services:
         - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-xl
+  namespace: jptx
+spec:
+  virtualhost:
+    fqdn: jupyter-xl.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-xl-proxy
+  namespace: jptx
+spec:
+  virtualhost:
+    fqdn: jupyter-xl-proxy.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-xl-backend
+  namespace: jptx
+spec:
+  virtualhost:
+    fqdn: jupyter-xl-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: galaxy
+spec:
+  virtualhost:
+    fqdn: galaxy.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: galaxy-galaxy-stable
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: galaxy-proxy
+spec:
+  virtualhost:
+    fqdn: galaxy-proxy.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: galaxy-galaxy-stable
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: galaxy-backend
+spec:
+  virtualhost:
+    fqdn: galaxy-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: galaxy-galaxy-stable
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -141,6 +183,21 @@ metadata:
 spec:
   virtualhost:
     fqdn: jupyter-test.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jup-test-backend
+  namespace: jptt
+spec:
+  virtualhost:
+    fqdn: jupyter-test-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
@@ -237,7 +294,8 @@ kind: IngressRoute
 metadata:
   name: asthma-backend
   annotations:
-    contour.heptio.com/request-timeout: infinity
+    contour.heptio.com/ingress.class: contour
+    contour.heptio.com/request-timeout: 1000s
 spec:
   virtualhost:
     fqdn: asthma-backend.cellgeni.sanger.ac.uk
@@ -253,7 +311,8 @@ kind: IngressRoute
 metadata:
   name: asthma
   annotations:
-    contour.heptio.com/request-timeout: infinity
+    contour.heptio.com/ingress.class: contour
+    contour.heptio.com/request-timeout: 1000s
 spec:
   virtualhost:
     fqdn: asthma.cellgeni.sanger.ac.uk
@@ -290,6 +349,34 @@ spec:
       enableWebsockets: true
       services:
         - name: scfind
+          port: 9000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scmap-backend
+spec:
+  virtualhost:
+    fqdn: scmap-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scmap
+          port: 9000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scmap
+spec:
+  virtualhost:
+    fqdn: scmap.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scmap
           port: 9000
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -379,3 +466,129 @@ spec:
       services:
         - name: nf-web
           port: 8000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: kidneycellatlas
+spec:
+  virtualhost:
+    fqdn: kidneycellatlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /static
+      enableWebsockets: true
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-immune
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-global
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-global
+          port: 80
+    - match: /mature-kidney-myeloid
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-myeloid
+          port: 80
+    - match: /fetal-kidney-stroma
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-stroma
+          port: 80
+    - match: /fetal-kidney-global
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-global
+          port: 80
+    - match: /fetal-kidney-developing-nephron
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-developing-nephron
+          port: 80
+    - match: /fetal-kidney-immune
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-immune
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: kidneycellatlas-backend
+spec:
+  virtualhost:
+    fqdn: kidneycellatlas-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /static
+      enableWebsockets: true
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-immune
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-global
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-global
+          port: 80
+    - match: /mature-kidney-myeloid
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-myeloid
+          port: 80
+    - match: /fetal-kidney-stroma
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-stroma
+          port: 80
+    - match: /fetal-kidney-global
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-global
+          port: 80
+    - match: /fetal-kidney-developing-nephron
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-developing-nephron
+          port: 80
+    - match: /fetal-kidney-immune
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-immune
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: hemocytes
+spec:
+  virtualhost:
+    fqdn: hemocytes.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: hemocytes
+          port: 80

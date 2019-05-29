@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: asthma-lb-3
+  namespace: heptio-contour
+  labels:
+    app: asthma
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 9001
+    targetPort: asthma
+  selector:
+    app: asthma
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: contour2
+ namespace: heptio-contour
+ labels: 
+  app: contour
+spec:
+ type: LoadBalancer
+ ports:
+ - port: 80
+   name: http
+   protocol: TCP
+   targetPort: 8080
+ - port: 443
+   name: https
+   protocol: TCP
+   targetPort: 8443
+ selector:
+   app: contour

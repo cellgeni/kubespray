@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scmap
+spec:
+  selector:
+    matchLabels:
+      app: scmap
+  replicas: 1
+  template:
+    metadata:
+      name: scmap
+      labels:
+        app: scmap
+    spec:
+      containers:
+      - image: quay.io/hemberg-group/scmap-shiny:latest
+        imagePullPolicy: IfNotPresent
+        name: scmap
+        ports:
+        - containerPort: 3838
+          hostPort: 9899
+          name: scmap
+        resources:
+          requests:
+            memory: "20Gi"
+            cpu: 1
+          limits:
+            memory: "40Gi"
+            cpu: 2
+        livenessProbe:
+          httpGet: 
+            path: /
+            port: scmap
+          initialDelaySeconds: 10
+          timeoutSeconds: 20
+          periodSeconds: 240

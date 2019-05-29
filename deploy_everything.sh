@@ -118,3 +118,16 @@ kubectl apply -f kubespray/sanger/ingress/ingress-default-new-cluster.yaml
 
 # create secrets - must be created after namespaces exist
 kubectl create -f kubespray-internal/sanger/sites/secrets.yaml
+
+# install Galaxy
+helm repo add galaxy-helm-repo https://pcm32.github.io/galaxy-helm-charts && helm repo update
+kubectl apply -f sanger/services/galaxy/pvc.yaml
+helm upgrade --install galaxy -f sanger/services/galaxy/galaxy-config.yaml galaxy-helm-repo/galaxy-stable
+
+# install Mongodb
+helm install --name mongodb \
+  --set mongodbRootPassword=cellgeni,mongodbUsername=cellgeni,mongodbPassword=cellgeni,mongodbDatabase=wge,service.type=NodePort \
+    stable/mongodb
+# helm upgrade my-release \
+#   --set service.type=NodePort \
+#     stable/mongodb

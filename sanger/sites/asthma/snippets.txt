@@ -1,3 +1,0 @@
-docker run -d -p 8001:3838 -v $HOME/Downloads/megasrat.RDS:/data/dataset.RDS quay.io/cellgeni/asthma:v0.1.2
-
-curl --upload-file ./megasrat.RDS https://transfer.sh/dataset.RDS

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kidney-shiny
+spec:
+  selector:
+    matchLabels:
+      app: kidney-shiny
+  replicas: 1
+  template:
+    metadata:
+      name: kidney-shiny
+      labels:
+        app: kidney-shiny
+    spec:
+      containers:
+      - image: quay.io/cellgeni/kidneycellatlas:latest
+        imagePullPolicy: IfNotPresent
+        name: kidney-shiny
+        ports:
+        - containerPort: 80
+          name: kidney-shiny
+        resources:
+          requests:
+            memory: "5Gi"
+            cpu: 1
+          limits:
+            memory: "30Gi"
+            cpu: 2
