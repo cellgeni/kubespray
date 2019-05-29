@@ -492,11 +492,11 @@ spec:
       services:
         - name: mature-kidney-global
           port: 80
-    - match: /mature-kidney-myeloid
+    - match: /mature-non-pt-parenchyma
       enableWebsockets: true
       prefixRewrite: "/" 
       services:
-        - name: mature-kidney-myeloid
+        - name: mature-non-pt-parenchyma
           port: 80
     - match: /fetal-kidney-stroma
       enableWebsockets: true

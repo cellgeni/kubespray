@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mature-kidney-myeloid
+  name: index-page
 spec:
   selector:
     matchLabels:
-      app: mature-kidney-myeloid
+      app: mature-non-pt-parenchyma
   replicas: 1
   template:
     metadata: 
-      name: mature-kidney-myeloid
+      name: mature-non-pt-parenchyma
       labels:
-        app: mature-kidney-myeloid
+        app: mature-non-pt-parenchyma
     spec:
       volumes:
         - name: data
@@ -20,11 +20,11 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:latest
         imagePullPolicy: IfNotPresent
-        name: mature-kidney-myeloid
+        name: mature-non-pt-parenchyma
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/mature_kidney_myeloid.h5ad", "-t", "Mature kidney myeloid", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.h5ad", "-t", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -38,7 +38,52 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/mature_kidney_myeloid.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_non_PT_parenchyma_v2.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mature-non-pt-parenchyma
+spec:
+  selector:
+    matchLabels:
+      app: mature-non-pt-parenchyma
+  replicas: 1
+  template:
+    metadata: 
+      name: mature-non-pt-parenchyma
+      labels:
+        app: mature-non-pt-parenchyma
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:latest
+        imagePullPolicy: IfNotPresent
+        name: mature-non-pt-parenchyma
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.h5ad", "-t", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_non_PT_parenchyma_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -69,7 +114,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/mature_kidney_immune.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -83,7 +128,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/mature_kidney_immune.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_Immune_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -114,7 +159,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/mature_kidney_global.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Full_v2.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -128,7 +173,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/mature_kidney_global.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_Full_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -159,7 +204,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_kidney_stroma.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Stroma_v2.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -173,7 +218,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/fetal_kidney_stroma.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Stroma_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data        
@@ -204,7 +249,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_kidney_global.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Full_v2.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -218,7 +263,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/fetal_kidney_global.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Full_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -249,7 +294,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_kidney_developing_nephron.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Developing_nephron_v2.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -263,7 +308,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/fetal_kidney_developing_nephron.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Developing_nephron_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data   
@@ -294,7 +339,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_kidney_immune.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Immune_v2.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -308,7 +353,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cellxgene/BenKidney/fetal_kidney_immune.h5ad', '-P', '/data']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Immune_v2.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data

@@ -1,0 +1,18 @@
+docker run -d -p 8001:3838 -v $HOME/Downloads/megasrat.RDS:/data/dataset.RDS quay.io/cellgeni/asthma:v0.1.2
+
+curl --upload-file ./megasrat.RDS https://transfer.sh/dataset.RDS
+
+for entry in $(s3cmd ls s3://fa9/ | awk '$0 ~ /.*\/CCDS.*/' | awk '{ print $2 }')
+do
+    #echo ${entry::-1}
+    s3cmd mv -r ${entry::-1} s3://fa9/human/
+done;
+
+for entry in $(s3cmd ls s3://fa9/human/ | awk '$0 ~ /.*.txt/' | awk '{ print $4 }')
+do
+  s3cmd mv $entry s3://fa9/human/CCDS8000-8499/
+done
+
+# on Mac - encode file to base64 and copy to one liner
+
+openssl base64 < path/to/file.png | tr -d '\n' | pbcopy
