@@ -473,7 +473,7 @@ metadata:
   name: kidneycellatlas
 spec:
   virtualhost:
-    fqdn: kidneycellatlas.cellgeni.sanger.ac.uk
+    fqdn: kidneycellatlas.org
   routes:
     - match: /static
       enableWebsockets: true
@@ -526,11 +526,15 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: kidneycellatlas-backend
+  name: kidneycellatlas-cellgeni
 spec:
   virtualhost:
-    fqdn: kidneycellatlas-backend.cellgeni.sanger.ac.uk
+    fqdn: kidneycellatlas.cellgeni.sanger.ac.uk
   routes:
+    - match: /
+      services:
+        - name: index-page
+          port: 80
     - match: /static
       enableWebsockets: true
       services:
@@ -548,11 +552,11 @@ spec:
       services:
         - name: mature-kidney-global
           port: 80
-    - match: /mature-kidney-myeloid
+    - match: /mature-non-pt-parenchyma
       enableWebsockets: true
       prefixRewrite: "/" 
       services:
-        - name: mature-kidney-myeloid
+        - name: mature-non-pt-parenchyma
           port: 80
     - match: /fetal-kidney-stroma
       enableWebsockets: true

@@ -55,6 +55,26 @@ spec:
           servicePort: 80
   - host: jupyter-large-backend-nginx.cellgeni.sanger.ac.uk
     http: *jupyter-large
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jupyter-xl-nginx
+  namespace: jptx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 100000m
+spec:
+  rules:
+  - host: jupyter-xl.cellgeni.sanger.ac.uk
+    http: &jupyter-xl
+      paths:
+      - path: /
+        backend:
+          serviceName: proxy-public
+          servicePort: 80
+  - host: jupyter-xl-backend-nginx.cellgeni.sanger.ac.uk
+    http: *jupyter-xl
 # apiVersion: extensions/v1beta1
 # kind: Ingress
 # metadata:
