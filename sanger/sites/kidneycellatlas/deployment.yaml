@@ -14,9 +14,8 @@ spec:
         app: index-page
     spec:
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: cellxgene-pvc
+        - name: indexfiles
+          emptyDir: {}
       containers:
       - image: nginx
         imagePullPolicy: IfNotPresent
@@ -24,9 +23,9 @@ spec:
         ports:
         - containerPort: 80
           name: index-page
-        command: ["cp", "-r", "/data/kubespray/sanger/sites/kidneycellatlas/index/*", "/usr/share/nginx/html/"]
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/kidneycellatlas/index/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
-          - name: data
+          - name: indexfiles
             mountPath: /data
         resources:
           requests:
@@ -38,10 +37,9 @@ spec:
       initContainers:
       - name: pull-data
         image: alpine/git
-        # command: ['rm', '-rf', '/data/kubespray', '||', 'git', 'clone', 'https://github.com/cellgeni/kubespray', "/data/kubespray"]
-        command: ['git', 'clone', 'https://github.com/cellgeni/kubespray', "/data/kubespray"]
+        command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
         volumeMounts:
-          - name: data
+          - name: indexfiles
             mountPath: /data
 ---
 apiVersion: apps/v1
@@ -64,7 +62,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: mature-non-pt-parenchyma
         ports:
@@ -109,7 +107,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: mature-kidney-immune
         ports:
@@ -154,7 +152,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: mature-kidney-global
         ports:
@@ -199,7 +197,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-stroma
         ports:
@@ -244,7 +242,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-global
         ports:
@@ -289,7 +287,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-developing-nephron
         ports:
@@ -334,7 +332,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:latest
+      - image: quay.io/cellgeni/cellxgene:0.10.1
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-immune
         ports:

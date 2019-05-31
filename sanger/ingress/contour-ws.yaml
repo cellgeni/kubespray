@@ -473,8 +473,12 @@ metadata:
   name: kidneycellatlas
 spec:
   virtualhost:
-    fqdn: kidneycellatlas.org
+    fqdn: www.kidneycellatlas.org
   routes:
+    - match: /
+      services:
+        - name: index-page
+          port: 80
     - match: /static
       enableWebsockets: true
       services:
@@ -529,7 +533,7 @@ metadata:
   name: kidneycellatlas-cellgeni
 spec:
   virtualhost:
-    fqdn: kidneycellatlas.cellgeni.sanger.ac.uk
+    fqdn: kidneycellatlas-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:
