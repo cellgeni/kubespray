@@ -48,7 +48,7 @@ spec:
       initContainers:
       - name: pull-data
         image: perl
-        command: ['wget', 'https://cellgeni.cog.sanger.ac.uk/asthma/dataset.RDS', '-N', '-O', '/data/dataset.RDS']
+        command: ['wget', 'https://cellgeni.cog.sanger.ac.uk/asthma/dataset-14.06.rds', '-N', '-O', '/data/dataset.RDS']
         volumeMounts:
         - name: data
           mountPath: /data 

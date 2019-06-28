@@ -68,7 +68,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.h5ad", "-t", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.1.h5ad", "-t", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -82,7 +82,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_non_PT_parenchyma_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_non_PT_parenchyma_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -113,7 +113,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.1.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -127,7 +127,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_Immune_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_Immune_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -158,7 +158,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Full_v2.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Full_v2.1.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -172,7 +172,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Mature_Full_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_Full_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -203,7 +203,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Stroma_v2.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Stroma_v2.1.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -217,7 +217,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Stroma_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_Stroma_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data        
@@ -248,7 +248,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Full_v2.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Full_v2.1.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -262,7 +262,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Full_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_Full_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -293,7 +293,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Developing_nephron_v2.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Developing_nephron_v2.1.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -307,7 +307,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Developing_nephron_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_Developing_nephron_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data   
@@ -338,7 +338,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Immune_v2.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Immune_v2.1.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -352,7 +352,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2/Fetal_Immune_v2.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_Immune_v2.1.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data

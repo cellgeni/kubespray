@@ -13,10 +13,24 @@ spec:
       labels:
         app: scfind
     spec:
+      volumes:
+        - name: w2v
+          persistentVolumeClaim:
+            claimName: scfind-pvc
+      initContainers:
+      - name: pull-data
+        image: perl
+        command: ['wget', 'https://scfind.cog.sanger.ac.uk/w2v/scfind_dictionary_hs_v1.rds', 'https://scfind.cog.sanger.ac.uk/w2v/scfind_dictionary_mm_v1.rds',  'https://scfind.cog.sanger.ac.uk/w2v/PubMed-w2v.bin', '-N', '-P', '/w2v/']
+        volumeMounts:
+        - name: w2v
+          mountPath: /w2v
       containers:
-      - image: quay.io/hemberg-group/scfind-shiny:v1.5.0
+      - image: quay.io/hemberg-group/scfind-shiny:2.0.2
         imagePullPolicy: IfNotPresent
         name: scfind
+        volumeMounts:
+        - name: w2v
+          mountPath: /w2v
         ports:
         - containerPort: 3838
           hostPort: 9898

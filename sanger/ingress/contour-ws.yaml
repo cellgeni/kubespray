@@ -427,11 +427,11 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: grafana-new-backend
+  name: grafana-proxy
   namespace: monitoring
 spec:
   virtualhost:
-    fqdn: grafana-new-backend.cellgeni.sanger.ac.uk
+    fqdn: grafana-proxy.cellgeni.sanger.ac.uk
   routes:
     - match: /
       enableWebsockets: true
