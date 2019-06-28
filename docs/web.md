@@ -52,9 +52,10 @@ Wildcard certificates for `*.cellgeni.sanger.ac.uk` were obtained through a DNS 
 To renew certificates, run
 ```
 sudo certbot certonly --manual -d *.cellgeni.sanger.ac.uk
+# follow the interactive program. 
+# Put the according string for the DNS challenge inside the external view on _acme-challenge.cellgeni.sanger.ac.uk at Infoblox.
+sudo nginx -s reload # IMPORTANT for changes to take effect
 ```
-then follow the interactive program. Put the according string for the DNS challenge inside the external view on _acme-challenge.cellgeni.sanger.ac.uk at Infoblox.
-
 To access the current server with nginx, download [nginx-keypair](https://gitlab.internal.sanger.ac.uk/cellgeni/kubespray/tree/master/sanger/ubuntu-keypair) to your local `.ssh` folder and run
 ```
 ssh -i ~/.ssh/nginx-keypair ubuntu@172.27.16.131
