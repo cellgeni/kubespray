@@ -240,6 +240,10 @@ metadata:
 spec:
   virtualhost:
     fqdn: metabase.cellgeni.sanger.ac.uk
+    annotations:
+      contour.heptio.com/request-timeout: infinity
+    tls: 
+      secretName: cert-secret
   routes:
     - match: /
       enableWebsockets: true
@@ -254,6 +258,10 @@ metadata:
 spec:
   virtualhost:
     fqdn: metabase-backend.cellgeni.sanger.ac.uk
+    annotations:
+      contour.heptio.com/request-timeout: infinity
+    tls: 
+      secretName: cert-secret
   routes:
     - match: /
       enableWebsockets: true
@@ -599,4 +607,18 @@ spec:
       enableWebsockets: true
       services:
         - name: hemocytes
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: melanoma
+spec:
+  virtualhost:
+    fqdn: melanoma.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: melanoma
           port: 80

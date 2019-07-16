@@ -13,6 +13,10 @@ spec:
       labels:
         app: metabase
     spec:
+      volumes:
+        - name: metabase-db
+          persistentVolumeClaim:
+            claimName: metabase-pvc
       containers:
       - image: metabase/metabase
         imagePullPolicy: IfNotPresent
@@ -21,10 +25,16 @@ spec:
         - containerPort: 3000
           hostPort: 9698
           name: metabase
+        volumeMounts:
+        - name: metabase-db
+          mountPath: /metabase.db
+        env:
+          - name: MB_DB_FILE
+            value: /metabase.db/
         resources:
           requests:
-            memory: "128M"
-            cpu: "0.5"
-          limits:
-            memory: "1Gi"
+            memory: "512M"
             cpu: 1
+          limits:
+            memory: "8Gi"
+            cpu: 4

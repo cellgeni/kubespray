@@ -75,76 +75,22 @@ spec:
           servicePort: 80
   - host: jupyter-xl-backend-nginx.cellgeni.sanger.ac.uk
     http: *jupyter-xl
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   name: cellgeni-nginx
-#   annotations:
-#     kubernetes.io/ingress.class: nginx
-#     nginx.ingress.kubernetes.io/rewrite-target: /
-#     nginx.ingress.kubernetes.io/add-base-url: "true"
-#     nginx.ingress.kubernetes.io/base-url-scheme: "https"
-#     nginx.ingress.kubernetes.io/proxy-read-timeout: "86000"
-#     nginx.ingress.kubernetes.io/proxy-connect-timeout: "86000"
-#     nginx.ingress.kubernetes.io/proxy-send-timeout: "86000"
-# spec:
-#   rules:
-#   - host: isee.cellgeni.sanger.ac.uk
-#     http: &isee
-#       paths:
-#       - path: /teichlab/ss2-human
-#         backend:
-#           serviceName: ss2-human
-#           servicePort: 80
-#       - path: /teichlab/tenx-skin
-#         backend:
-#           serviceName: tenx-skin
-#           servicePort: 80
-#       - path: /teichlab/ss2-mousecolon
-#         backend:
-#           serviceName: ss2-mousecolon
-#           servicePort: 80
-#       - path: /teichlab/ss2-mousemelanoma
-#         backend:
-#           serviceName: ss2-mousemelanoma
-#           servicePort: 80
-#       - path: /teichlab/ss2-mouseskin
-#         backend:
-#           serviceName: ss2-mouseskin
-#           servicePort: 80
-#       - path: /teichlab/tenx-tmembln
-#         backend:
-#           serviceName: tenx-tmembln
-#           servicePort: 80
-#       - path: /teichlab/tenx-tmemcolon
-#         backend:
-#           serviceName: tenx-tmemcolon
-#           servicePort: 80
-#       - path: /teichlab/tenx-tmemmln
-#         backend:
-#           serviceName: tenx-tmemmln
-#           servicePort: 80
-#       - path: /teichlab/tenx-tmemspleen
-#         backend:
-#           serviceName: tenx-tmemspleen
-#           servicePort: 80
-#       - path: /teichlab/tenx-tregbln
-#         backend:
-#           serviceName: tenx-tregbln
-#           servicePort: 80
-#       - path: /teichlab/tenx-tregcolon
-#         backend:
-#           serviceName: tenx-tregcolon
-#           servicePort: 80
-#       - path: /teichlab/tenx-tregmln
-#         backend:
-#           serviceName: tenx-tregmln
-#           servicePort: 80
-#       - path: /teichlab/tenx-tregspleen
-#         backend:
-#           serviceName: tenx-tregspleen
-#           servicePort: 80
-  
-#   - host: isee-backend.cellgeni.sanger.ac.uk
-#     http: *isee
-  
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: metabase-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 100000m
+spec:
+  rules:
+  - host: metabase.cellgeni.sanger.ac.uk
+    http: &metabase
+      paths:
+      - path: /
+        backend:
+          serviceName: metabase
+          servicePort: 3000
+  - host: metabase-backend-nginx.cellgeni.sanger.ac.uk
+    http: *metabase
