@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: melanoma
+spec:
+  selector:
+    matchLabels:
+      app: melanoma
+  replicas: 1
+  template:
+    metadata: 
+      name: melanoma
+      labels:
+        app: melanoma
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: melanoma-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.10.1
+        imagePullPolicy: IfNotPresent
+        name: melanoma
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/melanoma.h5ad", "-t", "Murine melanoma atlas", "--host", "0.0.0.0"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/datasets/melanoma2.h5ad', '-O', '/data/melanoma.h5ad']
+        volumeMounts:
+          - name: data
+            mountPath: /data
