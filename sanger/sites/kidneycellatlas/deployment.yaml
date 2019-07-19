@@ -62,7 +62,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: mature-non-pt-parenchyma
         ports:
@@ -107,7 +107,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: mature-kidney-immune
         ports:
@@ -152,7 +152,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: mature-kidney-global
         ports:
@@ -197,7 +197,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-stroma
         ports:
@@ -242,7 +242,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-global
         ports:
@@ -287,7 +287,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-developing-nephron
         ports:
@@ -332,7 +332,7 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.10.1
+      - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-immune
         ports:

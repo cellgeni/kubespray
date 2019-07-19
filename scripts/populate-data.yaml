@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-pod
+spec:
+    volumes:
+      - name: metabase-db
+        persistentVolumeClaim:
+          claimName: metabase-pvc
+    containers:
+    - image: ubuntu
+      imagePullPolicy: IfNotPresent
+      name: data-pod
+      command: ["tail", "-f", "/dev/null"]
+      volumeMounts:
+      - name: metabase-db
+        mountPath: /metabase.db
+      resources:
+        limits:
+          memory: "128M"
+          cpu: 0.5
