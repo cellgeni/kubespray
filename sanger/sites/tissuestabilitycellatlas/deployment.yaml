@@ -1,0 +1,178 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tissue-stability-cell-atlas
+spec:
+  selector:
+    matchLabels:
+      app: tissue-stability-cell-atlas
+  replicas: 1
+  template:
+    metadata: 
+      name: tissue-stability-cell-atlas
+      labels:
+        app: tissue-stability-cell-atlas
+    spec:
+      volumes:
+        - name: indexfiles
+          emptyDir: {}
+      containers:
+      - image: nginx
+        imagePullPolicy: IfNotPresent
+        name: tissue-stability-cell-atlas
+        ports:
+        - containerPort: 80
+          name: tissue-stability-cell-atlas
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/tissuestabilitycellatlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.1"
+          limits:
+            memory: "512M"
+            cpu: "0.7"
+      initContainers:
+      - name: pull-data
+        image: alpine/git
+        command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tissue-stability-oesophagus
+spec:
+  selector:
+    matchLabels:
+      app: tissue-stability-oesophagus
+  replicas: 1
+  template:
+    metadata: 
+      name: tissue-stability-oesophagus
+      labels:
+        app: tissue-stability-oesophagus
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: tissue-stability-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: tissue-stability-oesophagus
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/oesophagus.cellxgene.h5ad", "-t", "Oesophagus", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/oesophagus.cellxgene.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tissue-stability-lung
+spec:
+  selector:
+    matchLabels:
+      app: tissue-stability-lung
+  replicas: 1
+  template:
+    metadata: 
+      name: tissue-stability-lung
+      labels:
+        app: tissue-stability-lung
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: tissue-stability-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: tissue-stability-lung
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/lung.cellxgene.h5ad", "-t", "Lung", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/lung.cellxgene.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tissue-stability-spleen
+spec:
+  selector:
+    matchLabels:
+      app: tissue-stability-spleen
+  replicas: 1
+  template:
+    metadata: 
+      name: tissue-stability-spleen
+      labels:
+        app: tissue-stability-spleen
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: tissue-stability-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: tissue-stability-spleen
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/spleen.cellxgene.h5ad", "-t", "Spleen", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/spleen.cellxgene.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
