@@ -22,8 +22,8 @@ spec:
         name: tissue-stability-cell-atlas
         ports:
         - containerPort: 80
-          name: tissue-stability-cell-atlas
-        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/tissuestabilitycellatlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+          name: tissue-stab
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/tissuestability/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
           - name: indexfiles
             mountPath: /data
@@ -77,12 +77,12 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "3Gi"
+            memory: "5Gi"
             cpu: 1
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/oesophagus.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/oesophagus.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -127,7 +127,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/lung.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/lung.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -172,7 +172,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'http://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/spleen.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/spleen.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data

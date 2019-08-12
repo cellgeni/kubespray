@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: tissue-stab
   selector:
     app: tissue-stability-cell-atlas
 ---
@@ -22,7 +22,7 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: 5005
+    targetPort: cellxgene
   selector:
     app: tissue-stability-oesophagus
 ---
@@ -36,7 +36,7 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: 5005
+    targetPort: cellxgene
   selector:
     app: tissue-stability-lung
 ---
@@ -50,6 +50,6 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: 5005
+    targetPort: cellxgene
   selector:
     app: tissue-stability-spleen

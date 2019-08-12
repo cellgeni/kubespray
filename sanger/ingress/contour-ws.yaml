@@ -488,108 +488,40 @@ spec:
         - name: index-page
           port: 80
     - match: /static
-      enableWebsockets: true
       services:
         - name: mature-kidney-immune
           port: 80
     - match: /mature-kidney-immune
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: mature-kidney-immune
           port: 80
     - match: /mature-kidney-global
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: mature-kidney-global
           port: 80
     - match: /mature-non-pt-parenchyma
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: mature-non-pt-parenchyma
           port: 80
     - match: /fetal-kidney-stroma
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: fetal-kidney-stroma
           port: 80
     - match: /fetal-kidney-global
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: fetal-kidney-global
           port: 80
     - match: /fetal-kidney-developing-nephron
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: fetal-kidney-developing-nephron
           port: 80
     - match: /fetal-kidney-immune
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-kidney-immune
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: kidneycellatlas-cellgeni
-spec:
-  virtualhost:
-    fqdn: kidneycellatlas-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      services:
-        - name: index-page
-          port: 80
-    - match: /static
-      enableWebsockets: true
-      services:
-        - name: mature-kidney-immune
-          port: 80
-    - match: /mature-kidney-immune
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: mature-kidney-immune
-          port: 80
-    - match: /mature-kidney-global
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: mature-kidney-global
-          port: 80
-    - match: /mature-non-pt-parenchyma
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: mature-non-pt-parenchyma
-          port: 80
-    - match: /fetal-kidney-stroma
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-kidney-stroma
-          port: 80
-    - match: /fetal-kidney-global
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-kidney-global
-          port: 80
-    - match: /fetal-kidney-developing-nephron
-      enableWebsockets: true
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-kidney-developing-nephron
-          port: 80
-    - match: /fetal-kidney-immune
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: fetal-kidney-immune
@@ -626,30 +558,95 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: tissuestabilitycellatlas
+  name: tissuestability
 spec:
   virtualhost:
-    fqdn: www.tissuestabilitycellatlas.org
+    fqdn: www.tissuestability.org
+  routes:
+    - match: /oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestability-backend
+spec:
+  virtualhost:
+    fqdn: tissuestability-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:
         - name: tissue-stability-cell-atlas
           port: 80
     - match: /oesophagus
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: tissue-stability-oesophagus
           port: 80
     - match: /lung
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: tissue-stability-lung
           port: 80
     - match: /spleen
-      enableWebsockets: true
       prefixRewrite: "/" 
       services:
         - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestability-cellgeni
+spec:
+  virtualhost:
+    fqdn: tissuestability.cellgeni.sanger.ac.uk
+  routes:
+    - match: /oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
           port: 80
