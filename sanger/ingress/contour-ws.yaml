@@ -622,3 +622,34 @@ spec:
       services:
         - name: melanoma
           port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestabilitycellatlas
+spec:
+  virtualhost:
+    fqdn: www.tissuestabilitycellatlas.org
+  routes:
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
+          port: 80
+    - match: /oesophagus
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
