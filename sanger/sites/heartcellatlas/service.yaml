@@ -15,13 +15,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-endothelial
+  name: heart-cell-endothelial
   labels:
-    app: heart-endothelial
+    app: heart-cell-endothelial
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-endothelial
+    app: heart-cell-endothelial

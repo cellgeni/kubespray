@@ -12,12 +12,12 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80          
     - match: /heart-endothelial
       prefixRewrite: "/" 
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -34,12 +34,12 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80
     - match: /heart-endothelial
       prefixRewrite: "/" 
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -56,10 +56,10 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80
     - match: /heart-endothelial
       prefixRewrite: "/" 
       services:
-        - name: heart-endothelial
+        - name: heart-cell-endothelial
           port: 80
