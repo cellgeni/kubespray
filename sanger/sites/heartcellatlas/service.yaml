@@ -25,3 +25,17 @@ spec:
     targetPort: cellxgene
   selector:
     app: heart-cell-endothelial
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-immune
+  labels:
+    app: heart-cell-immune
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-immune

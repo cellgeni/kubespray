@@ -19,6 +19,11 @@ spec:
       services:
         - name: heart-cell-endothelial
           port: 80
+    - match: /heart-immune
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -41,6 +46,11 @@ spec:
       services:
         - name: heart-cell-endothelial
           port: 80
+    - match: /heart-immune
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -62,4 +72,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-endothelial
+          port: 80
+    - match: /heart-immune
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune
           port: 80
