@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-immune
+  name: heart-cell-stromal
   labels:
-    app: heart-cell-immune
+    app: heart-cell-stromal
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-immune
+    app: heart-cell-stromal

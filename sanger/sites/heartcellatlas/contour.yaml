@@ -19,10 +19,10 @@ spec:
       services:
         - name: heart-cell-endothelial
           port: 80
-    - match: /heart-immune
+    - match: /heart-stromal
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-stromal
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -46,10 +46,10 @@ spec:
       services:
         - name: heart-cell-endothelial
           port: 80
-    - match: /heart-immune
+    - match: /heart-stromal
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-stromal
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -73,8 +73,8 @@ spec:
       services:
         - name: heart-cell-endothelial
           port: 80
-    - match: /heart-immune
+    - match: /heart-stromal
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-stromal
           port: 80

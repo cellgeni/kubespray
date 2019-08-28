@@ -36,6 +36,7 @@ spec:
             cpu: "0.7"
       initContainers:
       - name: pull-data
+        imagePullPolicy: IfNotPresent
         image: alpine/git
         command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
         volumeMounts:
@@ -81,6 +82,7 @@ spec:
             cpu: 1
       initContainers:
       - name: pull-data
+        imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
         command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_endothelial_bbknn_ctl190723_annotated.h5ad', '/data']
         env:
@@ -101,17 +103,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heart-cell-immune
+  name: heart-cell-stromal
 spec:
   selector:
     matchLabels:
-      app: heart-cell-immune
+      app: heart-cell-stromal
   replicas: 1
   template:
     metadata: 
-      name: heart-cell-immune
+      name: heart-cell-stromal
       labels:
-        app: heart-cell-immune
+        app: heart-cell-stromal
     spec:
       volumes:
         - name: data
@@ -120,11 +122,11 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
-        name: heart-cell-immune
+        name: heart-cell-stromal
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/heart_immune_bbknn_ctl190822_annotated.h5ad", "-t", "Heart Immune", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/hca_heart_cdna-cd45_ctl190703_annotated.h5ad", "-t", "Heart Stromal Cells-only", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -133,12 +135,13 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "5Gi"
+            memory: "8Gi"
             cpu: 1
       initContainers:
       - name: pull-data
+        imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_immune_bbknn_ctl190822_annotated.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/hca_heart_cdna-cd45_ctl190703_annotated.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
