@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/heart_endothelial_bbknn_ctl190723_annotated.h5ad", "-t", "Heart Endothelial", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/heart_endothelial_bbknn_ctl190723_annotated_raw.h5ad", "-t", "Endothelial cells", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -84,7 +84,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_endothelial_bbknn_ctl190723_annotated.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_endothelial_bbknn_ctl190723_annotated_raw.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
