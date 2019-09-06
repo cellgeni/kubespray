@@ -192,7 +192,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "8Gi"
+            memory: "10Gi"
             cpu: 1
       initContainers:
       - name: pull-data
