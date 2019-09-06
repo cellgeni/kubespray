@@ -39,3 +39,17 @@ spec:
     targetPort: cellxgene
   selector:
     app: heart-cell-stromal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-global-190527
+  labels:
+    app: heart-cell-global-190527
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-global-190527
