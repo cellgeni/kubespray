@@ -561,7 +561,7 @@ metadata:
   name: tissuestability
 spec:
   virtualhost:
-    fqdn: www.tissuestability.org
+    fqdn: www.tissuestabilitycellatlas.org
   routes:
     - match: /oesophagus
       prefixRewrite: "/" 
