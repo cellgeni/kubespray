@@ -29,6 +29,11 @@ spec:
       services:
         - name: heart-cell-global-190527
           port: 80
+    - match: /heart-cell-endothelial-only
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-only
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -60,6 +65,11 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-global-190527
+          port: 80
+    - match: /heart-cell-endothelial-only
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-only
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -93,4 +103,8 @@ spec:
       services:
         - name: heart-cell-global-190527
           port: 80
-
+    - match: /heart-cell-endothelial-only
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-only
+          port: 80
