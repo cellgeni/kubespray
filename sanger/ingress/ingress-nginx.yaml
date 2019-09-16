@@ -94,3 +94,23 @@ spec:
           servicePort: 3000
   - host: metabase-backend-nginx.cellgeni.sanger.ac.uk
     http: *metabase
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jupyter-wsss
+  namespace: wsss
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 100000m
+spec:
+  rules:
+  - host: wsss.cellgeni.sanger.ac.uk
+    http: &jupyter-wsss
+      paths:
+      - path: /
+        backend:
+          serviceName: proxy-public
+          servicePort: 80
+  - host: wsss-backend-nginx.cellgeni.sanger.ac.uk
+    http: *jupyter-wsss

@@ -650,3 +650,33 @@ spec:
       services:
         - name: tissue-stability-cell-atlas
           port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-wsss
+  namespace: wsss
+spec:
+  virtualhost:
+    fqdn: wsss.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: jupyter-wsss-backend
+  namespace: wsss
+spec:
+  virtualhost:
+    fqdn: wsss-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: proxy-public
+          port: 80
