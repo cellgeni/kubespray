@@ -113,7 +113,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.1.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.1.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -158,7 +158,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Full_v2.1.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_Full_v2.1.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -167,7 +167,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "3Gi"
+            memory: "4Gi"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -203,7 +203,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Stroma_v2.1.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Stroma_v2.1.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -248,7 +248,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Full_v2.1.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Full_v2.1.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -257,7 +257,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "3Gi"
+            memory: "4Gi"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -293,7 +293,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Developing_nephron_v2.1.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Developing_nephron_v2.1.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -338,7 +338,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_Immune_v2.1.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Fetal_Immune_v2.1.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
