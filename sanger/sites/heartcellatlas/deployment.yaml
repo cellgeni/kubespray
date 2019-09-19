@@ -217,17 +217,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heart-cell-endothelial-only
+  name: heart-cell-immune
 spec:
   selector:
     matchLabels:
-      app: heart-cell-endothelial-only
+      app: heart-cell-immune
   replicas: 1
   template:
     metadata: 
-      name: heart-cell-endothelial-only
+      name: heart-cell-immune
       labels:
-        app: heart-cell-endothelial-only
+        app: heart-cell-immune
     spec:
       volumes:
         - name: data
@@ -236,11 +236,11 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
-        name: heart-cell-endothelial-only
+        name: heart-cell-immune
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/heart_endothelial_leiden_ml190916_RAW.h5ad", "-t", "Endothelial-CellsOnly", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/heart_immune_pySCENIC_ctl190913_annotated.h5ad", "-t", "Immune", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -249,13 +249,13 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "4Gi"
+            memory: "3Gi"
             cpu: 1
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_endothelial_leiden_ml190916_RAW.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_immune_pySCENIC_ctl190913_annotated.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
