@@ -68,7 +68,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/human_primary_biliary_and_liver_cells.h5ad", "-t", "Immune", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/human_primary_biliary_and_liver_cells.h5ad", "-t", "Primary biliary and liver cells", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
