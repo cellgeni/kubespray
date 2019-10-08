@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvid-activation
+spec:
+  selector:
+    matchLabels:
+      app: cvid-activation
+  replicas: 1
+  template:
+    metadata: 
+      name: cvid-activation
+      labels:
+        app: cvid-activation
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cvid-activation-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: cvid-activation
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/adata_activation_CVID_cellxgene.h5ad", "-t", "CVID activation", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1.5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/CVID_activation/adata_activation_CVID_cellxgene.h5ad', '-O', '/data/adata_activation_CVID_cellxgene.h5ad']
+        volumeMounts:
+          - name: data
+            mountPath: /data

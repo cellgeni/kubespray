@@ -680,3 +680,75 @@ spec:
       services:
         - name: proxy-public
           port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: biliarytree
+spec:
+  virtualhost:
+    fqdn: biliarytree.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: biliarytree
+          port: 80
+    - match: /biliarytree-human-primary
+      prefixRewrite: "/" 
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+    - match: /static
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: biliarytree-backend
+spec:
+  virtualhost:
+    fqdn: biliarytree-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: biliarytree
+          port: 80
+    - match: /biliarytree-human-primary
+      prefixRewrite: "/" 
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+    - match: /static
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: developmentcellatlas
+spec:
+  virtualhost:
+    fqdn: developmentcellatlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: developmentcellatlas
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: cvid-activation
+spec:
+  virtualhost:
+    fqdn: cvid-activation.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: cvid-activation
+          port: 80
