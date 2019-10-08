@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: developmentcellatlas
+spec:
+  selector:
+    matchLabels:
+      app: developmentcellatlas
+  replicas: 1
+  template:
+    metadata: 
+      name: developmentcellatlas
+      labels:
+        app: developmentcellatlas
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: developmentcellatlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: developmentcellatlas
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_liver_alladata_.h5ad", "-t", "Fetal liver", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/developmentcellatlas/fetal_liver_alladata_.h5ad', '-O', '/data/fetal_liver_alladata_.h5ad']
+        volumeMounts:
+          - name: data
+            mountPath: /data
