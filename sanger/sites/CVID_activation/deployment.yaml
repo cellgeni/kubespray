@@ -37,8 +37,20 @@ spec:
             cpu: 1
       initContainers:
       - name: pull-data
-        image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/CVID_activation/adata_activation_CVID_cellxgene.h5ad', '-O', '/data/adata_activation_CVID_cellxgene.h5ad']
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/adata_activation_CVID_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
         volumeMounts:
           - name: data
             mountPath: /data
