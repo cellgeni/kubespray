@@ -39,6 +39,11 @@ spec:
       services:
         - name: heart-cell-immune
           port: 80
+    - match: /heart-adipocytes
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-adipocytes
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -81,6 +86,11 @@ spec:
       services:
         - name: heart-cell-immune
           port: 80
+    - match: /heart-adipocytes
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-adipocytes
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -122,4 +132,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-immune
+          port: 80
+    - match: /heart-adipocytes
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-adipocytes
           port: 80

@@ -82,3 +82,18 @@ spec:
   selector:
     app: heart-cell-immune
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-adipocytes
+  labels:
+    app: heart-cell-adipocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-adipocytes
+---
+

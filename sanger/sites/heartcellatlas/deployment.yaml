@@ -270,3 +270,61 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-cell-adipocytes
+spec:
+  selector:
+    matchLabels:
+      app: heart-cell-adipocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-cell-adipocytes
+      labels:
+        app: heart-cell-adipocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-cell-atlas-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.11.0
+        imagePullPolicy: IfNotPresent
+        name: heart-cell-adipocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/.h5ad", "-t", "Heart dipocytes", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+
