@@ -790,3 +790,17 @@ spec:
         - name: limb-dev-hindlimb-191024
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: fadnuclei
+spec:
+  virtualhost:
+    fqdn: fadnuclei.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: fadnuclei
+          port: 80
+---
