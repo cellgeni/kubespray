@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 80
           name: http
-        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/tissuestability/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/gutcellatlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
           - name: indexfiles
             mountPath: /data
@@ -68,7 +68,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/final_obj_withTCR_BCR_filtered700genes.h5ad", "-t", "Oesophagus", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/final_obj_withTCR_BCR_filtered700genes.h5ad", "-t", "TCR BCR 700 genes", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data

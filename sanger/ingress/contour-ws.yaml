@@ -822,6 +822,7 @@ spec:
         - name: gut-cell-atlas-tcr-bcr
           port: 80
     - match: /tcr-bcr
+      enableWebsockets: true
       prefixRewrite: "/" 
       services:        
         - name: gut-cell-atlas-tcr-bcr
