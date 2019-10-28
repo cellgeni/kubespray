@@ -804,3 +804,26 @@ spec:
         - name: fadnuclei
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: gutcellatlas
+spec:
+  virtualhost:
+    fqdn: gutcellatlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: gut-cell-atlas
+          port: 80
+    - match: /static
+      prefixRewrite: "/" 
+      services:
+        - name: gut-cell-atlas-tcr-bcr
+          port: 80
+    - match: /tcr-bcr
+      prefixRewrite: "/" 
+      services:        
+        - name: gut-cell-atlas-tcr-bcr
+          port: 80
+---

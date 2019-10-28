@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gut-cell-atlas
+  labels:
+    app: gut-cell-atlas
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: gut-cell-atlas
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gut-cell-atlas-tcr-bcr
+  labels:
+    app: gut-cell-atlas-tcr-bcr
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: gut-cell-atlas-tcr-bcr
+---
