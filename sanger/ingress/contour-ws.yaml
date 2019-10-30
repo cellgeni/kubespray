@@ -745,7 +745,7 @@ metadata:
   name: cvid-activation
 spec:
   virtualhost:
-    fqdn: cvid-activation-backend.cellgeni.sanger.ac.uk
+    fqdn: cvid-activation.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:

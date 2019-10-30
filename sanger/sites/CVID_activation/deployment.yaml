@@ -63,7 +63,7 @@ spec:
           persistentVolumeClaim:
             claimName: cvid-activation-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.12.0
         imagePullPolicy: IfNotPresent
         name: cvid-activation-nocpg
         ports:
@@ -120,7 +120,7 @@ spec:
           persistentVolumeClaim:
             claimName: cvid-activation-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.12.0
         imagePullPolicy: IfNotPresent
         name: cvid-activation-harmony
         ports:
