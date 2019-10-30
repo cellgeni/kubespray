@@ -8,6 +8,35 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: cellxgene
+    targetPort: http
   selector:
     app: cvid-activation
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvid-activation-harmony
+  labels:
+    app: cvid-activation-harmony
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: cvid-activation-harmony
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvid-activation-nocpg
+  labels:
+    app: cvid-activation-nocpg
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: cvid-activation-nocpg
+---
