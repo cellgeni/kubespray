@@ -795,12 +795,12 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: limb-dev-hindlimb-191024
+        - name: limb-dev-hindlimb
           port: 80
-    - match: /hindlimb-191024
+    - match: /hindlimb
       prefixRewrite: "/" 
       services:
-        - name: limb-dev-hindlimb-191024
+        - name: limb-dev-hindlimb
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1

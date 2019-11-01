@@ -45,17 +45,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: limb-dev-hindlimb-191024
+  name: limb-dev-hindlimb
 spec:
   selector:
     matchLabels:
-      app: limb-dev-hindlimb-191024
+      app: limb-dev-hindlimb
   replicas: 1
   template:
     metadata: 
-      name: limb-dev-hindlimb-191024
+      name: limb-dev-hindlimb
       labels:
-        app: limb-dev-hindlimb-191024
+        app: limb-dev-hindlimb
     spec:
       volumes:
         - name: data
@@ -64,7 +64,7 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
-        name: limb-dev-hindlimb-191024
+        name: limb-dev-hindlimb
         ports:
         - containerPort: 5005
           name: cellxgene
