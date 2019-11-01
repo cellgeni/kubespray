@@ -784,17 +784,16 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: limb-dev-backend
+  name: limb-dev
 spec:
   virtualhost:
-    fqdn: limb-dev-backend.cellgeni.sanger.ac.uk
+    fqdn: limb-dev.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:
         - name: limb-dev
           port: 80
     - match: /static
-      prefixRewrite: "/" 
       services:
         - name: limb-dev-hindlimb-191024
           port: 80
@@ -831,7 +830,6 @@ spec:
         - name: gut-cell-atlas
           port: 80
     - match: /static
-      prefixRewrite: "/" 
       services:
         - name: gut-cell-atlas-tcr-bcr
           port: 80
