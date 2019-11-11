@@ -820,10 +820,10 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: gutcellatlas
+  name: gutcellatlas-backend
 spec:
   virtualhost:
-    fqdn: gutcellatlas.cellgeni.sanger.ac.uk
+    fqdn: gutcellatlas-backend.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:
