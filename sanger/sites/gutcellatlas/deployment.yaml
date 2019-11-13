@@ -68,7 +68,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/final_obj_withTCR_BCR_filtered700genes.h5ad", "-t", "TCR BCR 700 genes", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Colon_cell_atlas.h5ad", "-t", "TCR BCR 700 genes", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -82,7 +82,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/gutcellatlas/final_obj_withTCR_BCR_filtered700genes.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_cell_atlas.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
