@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/adata_activation_noCCGs_bbknn_by_seq_batch_noCpG.h5ad", "-t", "CVID activation", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/adata_activation_CVID_final_cellxgene_noCCGs_bbknn_by_seq_batch_noCpG_with_doublets_annot_Javi.h5ad", "-t", "CVID activation", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -84,7 +84,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_activation_noCCGs_bbknn_by_seq_batch_noCpG.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_activation_CVID_final_cellxgene_noCCGs_bbknn_by_seq_batch_noCpG_with_doublets_annot_Javi.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
