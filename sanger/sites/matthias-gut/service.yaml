@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matthias-gut
+  labels:
+    app: matthias-gut
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: matthias-gut
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: matthias-gut-atac
+  labels:
+    app: matthias-gut-atac
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: matthias-gut-atac
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: matthias-gut-rna
+  labels:
+    app: matthias-gut-rna
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: matthias-gut-rna
+---
