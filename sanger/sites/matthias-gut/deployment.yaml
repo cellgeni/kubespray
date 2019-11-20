@@ -41,6 +41,7 @@ spec:
         volumeMounts:
           - name: indexfiles
             mountPath: /data
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -76,7 +77,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "2Gi"
+            memory: "4Gi"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -101,7 +102,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: matthias
+  name: matthias-gut-rna
 spec:
   selector:
     matchLabels:
