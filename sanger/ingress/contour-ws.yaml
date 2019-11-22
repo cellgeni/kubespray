@@ -853,7 +853,6 @@ spec:
         - name: matthias-gut
           port: 80
     - match: /static
-      prefixRewrite: "/" 
       services:
         - name: matthias-gut-atac
           port: 80

@@ -12,47 +12,12 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80          
-    - match: /heart-endothelial
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-stromal
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal
-          port: 80
-    - match: /heart-global-190527
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-global-190527
-          port: 80
-    - match: /heart-cell-endothelial-only
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-endothelial-only
-          port: 80
-    - match: /heart-immune
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-immune
-          port: 80
-    - match: /heart-adipocytes
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-adipocytes
-          port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
+        - name: heart-cell-191192
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -69,47 +34,12 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-endothelial
+        - name: heart-cell-191192
+          port: 80          
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-stromal
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal
-          port: 80
-    - match: /heart-global-190527
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-global-190527
-          port: 80
-    - match: /heart-cell-endothelial-only
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-endothelial-only
-          port: 80
-    - match: /heart-immune
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-immune
-          port: 80
-    - match: /heart-adipocytes
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-adipocytes
-          port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
+        - name: heart-cell-191192
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -126,46 +56,10 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-endothelial
+        - name: heart-cell-191192
+          port: 80          
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80
-    - match: /heart-stromal
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal
-          port: 80
-    - match: /heart-global-190527
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-global-190527
-          port: 80
-    - match: /heart-cell-endothelial-only
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-endothelial-only
-          port: 80
-    - match: /heart-immune
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-immune
-          port: 80
-    - match: /heart-adipocytes
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-adipocytes
-          port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
-          port: 80
-
