@@ -63,3 +63,18 @@ spec:
       services:
         - name: heart-cell-191192
           port: 80
+    - match: /female-cmc-191125
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-female-cmc-191125
+          port: 80
+    - match: /male-cmc-191125
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-male-cmc-191125
+          port: 80
+    - match: /fibroblasts-191125
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-fibroblasts-191125
+          port: 80

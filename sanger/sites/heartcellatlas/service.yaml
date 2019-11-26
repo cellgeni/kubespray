@@ -25,5 +25,47 @@ spec:
     targetPort: cellxgene
   selector:
     app: heart-cell-191192
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-female-cmc-191125
+  labels:
+    app: heart-cell-female-cmc-191125
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-female-cmc-191125
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-male-cmc-191125
+  labels:
+    app: heart-cell-male-cmc-191125
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-male-cmc-191125
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-fibroblasts-191125
+  labels:
+    app: heart-cell-fibroblasts-191125
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-fibroblasts-191125
 ---  
 

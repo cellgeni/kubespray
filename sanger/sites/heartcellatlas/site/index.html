@@ -19,18 +19,22 @@
 	
 	<!-- Matomo -->
 	<script type="text/javascript">
-		var _paq = window._paq || [];
-		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-		_paq.push(['trackPageView']);
-		_paq.push(['enableLinkTracking']);
-		(function() {
+	var _paq = window._paq || [];
+	/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+	_paq.push(["setCookieDomain", "*.www.heartcellatlas.org"]);
+	_paq.push(["setDomains", ["*.www.heartcellatlas.org"]]);
+	_paq.push(['trackPageView']);
+	_paq.push(['enableLinkTracking']);
+	(function() {
 		var u="https://piwik.sanger.ac.uk/";
-		_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
 		_paq.push(['setSiteId', '178']);
 		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-		})();
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	})();
 	</script>
+	<noscript><p><img src="https://piwik.sanger.ac.uk/matomo.php?idsite=178&amp;rec=1" style="border:0;" alt="" /></p></noscript>
 	<!-- End Matomo Code -->
   
   </head>
@@ -54,7 +58,7 @@
 	<div class="container">  
 	  <div class="row">
 
-		<div class="col-lg"> 
+		<div class="col-md"> 
 			<div class="card h-100 shadow-lg">
 				<div class="card-body">
 					<h4 class="card-title">HCA Heart Sanger global 191121</h4>
@@ -63,6 +67,45 @@
 				<div class="card-footer">
 					<a href="/heart-191192" class="btn btn-primary btn-sm btn-block">Interactive viewer</a>
 					<a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/heart_sanvard_aligned_annotated_global_ct191121_website.h5ad" class="btn btn-secondary btn-sm btn-block">Download data</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md"> 
+			<div class="card h-100 shadow-lg">
+				<div class="card-body">
+					<h4 class="card-title">Female CMC VAE Annotated 191125</h4>
+					<p class="card-text"><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit --></p>
+				</div>
+				<div class="card-footer">
+					<a href="/female-cmc-191125" class="btn btn-primary btn-sm btn-block">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/Female_CMC_VAE_Annotated_191125_website.h5ad" class="btn btn-secondary btn-sm btn-block">Download data</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md"> 
+			<div class="card h-100 shadow-lg">
+				<div class="card-body">
+					<h4 class="card-title">Male CMC VAE Annotated 191125</h4>
+					<p class="card-text"><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit --></p>
+				</div>
+				<div class="card-footer">
+					<a href="/male-cmc-191125" class="btn btn-primary btn-sm btn-block">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/Male_CMC_VAE_Annotated_191125_website.h5ad" class="btn btn-secondary btn-sm btn-block">Download data</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md"> 
+			<div class="card h-100 shadow-lg">
+				<div class="card-body">
+					<h4 class="card-title">Fibroblasts VAE Annotated 191125</h4>
+					<p class="card-text"><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit --></p>
+				</div>
+				<div class="card-footer">
+					<a href="/fibroblasts-191125" class="btn btn-primary btn-sm btn-block">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/heart_Fibroblasts_scGEN_annotated_mll191125_website.h5ad" class="btn btn-secondary btn-sm btn-block">Download data</a>
 				</div>
 			</div>
 		</div>
