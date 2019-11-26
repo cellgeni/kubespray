@@ -34,6 +34,16 @@ spec:
       services:
         - name: heart-cell-fibroblasts-191125
           port: 80
+    - match: /immune-191124
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune-191124
+          port: 80
+    - match: /endothelial-bbknn-191126
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-bbknn-191126
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -71,6 +81,16 @@ spec:
       services:
         - name: heart-cell-fibroblasts-191125
           port: 80
+    - match: /immune-191124
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune-191124
+          port: 80
+    - match: /endothelial-bbknn-191126
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-bbknn-191126
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -107,4 +127,14 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-fibroblasts-191125
+          port: 80
+    - match: /immune-191124
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-immune-191124
+          port: 80
+    - match: /endothelial-bbknn-191126
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-endothelial-bbknn-191126
           port: 80

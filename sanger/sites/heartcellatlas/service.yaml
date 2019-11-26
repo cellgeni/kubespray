@@ -68,4 +68,31 @@ spec:
   selector:
     app: heart-cell-fibroblasts-191125
 ---  
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-immune-191124
+  labels:
+    app: heart-cell-immune-191124
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-immune-191124
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-endothelial-bbknn-191126
+  labels:
+    app: heart-cell-endothelial-bbknn-191126
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-endothelial-bbknn-191126
+---  
