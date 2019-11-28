@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cvid-activation-pvc
+  name: fadnuclei-pvc
 spec:
   accessModes:
   - ReadWriteMany
   resources:
     requests:
-      storage: 2G
+      storage: 1G
   storageClassName: "glusterfs"

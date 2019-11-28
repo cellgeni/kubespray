@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: limb-dev
+  name: gut-cell-atlas
 spec:
   selector:
     matchLabels:
-      app: limb-dev
+      app: gut-cell-atlas
   replicas: 1
   template:
     metadata: 
-      name: limb-dev
+      name: gut-cell-atlas
       labels:
-        app: limb-dev
+        app: gut-cell-atlas
     spec:
       volumes:
         - name: indexfiles
@@ -19,11 +19,11 @@ spec:
       containers:
       - image: nginx
         imagePullPolicy: IfNotPresent
-        name: limb-dev
+        name: gut-cell-atlas
         ports:
         - containerPort: 80
           name: http
-        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/limb-dev/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/gutcellatlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
           - name: indexfiles
             mountPath: /data
@@ -45,30 +45,30 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: limb-dev-hindlimb
+  name: gut-cell-atlas-tcr-bcr
 spec:
   selector:
     matchLabels:
-      app: limb-dev-hindlimb
+      app: gut-cell-atlas-tcr-bcr
   replicas: 1
   template:
     metadata: 
-      name: limb-dev-hindlimb
+      name: gut-cell-atlas-tcr-bcr
       labels:
-        app: limb-dev-hindlimb
+        app: gut-cell-atlas-tcr-bcr
     spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: limb-dev-cellxgene-pvc
+            claimName: gut-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.11.0
         imagePullPolicy: IfNotPresent
-        name: limb-dev-hindlimb
+        name: gut-cell-atlas-tcr-bcr
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/191031hindlimb.h5ad", "-t", "Human embryonic hindlimb", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Colon_cell_atlas.h5ad", "-t", "Colon Immune Cells", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -77,24 +77,13 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "2Gi"
+            memory: "5Gi"
             cpu: 1
       initContainers:
       - name: pull-data
-        imagePullPolicy: IfNotPresent
-        image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/limb-dev/191031hindlimb.h5ad', '/data']
-        env:
-          - name: AWS_ACCESS_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: s3-secret
-                key: AWS_ACCESS_KEY_ID
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: s3-secret
-                key: AWS_SECRET_ACCESS_KEY
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_cell_atlas.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
+---

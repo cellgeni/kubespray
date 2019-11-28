@@ -12,47 +12,37 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80          
-    - match: /heart-endothelial
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80
-    - match: /heart-stromal
+    - match: /female-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-stromal
+        - name: heart-cell-female-cmc-191125
           port: 80
-    - match: /heart-global-190527
+    - match: /male-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-global-190527
+        - name: heart-cell-male-cmc-191125
           port: 80
-    - match: /heart-cell-endothelial-only
+    - match: /fibroblasts-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial-only
+        - name: heart-cell-fibroblasts-191125
           port: 80
-    - match: /heart-immune
+    - match: /immune-191124
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-immune-191124
           port: 80
-    - match: /heart-adipocytes
+    - match: /endothelial-bbknn-191126
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-adipocytes
-          port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
+        - name: heart-cell-endothelial-bbknn-191126
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -69,47 +59,37 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-endothelial
+        - name: heart-cell-191192
+          port: 80          
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80
-    - match: /heart-stromal
+    - match: /female-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-stromal
+        - name: heart-cell-female-cmc-191125
           port: 80
-    - match: /heart-global-190527
+    - match: /male-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-global-190527
+        - name: heart-cell-male-cmc-191125
           port: 80
-    - match: /heart-cell-endothelial-only
+    - match: /fibroblasts-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial-only
+        - name: heart-cell-fibroblasts-191125
           port: 80
-    - match: /heart-immune
+    - match: /immune-191124
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-immune-191124
           port: 80
-    - match: /heart-adipocytes
+    - match: /endothelial-bbknn-191126
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-adipocytes
-          port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
+        - name: heart-cell-endothelial-bbknn-191126
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -126,46 +106,35 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: heart-cell-endothelial
-          port: 80
-    - match: /heart-endothelial
+        - name: heart-cell-191192
+          port: 80          
+    - match: /heart-191192
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial
+        - name: heart-cell-191192
           port: 80
-    - match: /heart-stromal
+    - match: /female-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-stromal
+        - name: heart-cell-female-cmc-191125
           port: 80
-    - match: /heart-global-190527
+    - match: /male-cmc-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-global-190527
+        - name: heart-cell-male-cmc-191125
           port: 80
-    - match: /heart-cell-endothelial-only
+    - match: /fibroblasts-191125
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial-only
+        - name: heart-cell-fibroblasts-191125
           port: 80
-    - match: /heart-immune
+    - match: /immune-191124
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-immune
+        - name: heart-cell-immune-191124
           port: 80
-    - match: /heart-adipocytes
+    - match: /endothelial-bbknn-191126
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-adipocytes
+        - name: heart-cell-endothelial-bbknn-191126
           port: 80
-    - match: /heart-neuronal-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-neuronal-191021
-          port: 80
-    - match: /stromal-velocity-191021
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-velocity-191021
-          port: 80
-
