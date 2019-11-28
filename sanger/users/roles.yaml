@@ -1,57 +1,24 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  namespace: users
-  name: deployment-manager
+  namespace: lifebit
+  name: lifebit-ns
 rules:
 - apiGroups: ["*"]
   # resources: ["deployments", "replicasets", "pods", "pvc", "pv", "sc"]
   resources: ["*"]
   verbs: ["*"] # You can also use ["*"]
 ---
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: nfs-client-provisioner-runner
-rules:
-  - apiGroups: [""]
-    resources: ["persistentvolumes"]
-    verbs: ["get", "list", "watch", "create", "delete"]
-  - apiGroups: [""]
-    resources: ["persistentvolumeclaims"]
-    verbs: ["get", "list", "watch", "update"]
-  - apiGroups: ["storage.k8s.io"]
-    resources: ["storageclasses"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["list", "watch", "create", "update", "patch"]
----
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: deployment-manager-binding
-  namespace: users
+  name: lifebit-binding
+  namespace: lifebit
 subjects:
 - kind: User
-  name: svd
+  name: lifebit
   apiGroup: ""
 roleRef:
   kind: Role
-  name: deployment-manager
+  name: lifebit-ns
   apiGroup: ""
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: run-nfs-client-provisioner
-  namespace: users
-subjects:
-  - kind: User
-    name: svd
-    apiGroup: ""
-roleRef:
-  kind: ClusterRole
-  name: nfs-client-provisioner-runner
-  apiGroup: ""
-
