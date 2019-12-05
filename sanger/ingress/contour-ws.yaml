@@ -901,50 +901,63 @@ spec:
         - name: fetal-skin-erythroid
           port: 80
     - match: /fetal-skin-erythroid
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-erythroid
           port: 80
     - match: /fetal-skin-endothelium
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-endothelium 
           port: 80
     - match: /fetal-skin-fibroblasts
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-fibroblasts 
           port: 80
     - match: /fetal-skin-keratinocytes
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-keratinocytes
           port: 80
     - match: /fetal-skin-lymphoid-B
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-lymphoid-b
           port: 80
     - match: /fetal-skin-lymphoid-T-TK
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-lymphoid-t-tk
           port: 80
     - match: /fetal-skin-mast-cells
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-mast-cells
           port: 80
     - match: /fetal-skin-melanocytes
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-melanocytes
           port: 80
     - match: /fetal-skin-monocytes
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-monocytes
           port: 80
     - match: /fetal-skin-overview
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-overview
           port: 80
     - match: /fetal-skin-stroma
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-stroma
           port: 80
     - match: /fetal-skin-myeloid
+      prefixRewrite: "/" 
       services:
         - name: fetal-skin-myeloid
           port: 80
+---
