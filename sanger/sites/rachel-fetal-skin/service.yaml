@@ -1,0 +1,168 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin
+  labels:
+    app: fetal-skin
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: fetal-skin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-stroma
+  labels:
+    app: fetal-skin-stroma
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-stroma
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-overview
+  labels:
+    app: fetal-skin-overview
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-overview
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-monocytes
+  labels:
+    app: fetal-skin-monocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-monocytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-melanocytes
+  labels:
+    app: fetal-skin-melanocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-melanocytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-mast-cells
+  labels:
+    app: fetal-skin-mast-cells
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-mast-cells
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-lymphoid-T-NK
+  labels:
+    app: fetal-skin-lymphoid-T-NK
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-lymphoid-T-NK
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-lymphoid-B
+  labels:
+    app: fetal-skin-lymphoid-B
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-lymphoid-B
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-keratinocytes
+  labels:
+    app: fetal-skin-keratinocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-keratinocytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-fibroblasts
+  labels:
+    app: fetal-skin-fibroblasts
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-fibroblasts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-erythroid
+  labels:
+    app: fetal-skin-erythroid
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-erythroid
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-endothelium
+  labels:
+    app: fetal-skin-endothelium
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-endothelium
+---
