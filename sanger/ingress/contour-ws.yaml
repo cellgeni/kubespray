@@ -867,3 +867,20 @@ spec:
         - name: matthias-gut-rna
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: fetal-lung
+spec:
+  virtualhost:
+    fqdn: fetal-lung.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: fetal-lung
+          port: 80
+    - match: /static
+      services:
+        - name: fetal-lung
+          port: 80
+---
