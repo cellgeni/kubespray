@@ -85,30 +85,30 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fetal-skin-lymphoid-T-NK
+  name: fetal-skin-lymphoid-t-nk
   labels:
-    app: fetal-skin-lymphoid-T-NK
+    app: fetal-skin-lymphoid-t-nk
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: fetal-skin-lymphoid-T-NK
+    app: fetal-skin-lymphoid-t-nk
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fetal-skin-lymphoid-B
+  name: fetal-skin-lymphoid-b
   labels:
-    app: fetal-skin-lymphoid-B
+    app: fetal-skin-lymphoid-b
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: fetal-skin-lymphoid-B
+    app: fetal-skin-lymphoid-b
 ---
 apiVersion: v1
 kind: Service
@@ -165,4 +165,18 @@ spec:
     targetPort: cellxgene
   selector:
     app: fetal-skin-endothelium
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-myeloid
+  labels:
+    app: fetal-skin-myeloid
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-myeloid
 ---
