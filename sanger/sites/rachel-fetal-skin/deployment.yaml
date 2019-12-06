@@ -588,10 +588,10 @@ spec:
             mountPath: /data
         resources:
           requests:
-            memory: "512M"
+            memory: "5G"
             cpu: "0.5"
           limits:
-            memory: "20G"
+            memory: "25G"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -645,11 +645,11 @@ spec:
             mountPath: /data
         resources:
           requests:
-            memory: "512M"
-            cpu: "0.5"
-          limits:
-            memory: "20G"
+            memory: "2G"
             cpu: 1
+          limits:
+            memory: "50G"
+            cpu: 3
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
@@ -705,7 +705,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "5Gi"
+            memory: "8Gi"
             cpu: 1
       initContainers:
       - name: pull-data
