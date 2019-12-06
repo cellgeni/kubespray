@@ -18,7 +18,7 @@ spec:
           persistentVolumeClaim:
             claimName: hemocytes-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.12.0
         imagePullPolicy: IfNotPresent
         name: hemocytes
         ports:
@@ -38,7 +38,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/hemocytes', '-O', '/data/hemocytes.h5ad']
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/hemocytes/hemocytes-v2.h5ad', '-O', '/data/hemocytes.h5ad']
         volumeMounts:
           - name: data
             mountPath: /data

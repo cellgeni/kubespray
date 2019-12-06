@@ -1,0 +1,730 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin
+      labels:
+        app: fetal-skin
+    spec:
+      volumes:
+        - name: indexfiles
+          emptyDir: {}
+      containers:
+      - image: nginx
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin
+        ports:
+        - containerPort: 80
+          name: http
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/rachel-fetal-skin/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.1"
+          limits:
+            memory: "512M"
+            cpu: "0.7"
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: alpine/git
+        command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-endothelium
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-endothelium
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-endothelium
+      labels:
+        app: fetal-skin-endothelium
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-endothelium
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.endothelium.processed.20191205.h5ad", "-t", "fetal_skin.endothelium", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "256M"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.endothelium.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-erythroid
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-erythroid
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-erythroid
+      labels:
+        app: fetal-skin-erythroid
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-erythroid
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.erythroid.processed.20191205.h5ad", "-t", "fetal_skin.erythroid", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.erythroid.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-fibroblasts
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-fibroblasts
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-fibroblasts
+      labels:
+        app: fetal-skin-fibroblasts
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-fibroblasts
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.fibroblasts.processed.20191205.h5ad", "-t", "fetal_skin.fibroblasts", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "25G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.fibroblasts.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-keratinocytes
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-keratinocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-keratinocytes
+      labels:
+        app: fetal-skin-keratinocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-keratinocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.keratinocytes.processed.20191205.h5ad", "-t", "fetal_skin.keratinocytes", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.keratinocytes.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-lymphoid-b
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-lymphoid-b
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-lymphoid-b
+      labels:
+        app: fetal-skin-lymphoid-b
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-lymphoid-b
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_B.processed.20191205.h5ad", "-t", "fetal_skin.lymphoid_B", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_B.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-lymphoid-t-nk
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-lymphoid-t-nk
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-lymphoid-t-nk
+      labels:
+        app: fetal-skin-lymphoid-t-nk
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-lymphoid-t-nk
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad", "-t", "fetal_skin.lymphoid_T_NK", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-mast-cells
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-mast-cells
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-mast-cells
+      labels:
+        app: fetal-skin-mast-cells
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-mast-cells
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.mast_cells.processed.20191205.h5ad", "-t", "fetal_skin.mast_cells", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.mast_cells.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-melanocytes
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-melanocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-melanocytes
+      labels:
+        app: fetal-skin-melanocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-melanocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.melanocytes.processed.20191205.h5ad", "-t", "fetal_skin.melanocytes", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.melanocytes.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-monocytes
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-monocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-monocytes
+      labels:
+        app: fetal-skin-monocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-monocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.monocytes.processed.20191205.h5ad", "-t", "fetal_skin.monocytes", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.monocytes.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-overview
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-overview
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-overview
+      labels:
+        app: fetal-skin-overview
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-overview
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.overview.processed.h5ad", "-t", "fetal_skin.overview", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "5G"
+            cpu: "0.5"
+          limits:
+            memory: "25G"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.overview.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-stroma
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-stroma
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-stroma
+      labels:
+        app: fetal-skin-stroma
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-stroma
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.stroma.processed.20191205.h5ad", "-t", "fetal_skin.stroma", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "2G"
+            cpu: 1
+          limits:
+            memory: "50G"
+            cpu: 3
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.stroma.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-skin-myeloid
+spec:
+  selector:
+    matchLabels:
+      app: fetal-skin-myeloid
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-skin-myeloid
+      labels:
+        app: fetal-skin-myeloid
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-skin-myeloid
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/fetal_skin.myeloid.processed.20191205.h5ad", "-t", "fetal_skin.myeloid", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.myeloid.processed.20191205.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+  
