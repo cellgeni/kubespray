@@ -820,6 +820,34 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: selftarget-backend
+spec:
+  virtualhost:
+    fqdn: selftarget-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: predictor
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: selftarget
+spec:
+  virtualhost:
+    fqdn: selftarget.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: predictor
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: gutcellatlas-backend
 spec:
   virtualhost:
