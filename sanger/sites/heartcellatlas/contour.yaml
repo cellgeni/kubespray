@@ -39,6 +39,11 @@ spec:
       services:
         - name: heart-cell-fibroblasts-200108
           port: 80
+    - match: /cmc-sanger-200110
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-cmc-sanger-200110
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -85,4 +90,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-fibroblasts-200108
+          port: 80
+    - match: /cmc-sanger-200110
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-cmc-sanger-200110
           port: 80
