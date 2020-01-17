@@ -442,3 +442,174 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-cell-cmc-male-200117
+spec:
+  selector:
+    matchLabels:
+      app: heart-cell-cmc-male-200117
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-cell-cmc-male-200117
+      labels:
+        app: heart-cell-cmc-male-200117
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-cell-atlas-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: heart-cell-mesothelial-200109
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/heart_Male-CMC_scGen_annotated_ctl200110_website.h5ad", "-t", "CMC_Male_200117", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_Male-CMC_scGen_annotated_ctl200110_website.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-cell-cmc-female-200117
+spec:
+  selector:
+    matchLabels:
+      app: heart-cell-cmc-female-200117
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-cell-cmc-female-200117
+      labels:
+        app: heart-cell-cmc-female-200117
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-cell-atlas-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: heart-cell-cmc-female-200117
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/heart_Female-CMC_scGen_annotated_ctl200110_website.h5ad", "-t", "CMC_Female_200117", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_Female-CMC_scGen_annotated_ctl200110_website.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-cell-stromal-200117
+spec:
+  selector:
+    matchLabels:
+      app: heart-cell-stromal-200117
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-cell-stromal-200117
+      labels:
+        app: heart-cell-stromal-200117
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-cell-atlas-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.12.0
+        imagePullPolicy: IfNotPresent
+        name: heart-cell-stromal-200117
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/heart_stromal_scGEN_annotated_ml200117_website.h5ad", "-t", "Stromal_200117", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "6Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_stromal_scGEN_annotated_ml200117_website.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
