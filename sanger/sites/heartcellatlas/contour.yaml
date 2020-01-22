@@ -69,6 +69,11 @@ spec:
       services:
         - name: heart-cell-atrial-cmc-200120
           port: 80
+    - match: /myeloid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-myeloid
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -145,4 +150,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-atrial-cmc-200120
+          port: 80
+    - match: /myeloid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-myeloid
           port: 80
