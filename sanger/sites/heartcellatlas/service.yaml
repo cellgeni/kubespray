@@ -71,16 +71,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-fibroblasts-200108
+  name: heart-cell-fibroblasts
   labels:
-    app: heart-cell-fibroblasts-200108
+    app: heart-cell-fibroblasts
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-fibroblasts-200108
+    app: heart-cell-fibroblasts
 ---
 apiVersion: v1
 kind: Service
@@ -179,4 +179,18 @@ spec:
     targetPort: cellxgene
   selector:
     app: heart-cell-myeloid
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-lymphoid
+  labels:
+    app: heart-cell-lymphoid
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-lymphoid
 ---

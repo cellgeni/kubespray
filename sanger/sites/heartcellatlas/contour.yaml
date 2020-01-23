@@ -34,10 +34,10 @@ spec:
       services:
         - name: heart-cell-immune-200108
           port: 80
-    - match: /fibroblasts-200108
+    - match: /fibroblasts
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-fibroblasts-200108
+        - name: heart-cell-fibroblasts
           port: 80
     - match: /cmc-sanger-200110
       prefixRewrite: "/" 
@@ -73,6 +73,11 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-myeloid
+          port: 80
+    - match: /lymphoid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-lymphoid
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -116,10 +121,10 @@ spec:
       services:
         - name: heart-cell-immune-200108
           port: 80
-    - match: /fibroblasts-200108
+    - match: /fibroblasts
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-fibroblasts-200108
+        - name: heart-cell-fibroblasts
           port: 80
     - match: /cmc-sanger-200110
       prefixRewrite: "/" 
@@ -155,4 +160,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-myeloid
+          port: 80
+    - match: /lymphoid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-lymphoid
           port: 80
