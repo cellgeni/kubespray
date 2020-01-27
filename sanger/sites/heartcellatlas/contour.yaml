@@ -79,6 +79,11 @@ spec:
       services:
         - name: heart-cell-lymphoid
           port: 80
+    - match: /vascular
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-vascular
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -165,4 +170,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: heart-cell-lymphoid
+          port: 80
+    - match: /vascular
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-vascular
           port: 80
