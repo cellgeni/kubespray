@@ -502,17 +502,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heart-cell-atrial-cmc-200120
+  name: heart-cell-atrial
 spec:
   selector:
     matchLabels:
-      app: heart-cell-atrial-cmc-200120
+      app: heart-cell-atrial
   replicas: 1
   template:
     metadata: 
-      name: heart-cell-atrial-cmc-200120
+      name: heart-cell-atrial
       labels:
-        app: heart-cell-atrial-cmc-200120
+        app: heart-cell-atrial
     spec:
       volumes:
         - name: data
@@ -521,11 +521,11 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.12.0
         imagePullPolicy: IfNotPresent
-        name: heart-cell-atrial-cmc-200120
+        name: heart-cell-atrial
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/heart_aCMC_scGen_annotated_ctl200120_website.h5ad", "-t", "Atrial_CMC_200120_Sanger", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/heart_aCMC_scGen_leiden_ctl200129_website.h5ad", "-t", "HCA Heart Atrial CMC Sanger", "--host", "0.0.0.0", "--port", "5005"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -540,7 +540,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_aCMC_scGen_annotated_ctl200120_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_aCMC_scGen_leiden_ctl200129_website.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

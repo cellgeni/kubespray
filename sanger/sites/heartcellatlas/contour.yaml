@@ -54,10 +54,10 @@ spec:
       services:
         - name: heart-cell-stromal-200117
           port: 80
-    - match: /atrial-cmc-200120
+    - match: /atrial
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-atrial-cmc-200120
+        - name: heart-cell-atrial
           port: 80
     - match: /myeloid
       prefixRewrite: "/" 
@@ -136,10 +136,10 @@ spec:
       services:
         - name: heart-cell-stromal-200117
           port: 80
-    - match: /atrial-cmc-200120
+    - match: /atrial
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-atrial-cmc-200120
+        - name: heart-cell-atrial
           port: 80
     - match: /myeloid
       prefixRewrite: "/" 

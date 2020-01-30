@@ -127,16 +127,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-atrial-cmc-200120
+  name: heart-cell-atrial
   labels:
-    app: heart-cell-atrial-cmc-200120
+    app: heart-cell-atrial
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-atrial-cmc-200120
+    app: heart-cell-atrial
 ---
 apiVersion: v1
 kind: Service
