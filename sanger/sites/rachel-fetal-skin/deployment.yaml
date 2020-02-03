@@ -312,7 +312,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
