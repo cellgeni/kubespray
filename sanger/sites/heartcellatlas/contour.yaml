@@ -6,73 +6,49 @@ spec:
   virtualhost:
     fqdn: www.heartcellatlas.org
   routes:
+  routes:
     - match: /
       services:
         - name: heart-cell-atlas
           port: 80
-    - match: /static
-      services:
-        - name: heart-cell-191210
-          port: 80          
-    - match: /heart-191210
+    - match: /global
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-191210
+        - name: heart-cell-atlas-global
           port: 80
-    - match: /mural-200107
+    - match: /atrial-cm
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-mural-200107
+        - name: heart-cell-atlas-atrial-cm
           port: 80
-    - match: /endothelial-200103
+    - match: /ventricular-cm
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-endothelial-200103
-          port: 80
-    - match: /immune-200108
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-immune-200108
-          port: 80
-    - match: /fibroblasts
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-fibroblasts
-          port: 80
-    - match: /cmc-sanger-200110
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-cmc-sanger-200110
-          port: 80
-    - match: /mesothelial-200109
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-mesothelial-200109
-          port: 80
-    - match: /stromal-200117
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-200117
-          port: 80
-    - match: /atrial
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atrial
-          port: 80
-    - match: /myeloid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-myeloid
-          port: 80
-    - match: /lymphoid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-lymphoid
+        - name: heart-cell-atlas-ventricular-cm
           port: 80
     - match: /vascular
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-vascular
+        - name: heart-cell-atlas-vascular
+          port: 80
+    - match: /fibroblasts
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-fibroblasts
+          port: 80
+    - match: /myeloid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-myeloid
+          port: 80
+    - match: /lymphoid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-lymphoid
+          port: 80
+    - match: /static
+      services:
+        - name: heart-cell-atlas-lymphoid
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
@@ -87,72 +63,42 @@ spec:
       services:
         - name: heart-cell-atlas
           port: 80
-    - match: /static
-      services:
-        - name: heart-cell-191210
-          port: 80          
-    - match: /heart-191210
+    - match: /global
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-191210
+        - name: heart-cell-atlas-global
           port: 80
-    - match: /heart-191210
+    - match: /atrial-cm
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-191210
+        - name: heart-cell-atlas-atrial-cm
           port: 80
-    - match: /mural-200107
+    - match: /ventricular-cm
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-mural-200107
-          port: 80
-    - match: /endothelial-200103
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-endothelial-200103
-          port: 80
-    - match: /immune-200108
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-immune-200108
-          port: 80
-    - match: /fibroblasts
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-fibroblasts
-          port: 80
-    - match: /cmc-sanger-200110
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-cmc-sanger-200110
-          port: 80
-    - match: /mesothelial-200109
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-mesothelial-200109
-          port: 80
-    - match: /stromal-200117
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-stromal-200117
-          port: 80
-    - match: /atrial
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atrial
-          port: 80
-    - match: /myeloid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-myeloid
-          port: 80
-    - match: /lymphoid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-lymphoid
+        - name: heart-cell-atlas-ventricular-cm
           port: 80
     - match: /vascular
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-vascular
+        - name: heart-cell-atlas-vascular
+          port: 80
+    - match: /fibroblasts
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-fibroblasts
+          port: 80
+    - match: /myeloid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-myeloid
+          port: 80
+    - match: /lymphoid
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-lymphoid
+          port: 80
+    - match: /static
+      services:
+        - name: heart-cell-atlas-lymphoid
           port: 80
