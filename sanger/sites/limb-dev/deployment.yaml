@@ -62,13 +62,14 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.14.1
         imagePullPolicy: IfNotPresent
         name: limb-dev-hindlimb
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/191204hindlimb.h5ad", "-t", "Human embryonic hindlimb (log-normalized)", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/191204hindlimb.h5ad -t 'Hindlimb (log-normalized)' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
