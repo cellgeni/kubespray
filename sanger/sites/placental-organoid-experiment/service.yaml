@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: placental-organoid-experiment
+  labels:
+    app: placental-organoid-experiment
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: placental-organoid-experiment
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: placental-organoid-experiment-vis1
+  labels:
+    app: placental-organoid-experiment-vis1
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: placental-organoid-experiment-vis1
+---
