@@ -20,21 +20,21 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: jupyter-nginx
-  namespace: jpt
+  namespace: jptl
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 33000m
 spec:
   rules:
   - host: jupyter.cellgeni.sanger.ac.uk
-    http: &jupyter
+    http: &jupyter-large
       paths:
       - path: /
         backend:
           serviceName: proxy-public
           servicePort: 80
   - host: jupyter-backend-nginx.cellgeni.sanger.ac.uk
-    http: *jupyter
+    http: *jupyter-large
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress

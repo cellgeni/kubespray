@@ -1,33 +1,33 @@
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter
-  namespace: jpt
-spec:
-  virtualhost:
-    fqdn: jupyter.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter-backend
-  namespace: jpt
-spec:
-  virtualhost:
-    fqdn: jupyter-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: jupyter
+#   namespace: jpt
+# spec:
+#   virtualhost:
+#     fqdn: jupyter.cellgeni.sanger.ac.uk
+#   routes:
+#     - match: /
+#       enableWebsockets: true
+#       services:
+#         - name: proxy-public
+#           port: 80
+# ---
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: jupyter-backend
+#   namespace: jpt
+# spec:
+#   virtualhost:
+#     fqdn: jupyter-backend.cellgeni.sanger.ac.uk
+#   routes:
+#     - match: /
+#       enableWebsockets: true
+#       services:
+#         - name: proxy-public
+#           port: 80
+# ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
@@ -145,36 +145,36 @@ spec:
         - name: galaxy-galaxy-stable
           port: 80
 ---
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter-large-new
-  namespace: jptl
-spec:
-  virtualhost:
-    fqdn: jupyter-large-new.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: jupyter-large-new-backend
-  namespace: jptl
-spec:
-  virtualhost:
-    fqdn: jupyter-large-new-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      enableWebsockets: true
-      services:
-        - name: proxy-public
-          port: 80
----
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: jupyter-large-new
+#   namespace: jptl
+# spec:
+#   virtualhost:
+#     fqdn: jupyter-large-new.cellgeni.sanger.ac.uk
+#   routes:
+#     - match: /
+#       enableWebsockets: true
+#       services:
+#         - name: proxy-public
+#           port: 80
+# ---
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: jupyter-large-new-backend
+#   namespace: jptl
+# spec:
+#   virtualhost:
+#     fqdn: jupyter-large-new-backend.cellgeni.sanger.ac.uk
+#   routes:
+#     - match: /
+#       enableWebsockets: true
+#       services:
+#         - name: proxy-public
+#           port: 80
+# ---
 # apiVersion: contour.heptio.com/v1beta1
 # kind: IngressRoute
 # metadata:
@@ -987,5 +987,27 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: fetal-skin-myeloid
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: placental-organoid-experiment
+spec:
+  virtualhost:
+    fqdn: placental-organoid-experiment.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: placental-organoid-experiment
+          port: 80
+    - match: /static
+      services:
+        - name: placental-organoid-experiment-202002
+          port: 80
+    - match: /visualisation-1
+      prefixRewrite: "/" 
+      services:
+        - name: placental-organoid-experiment-202002
           port: 80
 ---
