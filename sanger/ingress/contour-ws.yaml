@@ -1003,11 +1003,11 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: placental-organoid-experiment-202002
+        - name: placental-organoid-experiment-vis1
           port: 80
     - match: /visualisation-1
       prefixRewrite: "/" 
       services:
-        - name: placental-organoid-experiment-202002
+        - name: placental-organoid-experiment-vis1
           port: 80
 ---
