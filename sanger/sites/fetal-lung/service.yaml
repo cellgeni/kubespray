@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: cellxgene
+    targetPort: http
   selector:
     app: fetal-lung
 ---
