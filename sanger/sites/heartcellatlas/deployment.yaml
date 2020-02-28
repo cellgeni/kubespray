@@ -189,10 +189,10 @@ spec:
             mountPath: /data
         resources:
           requests:
-            memory: "512M"
+            memory: "1Gi"
             cpu: "0.5"
           limits:
-            memory: "5Gi"
+            memory: "7Gi"
             cpu: 1
       initContainers:
       - name: pull-data
