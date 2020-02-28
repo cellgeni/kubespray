@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maternal-fetal-interface
+spec:
+  selector:
+    matchLabels:
+      app: maternal-fetal-interface
+  replicas: 1
+  template:
+    metadata: 
+      name: maternal-fetal-interface
+      labels:
+        app: maternal-fetal-interface
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: maternal-fetal-interface-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: maternal-fetal-interface
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/decidua-v2.h5ad", "-t", "Maternal-Fetal Interface", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/vento/maternal-fetal/decidua-v2.h5ad', '-O', '/data/decidua-v2.h5ad']
+        volumeMounts:
+          - name: data
+            mountPath: /data

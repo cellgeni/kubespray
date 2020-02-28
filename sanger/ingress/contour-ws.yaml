@@ -1011,3 +1011,17 @@ spec:
         - name: placental-organoid-experiment-vis1
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: maternal-fetal-interface
+spec:
+  virtualhost:
+    fqdn: maternal-fetal-interface.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: maternal-fetal-interface
+          port: 80
+---
