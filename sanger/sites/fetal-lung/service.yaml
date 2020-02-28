@@ -11,3 +11,60 @@ spec:
     targetPort: cellxgene
   selector:
     app: fetal-lung
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-main
+  labels:
+    app: fetal-lung-main
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-main
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-rbc
+  labels:
+    app: fetal-lung-rbc
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-rbc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-endo
+  labels:
+    app: fetal-lung-endo
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-endo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-epi
+  labels:
+    app: fetal-lung-epi
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-epi
+---
