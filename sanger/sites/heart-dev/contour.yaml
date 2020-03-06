@@ -15,12 +15,12 @@ spec:
       services:
         - name: heart-dev-global
           port: 80
-    - match: /atrial-cm
+    - match: /atrial
       prefixRewrite: "/" 
       services:
         - name: heart-dev-atrial
           port: 80
-    - match: /ventricular-cm
+    - match: /ventricular
       prefixRewrite: "/" 
       services:
         - name: heart-dev-ventricular
