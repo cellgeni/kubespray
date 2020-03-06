@@ -1,0 +1,123 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cytokines-app
+spec:
+  selector:
+    matchLabels:
+      app: cytokines-app
+  replicas: 1
+  template:
+    metadata: 
+      name: cytokines-app
+      labels:
+        app: cytokines-app
+    spec:
+      volumes:
+        - name: ephimeral
+          emptyDir: {}
+      containers:
+      - image: quay.io/cellgeni/cytokine:0.1.0
+        imagePullPolicy: IfNotPresent
+        name: cytokines-app
+        ports:
+        - containerPort: 3838
+          name: shiny
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: 1
+          limits:
+            memory: "4Gi"
+            cpu: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cytokines-resting
+spec:
+  selector:
+    matchLabels:
+      app: cytokines-resting
+  replicas: 1
+  template:
+    metadata: 
+      name: cytokines-resting
+      labels:
+        app: cytokines-resting
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cytokines-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: cytokines-resting
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/NCOMMS-19-7936188_resting-CD4cells.h5ad", "-t", "Resting T Cells", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cytokines/NCOMMS-19-7936188_resting-CD4cells.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cytokines-simulated
+spec:
+  selector:
+    matchLabels:
+      app: cytokines-simulated
+  replicas: 1
+  template:
+    metadata: 
+      name: cytokines-simulated
+      labels:
+        app: cytokines-simulated
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cytokines-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: cytokines-simulated
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/NCOMMS-19-7936188_cytokinePolarised-CD4cells.h5ad", "-t", "Simulated T Cells", "--host", "0.0.0.0", "--port", "5005"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/cytokines/NCOMMS-19-7936188_cytokinePolarised-CD4cells.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
