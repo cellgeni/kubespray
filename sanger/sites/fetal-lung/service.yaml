@@ -68,3 +68,31 @@ spec:
   selector:
     app: fetal-lung-epi
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-fsm
+  labels:
+    app: fetal-lung-fsm
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-fsm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-imm
+  labels:
+    app: fetal-lung-imm
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-imm
+---

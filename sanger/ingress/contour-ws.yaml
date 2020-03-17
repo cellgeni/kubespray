@@ -932,6 +932,16 @@ spec:
       services:
         - name: fetal-lung-epi
           port: 80
+    - match: /fsm
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-fsm
+          port: 80
+    - match: /imm
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-imm
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
