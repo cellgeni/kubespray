@@ -63,13 +63,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-global
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/global.h5ad", "-t", "Heart Global", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/global/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/global.h5ad", "-t", "Heart Global", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/global/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -120,13 +120,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-atrial
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/atrial.h5ad", "-t", "Heart Atrial Cardiomyocytes", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/atrial/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/atrial.h5ad", "-t", "Heart Atrial Cardiomyocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/atrial/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -177,13 +177,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-ventricular
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/ventricular.h5ad", "-t", "Heart Ventricular Cardiomyocytes", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/ventricular/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/ventricular.h5ad", "-t", "Heart Ventricular Cardiomyocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/ventricular/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -234,13 +234,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-fibroblasts
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fibroblasts.h5ad", "-t", "Heart Fibroblasts", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/fibroblasts/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/fibroblasts.h5ad", "-t", "Heart Fibroblasts", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/fibroblasts/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -291,13 +291,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-vascular
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/vascular.h5ad", "-t", "Heart Vascular", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/vascular/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/vascular.h5ad", "-t", "Heart Vascular", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/vascular/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -348,13 +348,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-myeloid
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/myeloid.h5ad", "-t", "Heart Myeloid", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/myeloid/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/myeloid.h5ad", "-t", "Heart Myeloid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/myeloid/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -405,13 +405,13 @@ spec:
           persistentVolumeClaim:
             claimName: heart-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: heart-dev-lymphoid
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/lymphoid.h5ad", "-t", "Heart Lymphoid", "--host", "0.0.0.0", "--port", "5005", "--experimental-annotations", "--experimental-annotations", "--experimental-annotations-file", "/data/annotations/lymphoid/annotations.csv"]
+        command: ["cellxgene", "launch", "/data/lymphoid.h5ad", "-t", "Heart Lymphoid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/lymphoid/annotations.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -442,3 +442,61 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-dev-endothelial
+spec:
+  selector:
+    matchLabels:
+      app: heart-dev-endothelial
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-dev-endothelial
+      labels:
+        app: heart-dev-endothelial
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-dev-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: heart-dev-endothelial
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/endothelial.h5ad", "-t", "Endothelial_200319", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations/lymphoid/annotations.csv"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "3Gi"
+            cpu: "0.5"
+          limits:
+            memory: "35Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heart-dev/endothelial.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
