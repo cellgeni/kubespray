@@ -908,7 +908,6 @@ spec:
         - name: fetal-lung
           port: 80
     - match: /static
-      prefixRewrite: "/" 
       services:
         - name: fetal-lung-main
           port: 80
@@ -1123,4 +1122,31 @@ spec:
     #   services:
     #     - name: cytokines-resting
     #       port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: single-cell-atlas-cvid
+spec:
+  virtualhost:
+    fqdn: single-cell-atlas-cvid.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: single-cell-atlas-cvid
+          port: 80
+    - match: /static
+      services:
+        - name: single-cell-atlas-cvid-ss2
+          port: 80
+    - match: /ss2
+      prefixRewrite: "/" 
+      services:
+        - name: single-cell-atlas-cvid-ss2
+          port: 80
+    - match: /10x
+      prefixRewrite: "/" 
+      services:
+        - name: single-cell-atlas-cvid-10x
+          port: 80
 ---
