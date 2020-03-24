@@ -1,0 +1,116 @@
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: covid19
+spec:
+  virtualhost:
+    fqdn: covid19.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: covid19
+          port: 80
+    - match: /static
+      services:
+        - name: covid19-habib17
+          port: 80
+    - match: /baron16
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-baron16
+          port: 80
+    - match: /guo18
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-guo18
+          port: 80
+    - match: /habib17
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-habib17
+          port: 80
+    - match: /henry18
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-henry18
+          port: 80
+    - match: /james20
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-james20
+          port: 80
+    - match: /lako
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-lako
+          port: 80
+    - match: /lopez20
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-lopez20
+          port: 80
+    - match: /macparland18
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-macparland18
+          port: 80
+    - match: /miao20
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-miao20
+          port: 80
+    - match: /smillie19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-smillie19
+          port: 80
+    - match: /smillie19-only
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-smillie19-only
+          port: 80
+    - match: /vento18-10x
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-vento18-10x
+          port: 80
+    - match: /vento18-ss2
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-vento18-ss2
+          port: 80
+    - match: /vieira19-alveoli
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-vieira19-alveoli
+          port: 80
+    - match: /vieira19-bronchi
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-vieira19-bronchi
+          port: 80
+    - match: /vieira19-nasal
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-vieira19-nasal
+          port: 80
+    - match: /voigt19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-voigt19
+          port: 80
+    - match: /wang20-colon
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-wang20-colon
+          port: 80
+    - match: /wang20-ileum
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-wang20-ileum
+          port: 80
+    - match: /wang20-rectum 
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-wang20-rectum 
+          port: 80
