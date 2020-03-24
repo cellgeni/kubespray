@@ -43,7 +43,6 @@ spec:
           - name: indexfiles
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -71,7 +70,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/baron16.processed.h5ad -t 'Pancreas - Baron et al PMID:27667365' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/baron16.processed.h5ad -t 'Pancreas (baron16)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -102,7 +101,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -130,7 +128,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/guo18_donor.processed.h5ad -t 'Testis - Guo et al PMID:3031527' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/guo18_donor.processed.h5ad -t 'Testis (guo18)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -161,7 +159,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -189,7 +186,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/habib17.processed.h5ad -t 'Brain - Habib et al PMID:28846088' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/habib17.processed.h5ad -t 'Brain (habib17)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -220,7 +217,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -248,7 +244,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/henry18_0.processed.h5ad -t 'henry18_0' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/henry18_0.processed.h5ad -t 'Prostate (henry18_0)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -279,7 +275,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -307,7 +302,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/james20.processed.h5ad -t 'james20' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/james20.processed.h5ad -t 'Colon,Immune (james20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -337,7 +332,6 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /data
----
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -397,7 +391,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -425,7 +418,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/lopez20.processed.h5ad -t 'lopez20' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/lopez20.processed.h5ad -t 'Heart (lopez20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -434,7 +427,7 @@ spec:
             memory: "128M"
             cpu: "0.5"
           limits:
-            memory: "6Gi"
+            memory: "10Gi"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -455,7 +448,6 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /data
----
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -484,7 +476,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/macparland18.processed.h5ad -t 'macparland18' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/macparland18.processed.h5ad -t 'Liver (macparland18)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -515,7 +507,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -543,7 +534,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/miao20.processed.h5ad -t 'miao20' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/miao20.processed.h5ad -t 'Gallbladder (miao20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -574,7 +565,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -602,7 +592,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/smillie19_epi.processed.h5ad -t 'smillie19_epi' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/smillie19_epi.processed.h5ad -t 'Colon (smillie19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -633,66 +623,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: covid19-smillie19-only
-spec:
-  selector:
-    matchLabels:
-      app: covid19-smillie19-only
-  replicas: 1
-  template:
-    metadata: 
-      name: covid19-smillie19-only
-      labels:
-        app: covid19-smillie19-only
-    spec:
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: covid19-pvc
-      containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
-        imagePullPolicy: IfNotPresent
-        name: covid19-smillie19-only
-        ports:
-        - containerPort: 5005
-          name: cellxgene
-        command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/smillie19_epi_only.processed.h5ad -t 'smillie19_epi_only' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
-        volumeMounts:
-          - name: data
-            mountPath: /data
-        resources:
-          requests:
-            memory: "128M"
-            cpu: "0.5"
-          limits:
-            memory: "1Gi"
-            cpu: 1
-      initContainers:
-      - name: pull-data
-        imagePullPolicy: IfNotPresent
-        image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/smillie19_epi_only.processed.h5ad', '/data']
-        env:
-          - name: AWS_ACCESS_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: s3-secret
-                key: AWS_ACCESS_KEY_ID
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: s3-secret
-                key: AWS_SECRET_ACCESS_KEY
-        volumeMounts:
-          - name: data
-            mountPath: /data
----
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -720,7 +650,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vento18_10x.processed.h5ad -t 'vento18_10x' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/vento18_10x.processed.h5ad -t 'Placenta/Decidua,10X (vento18)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -751,7 +681,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -779,7 +708,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vento18_ss2.processed.h5ad -t 'vento18_ss2' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/vento18_ss2.processed.h5ad -t 'Placenta/Decidua,SS2 (vento18)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -810,7 +739,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -838,7 +766,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Alveoli_and_parenchyma.processed.h5ad -t 'vieira19_Alveoli_and_parenchyma' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Alveoli_and_parenchyma.processed.h5ad -t 'Parenchyma (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -869,7 +797,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -897,7 +824,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Bronchi.processed.h5ad -t 'vieira19_Bronchi' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Bronchi.processed.h5ad -t 'Bronchi (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -928,7 +855,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -956,7 +882,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Nasal.processed.h5ad -t 'vieira19_Nasal' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Nasal.processed.h5ad -t 'Nasal (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -987,7 +913,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1015,7 +940,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/voigt19.processed.h5ad -t 'voigt19' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/voigt19.processed.h5ad -t 'Retina (voigt19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -1046,7 +971,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1074,7 +998,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/wang20_colon.processed.h5ad -t 'wang20_colon' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/wang20_colon.processed.h5ad -t 'Colon (wang20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -1105,7 +1029,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1133,7 +1056,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/wang20_ileum.processed.h5ad -t 'wang20_ileum' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/wang20_ileum.processed.h5ad -t 'Ileum (wang20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -1164,7 +1087,6 @@ spec:
           - name: data
             mountPath: /data
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1192,7 +1114,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/wang20_rectum.processed.h5ad -t 'wang20_rectum' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/wang20_rectum.processed.h5ad -t 'Rectum (wang20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -1208,6 +1130,122 @@ spec:
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
         command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/wang20_rectum.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-stewart19
+spec:
+  selector:
+    matchLabels:
+      app: covid19-stewart19
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-stewart19
+      labels:
+        app: covid19-stewart19
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-stewart19
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/stewart19_adult.processed.h5ad -t 'Kidney (stewart19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/stewart19_adult.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-cheng18
+spec:
+  selector:
+    matchLabels:
+      app: covid19-cheng18
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-cheng18
+      labels:
+        app: covid19-cheng18
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-cheng18
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/cheng18.processed.h5ad -t 'Skin (cheng18)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/cheng18.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

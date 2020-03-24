@@ -64,11 +64,6 @@ spec:
       services:
         - name: covid19-smillie19
           port: 80
-    - match: /smillie19-only
-      prefixRewrite: "/" 
-      services:
-        - name: covid19-smillie19-only
-          port: 80
     - match: /vento18-10x
       prefixRewrite: "/" 
       services:
@@ -113,4 +108,14 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: covid19-wang20-rectum 
+          port: 80
+    - match: /stewart19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-stewart19
+          port: 80
+    - match: /cheng18
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-cheng18
           port: 80

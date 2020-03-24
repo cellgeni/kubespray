@@ -155,20 +155,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: covid19-smillie19-only
-  labels:
-    app: covid19-smillie19-only
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: cellxgene
-  selector:
-    app: covid19-smillie19-only
----
-apiVersion: v1
-kind: Service
-metadata:
   name: covid19-vento18-10x
   labels:
     app: covid19-vento18-10x
@@ -291,4 +277,32 @@ spec:
     targetPort: cellxgene
   selector:
     app: covid19-wang20-rectum
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: covid19-stewart19
+  labels:
+    app: covid19-stewart19
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: covid19-stewart19
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: covid19-cheng18
+  labels:
+    app: covid19-cheng18
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: covid19-cheng18
 ---
