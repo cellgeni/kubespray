@@ -54,3 +54,8 @@ spec:
       services:
         - name: heart-dev-endothelial
           port: 80
+    - match: /immune
+      prefixRewrite: "/" 
+      services:
+        - name: heart-dev-immune
+          port: 80

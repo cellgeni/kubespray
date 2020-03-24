@@ -124,3 +124,17 @@ spec:
   selector:
     app: heart-dev-endothelial
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-dev-immune
+  labels:
+    app: heart-dev-immune
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-dev-immune
+---
