@@ -1239,7 +1239,7 @@ spec:
             memory: "128M"
             cpu: "0.5"
           limits:
-            memory: "1Gi"
+            memory: "3Gi"
             cpu: 1
       initContainers:
       - name: pull-data
