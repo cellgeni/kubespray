@@ -1435,3 +1435,61 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-lukassen20
+spec:
+  selector:
+    matchLabels:
+      app: covid19-lukassen20
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-lukassen20
+      labels:
+        app: covid19-lukassen20
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-lukassen20
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/lukassen20.processed.h5ad -t 'Lung (lukassen20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/lukassen20.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
