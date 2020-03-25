@@ -376,3 +376,17 @@ spec:
   selector:
     app: covid19-lukassen20-hbec
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: covid19-menon19
+  labels:
+    app: covid19-menon19
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: covid19-menon19
+---
