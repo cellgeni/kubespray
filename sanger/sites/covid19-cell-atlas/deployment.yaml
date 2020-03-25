@@ -1261,3 +1261,177 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-madissoon20-oesophagus
+spec:
+  selector:
+    matchLabels:
+      app: covid19-madissoon20-oesophagus
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-madissoon20-oesophagus
+      labels:
+        app: covid19-madissoon20-oesophagus
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-madissoon20-oesophagus
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/madissoon20_oesophagus.processed.h5ad -t 'Oesophagus (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/madissoon20_oesophagus.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-madissoon20-spleen
+spec:
+  selector:
+    matchLabels:
+      app: covid19-madissoon20-spleen
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-madissoon20-spleen
+      labels:
+        app: covid19-madissoon20-spleen
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-madissoon20-spleen
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/madissoon20_spleen.processed.h5ad -t 'Spleen (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/madissoon20_spleen.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covid19-deprez19
+spec:
+  selector:
+    matchLabels:
+      app: covid19-deprez19
+  replicas: 1
+  template:
+    metadata: 
+      name: covid19-deprez19
+      labels:
+        app: covid19-deprez19
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: covid19-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.14.1
+        imagePullPolicy: IfNotPresent
+        name: covid19-deprez19
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/deprez19.processed.h5ad -t 'Lung and upper airway (deprez19)' --host 0.0.0.0 --port 5005 --scripts https://covid19.cellgeni.sanger.ac.uk/piwik.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/deprez19.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

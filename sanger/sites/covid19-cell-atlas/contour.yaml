@@ -119,3 +119,18 @@ spec:
       services:
         - name: covid19-cheng18
           port: 80
+    - match: /madissoon20-spleen
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-madissoon20-spleen
+          port: 80
+    - match: /madissoon20-oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-madissoon20-oesophagus
+          port: 80
+    - match: /deprez19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-deprez19
+          port: 80
