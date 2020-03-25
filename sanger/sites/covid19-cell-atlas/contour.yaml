@@ -159,6 +159,11 @@ spec:
       services:
         - name: covid19-popescu19
           port: 80
+    - match: /lukowski19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-lukowski19
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -320,4 +325,9 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: covid19-popescu19
+          port: 80
+    - match: /lukowski19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-lukowski19
           port: 80
