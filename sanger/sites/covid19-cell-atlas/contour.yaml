@@ -149,6 +149,16 @@ spec:
       services:
         - name: covid19-menon19
           port: 80
+    - match: /park20
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-park20
+          port: 80
+    - match: /popescu19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-popescu19
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -300,4 +310,14 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: covid19-menon19
+          port: 80
+    - match: /park20
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-park20
+          port: 80
+    - match: /popescu19
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-popescu19
           port: 80
