@@ -1397,14 +1397,14 @@ spec:
           persistentVolumeClaim:
             claimName: covid19-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: covid19-madissoon20-lung
         ports:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/madissoon20_lung.processed.h5ad -t 'Lung (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/madissoon19_lung.processed.h5ad -t 'Lung (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/madissoon20_lung.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -1419,7 +1419,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/madissoon20_lung.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/madissoon19_lung.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
