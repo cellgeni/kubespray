@@ -129,6 +129,11 @@ spec:
       services:
         - name: covid19-madissoon20-oesophagus
           port: 80
+    - match: /madissoon20-lung
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-madissoon20-lung
+          port: 80
     - match: /deprez19
       prefixRewrite: "/" 
       services:
@@ -295,6 +300,11 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: covid19-madissoon20-oesophagus
+          port: 80
+    - match: /madissoon20-lung
+      prefixRewrite: "/" 
+      services:
+        - name: covid19-madissoon20-lung
           port: 80
     - match: /deprez19
       prefixRewrite: "/" 

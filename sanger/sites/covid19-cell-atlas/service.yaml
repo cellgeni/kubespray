@@ -337,6 +337,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: covid19-madissoon20-lung
+  labels:
+    app: covid19-madissoon20-lung
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: covid19-madissoon20-lung
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: covid19-deprez19
   labels:
     app: covid19-deprez19
