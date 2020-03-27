@@ -1752,7 +1752,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/park20.processed.h5ad -t 'Fetal spleen (park20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/park20.processed.h5ad -t 'Fetal thymus (park20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
