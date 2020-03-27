@@ -21,20 +21,38 @@
 	<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
+	<!-- Font CSS -->
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
 	<title>COVID-19 Cell Atlas</title>
-
-	<script src="piwik.js"></script>
-
+	<style>
+		html,body{
+			font-family: 'Raleway', sans-serif;
+		}
+	</style>
   </head>
   <body>
 	
 	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-		<h1 class="display-4">COVID-19 Cell Atlas</h1>
+		<h1 class="display-1">COVID-19 Cell Atlas</h1>
 	</div>
 
-	<div class="container">
+	<div class="logos container">
+		<div class="row">
+			<div class="col mx-auto text-center">
+				<a href="https://www.sanger.ac.uk/" target="_blank">
+					<img src="logos/sanger.png" class="img-responsive rounded" alt="Wellcome Trust">
+				</a>
+				<a href="https://www.humancellatlas.org/" target="_blank">
+					<img src="logos/human-cell-atlas.png"  class="img-responsive rounded" alt="Human Cell Atlas">
+				</a>
+			</div>
+		</div>
+		<!-- /row  -->
+	</div>
 
-		<!-- card deck -->
+	<div class="container mt-5">
+
 		<div class="card-deck">
 
 			<div class="col-sm-4 mb-4 mt-2">
@@ -54,7 +72,7 @@
 					</div>
 					<div class="card-footer">
 						<a href="/vieira19-alveoli" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Alveoli_and_parenchyma.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Alveoli_and_parenchyma_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -71,7 +89,7 @@
 					</div>
 					<div class="card-footer">
 						<a href="/vieira19-bronchi" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Bronchi.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Bronchi_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -88,7 +106,7 @@
 					</div>
 					<div class="card-footer">
 						<a href="/vieira19-nasal" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Nasal.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Nasal_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -104,7 +122,7 @@
 					</div>
 					<div class="card-footer">
 						<a href="/deprez19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/deprez19.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/deprez19_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -266,6 +284,12 @@
 					<div class="card-body">
 						<!-- <p>Lako et al</p> -->
 						<p>Unpublished</p>
+						<p>
+						Rachel Queen <button class="badge badge-pill badge-info" data-toggle="popover" title="Rachel Queen" data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> rachel.queen@newcastle.ac.uk</p><p>Biosciences Institute, Faculty of Medical Sciences, Newcastle University, UK</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+						Joseph Collin <button class="badge badge-pill badge-info" data-toggle="popover" title="Joseph Collin" data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> joseph.collin@newcastle.ac.uk</p><p>Biosciences Institute, Newcastle University, United Kingdom, UK</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+						Darin Zerti <button class="badge badge-pill badge-info" data-toggle="popover" title="Darin Zerti" data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> darin.zerti@newcastle.ac.uk</p><p>Biosciences Institute, Newcastle University, United Kingdom, UK; University of L’Aquila, Department of Applied Clinical Sciences and Biotechnology, Italy</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+						Majlinda Lako <button class="badge badge-pill badge-info" data-toggle="popover" title="Majlinda Lako" data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> majlinda.lako@newcastle.ac.uk</p><p>Biosciences Institute, Newcastle University, United Kingdom, UK</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+						</p>
 					</div>
 					<div class="card-footer">
 						<a href="/lako" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
@@ -283,10 +307,52 @@
 					<div class="card-body">
 						<!-- <p>Lopez et al</p> -->
 						<p>Unpublished</p>
+					<p>
+						Monika Litviňuková,
+						Carlos Talavera-López,
+						Henrike Maatz,
+						Daniel Reichart,
+						Catherine L. Worth,
+						Eric L. Lindberg,
+						Masatoshi Kanda,
+						Krzysztof Polanski,
+						Eirini S. Fasouli,
+						Sara Samari,
+						Kenny Roberts,
+						Liz Tuck,
+						Matthias Heinig,
+						Daniel M. DeLaughter,
+						Barbara McDonough,
+						Hiroko Wakimoto,
+						Joshua M. Gorham,
+						Emily R. Nadelmann,
+						Krishnaa Mahbubani,
+						Kourosh Saeb-Parsy,
+						Giannino Patone,
+						Joseph J. Boyle,
+						Hongbo Zhang,
+						Hao Zhang,
+						Anissa Viveiros,
+						Gavin Y. Oudit,
+						Omer Bayraktar,
+						J. G. Seidman,
+						Christine Seidman,
+						Michela Noseda,
+						Norbert Hübner,
+						Sarah A. Teichmann
+					</p>
+						<h5>Contacts</h5>
+						<ul>
+							<li>J. G. Seidman <span class="badge badge-pill badge-secondary"><i class='fa fa-envelope' aria-hidden='true'></i> seidman@genetics.med.harvard.edu</span> </li>
+							<li>Christine Seidman <span class="badge badge-pill badge-secondary"><i class='fa fa-envelope' aria-hidden='true'></i> cseidman@genetics.med.harvard.edu</span> </li>
+							<li>Michela Noseda <span class="badge badge-pill badge-secondary"><i class='fa fa-envelope' aria-hidden='true'></i> m.noseda@imperial.ac.uk</span> </li>
+							<li>Norbert Hübner <span class="badge badge-pill badge-secondary"><i class='fa fa-envelope' aria-hidden='true'></i> nhuebner@mdc-berlin.de</span> </li>
+							</li>Sarah A. Teichmann <span class="badge badge-pill badge-secondary"><i class='fa fa-envelope' aria-hidden='true'></i> st9@sanger.ac.uk</span> </li>
+						</ul>
 					</div>
 					<div class="card-footer">
 						<a href="/lopez20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/lopez20.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/litvinukova20_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -331,10 +397,14 @@
 					<div class="card-body">
 						<!-- <p>Miao et al</p> -->
 						<p>Unpublished</p>
+						<p>
+							Fotios Sampaziotis <button class="badge badge-pill badge-info" data-toggle="popover" title="Fotios Sampaziotis " data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> fs347@cam.ac.uk</p><p>Wellcome and MRC Cambridge Stem Cell Institute, University of Cambridge, UK; Department of Medicine Addenbrookes Hospital, UK; Cambridge Liver Unit Cambridge University Hospitals</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+							Ludovic Vallier <button class="badge badge-pill badge-info" data-toggle="popover" title="Ludovic Vallier" data-trigger="click" data-html="true" data-content="<p><i class='fa fa-envelope' aria-hidden='true'></i> lv225@cam.ac.uk</p><p>Wellcome and MRC Cambridge Stem Cell Institute, University of Cambridge UK; Department of Surgery, University of Cambridge, UK</p>"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+							</p>
 					</div>
 					<div class="card-footer">
 						<a href="/miao20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
-						<a href="https://covid19.cog.sanger.ac.uk/miao20.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
+						<a href="https://covid19.cog.sanger.ac.uk/vallier_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
 			</div>
@@ -551,31 +621,11 @@
 				</div>
 			</div>
 
-		<!-- card deck end -->
+		<!-- /card deck -->
 		</div>
-
-		<div style="margin:6rem"></div>
-
-		<div class="row">
-			
-			<!-- card deck -->
-			<div class="card-deck">
-			  <div class="card my-auto">
-				<img src="logos/sanger.png" class="card-img-top p-3" alt="Wellcome Trust">
-			  </div>
-			  <div class="card my-auto">
-				<img src="logos/human-cell-atlas.png" class="card-img-top p-3" alt="Harvard Medical School">
-			  </div>
-
-			  <!-- <div class="card my-auto">
-				<img src="logos/teichmann-lab.png" class="card-img-top p-3" alt="TEICHMANN LAB">
-			  </div> -->
-			</div>
-			<!-- /card-deck  -->
-		</div>
-		<!-- /row  -->
 
 	</div>
+	<!-- /container -->
 
 	<!-- Optional JavaScript -->
 	<script src="/zxtm/piwik2.js"></script>
@@ -583,6 +633,20 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+		})
+
+		$("html").on("mouseup", function (e) {
+			var l = $(e.target);
+			if (l[0].className.indexOf("popover") == -1) {
+				$(".popover").each(function () {
+					$(this).popover("hide");
+				});
+			}
+		});
+	</script>
   </body>
 </html>

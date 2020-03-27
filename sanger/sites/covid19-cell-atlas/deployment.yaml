@@ -418,7 +418,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/lopez20.processed.h5ad -t 'Heart (lopez20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/litvinukova20_restricted.processed.h5ad -t 'Heart (litvinukova20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -433,7 +433,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/lopez20.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/litvinukova20_restricted.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -534,7 +534,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/miao20.processed.h5ad -t 'Gallbladder (miao20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/vallier_restricted.processed.h5ad -t 'Gallbladder (miao20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -549,7 +549,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/miao20.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vallier_restricted.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -766,7 +766,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Alveoli_and_parenchyma.processed.h5ad -t 'Parenchyma (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Alveoli_and_parenchyma_anonymised.processed.h5ad -t 'Parenchyma (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -781,7 +781,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Alveoli_and_parenchyma.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Alveoli_and_parenchyma_anonymised.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -824,7 +824,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Bronchi.processed.h5ad -t 'Bronchi (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Bronchi_anonymised.processed.h5ad -t 'Bronchi (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -839,7 +839,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Bronchi.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Bronchi_anonymised.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -882,7 +882,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/vieira19_Nasal.processed.h5ad -t 'Nasal (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/vieira19_Nasal_anonymised.processed.h5ad -t 'Nasal (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -897,7 +897,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Nasal.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://covid19/vieira19_Nasal_anonymised.processed.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
