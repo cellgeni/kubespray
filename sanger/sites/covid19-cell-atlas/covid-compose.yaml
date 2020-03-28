@@ -1,0 +1,251 @@
+version: '3.3'
+services:
+  baron16:
+    container_name: baron16
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5000:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/baron16.processed.h5ad -t 'Pancreas (baron16)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/baron16.csv"
+  guo18:
+    container_name: guo18
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5001:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/guo18_donor.processed.h5ad -t 'Testis (guo18)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/guo18.csv"
+  habib17:
+    container_name: habib17
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5002:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/habib17.processed.h5ad -t 'Brain (habib17)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/habib17.csv"
+  henry18:
+    container_name: henry18
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5003:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/henry18_0.processed.h5ad -t 'Prostate (henry18_0)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/henry18.csv"
+  james20:
+    container_name: james20
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5004:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/james20.processed.h5ad -t 'Colon,Immune (james20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/james20.csv"
+  lako:
+    container_name: lako
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5005:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/lako_cornea.processed.h5ad -t 'Cornea (queen)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/lako.csv"
+  litvinukova20:
+    container_name: litvinukova20
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5006:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/litvinukova20_restricted.processed.h5ad -t 'Heart (litvinukova20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/litvinukova20.csv"
+  macparland18:
+    container_name: macparland18
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5007:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/macparland18.processed.h5ad -t 'Liver (macparland18)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/macparland18.csv"
+  miao20:
+    container_name: miao20
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5008:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vallier_restricted.processed.h5ad -t 'Gallbladder (sampaziotis20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/miao20.csv"
+  smillie19:
+    container_name: smillie19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5009:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/smillie19_epi.processed.h5ad -t 'Colon (smillie19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/smillie19.csv"
+  vento18_10x:
+    container_name: vento18_10x
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5010:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vento18_10x.processed.h5ad -t 'Placenta/Decidua,10X (vento18)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/vento18_10x.csv"
+  vento18_ss2:
+    container_name: vento18_ss2
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5011:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vento18_ss2.processed.h5ad -t 'Placenta/Decidua,SS2 (vento18)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/vento18_ss2.csv"
+  vieira19_alveoli:
+    container_name: vieira19-alveoli
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5012:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vieira19_Alveoli_and_parenchyma_anonymised.processed.h5ad -t 'Parenchyma (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/vieira19_alveoli.csv"
+  vieira19_bronchi:
+    container_name: vieira19_bronchi
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5013:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vieira19_Bronchi_anonymised.processed.h5ad -t 'Bronchi (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/vieira19_bronchi.csv"
+  vieira19_nasal:
+    container_name: vieira19_nasal
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5014:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/vieira19_Nasal_anonymised.processed.h5ad -t 'Nasal (vieira19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/vieira19_nasal.csv"
+  voigt19:
+    container_name: voigt19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5015:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/voigt19.processed.h5ad -t 'Retina (voigt19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/voigt19.csv"
+  wang20_colon:
+    container_name: wang20_colon
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5016:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/wang20_colon.processed.h5ad -t 'Colon (wang20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/wang20_colon.csv"
+  wang20_ileum:
+    container_name: wang20_ileum
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5017:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/wang20_ileum.processed.h5ad -t 'Ileum (wang20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/wang20_ileum.csv"
+  wang20_rectum:
+    container_name: wang20_rectum
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5018:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/wang20_rectum.processed.h5ad -t 'Rectum (wang20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/wang20_rectum.csv"
+  stewart19:
+    container_name: stewart19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5019:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/stewart19_adult.processed.h5ad -t 'Kidney (stewart19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/stewart19.csv"
+  cheng18:
+    container_name: cheng18
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5020:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/cheng18.processed.h5ad -t 'Skin (cheng18)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/cheng18.csv"
+  madissoon20_oesophagus:
+    container_name: madissoon20_oesophagus
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5021:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/madissoon20_oesophagus.processed.h5ad -t 'Oesophagus (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/madissoon20_oesophagus.csv"
+  madissoon20_spleen:
+    container_name: madissoon20_spleen
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5022:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/madissoon20_spleen.processed.h5ad -t 'Spleen (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/madissoon20_spleen.csv"
+  madissoon20_lung:
+    container_name: madissoon20_lung
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5023:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/madissoon19_lung.processed.h5ad -t 'Lung (madissoon20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/madissoon20_lung.csv"
+  deprez19:
+    container_name: deprez19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5024:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/deprez19.processed.h5ad -t 'Lung and upper airway (deprez19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/deprez19.csv"
+  lukassen20_lung:
+    container_name: lukassen20_lung
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5025:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/lukassen20_lung.processed.h5ad -t 'Lung (lukassen20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/lukassen20_lung.csv"
+  lukassen20_hbec:
+    container_name: lukassen20_hbec
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5026:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/lukassen20_hbec.processed.h5ad -t 'Bronchial, epithelial  (lukassen20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/lukassen20_hbec.csv"
+  menon19:
+    container_name: menon19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5027:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/menon19.processed.h5ad -t 'Retina (menon19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/menon19.csv"
+  popescu19:
+    container_name: popescu19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5028:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/popescu19.processed.h5ad -t 'Fetal liver (popescu19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/popescu19.csv"
+  park20:
+    container_name: park20
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5029:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/park20.processed.h5ad -t 'Fetal thymus (park20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js --annotations-file /data/park20.csv"
+  lukowski19:
+    container_name: lukowski19
+    image: quay.io/cellgeni/cellxgene:0.15.0
+    ports:
+    - "5030:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/lukowski19.processed.h5ad -t 'Retina (lukowski19)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js  --annotations-file /data/lukowski19.csv"
+
