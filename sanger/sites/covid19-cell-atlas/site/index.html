@@ -22,7 +22,8 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
 	<!-- Font CSS -->
-	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
 
 	<title>COVID-19 Cell Atlas</title>
 	<style>
@@ -68,6 +69,177 @@
 		<!-- /row  -->
 	</div>
 
+	<!-- Relevant genes -->
+	<div class="container mt-4">
+		<div class="row  justify-content-around">
+			<div class="col-md-8 align-self-center">
+				<div class="alert alert-warning shadow-lg" role="alert">
+					<h5 class="alert-heading">Relevant genes known for covid viral entry at this point in time</h5>
+					<hr>
+					<p class="mb-0"></p><strong>Viral Receptor</strong>: <span style="font-size: 1rem" class="badge badge-pill badge-danger">ACE2</span></p>
+					<p class="mb-0"><strong>Viral Entry-Associated Proteases</strong>: <span style="font-size: 1rem" class="badge badge-pill badge-danger">TMPRSS2</span>, <span style="font-size: 1rem" class="badge badge-pill badge-danger">CTSB</span>, <span style="font-size: 1rem" class="badge badge-pill badge-danger">CTSL</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Relevant genes -->
+
+
+	<!-- Dataset list -->
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col">
+				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
+					<div class="card-header text-center">
+						<h3 class="my-0">Datasets</h4>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col">
+								<div class="list-group">
+									<a href="#vieira19-alveoli" class="list-group-item d-flex justify-content-between align-items-center">
+										Vieira Braga et al
+										<span class="badge badge-primary badge-pill">parenchyma</span>
+									</a>
+									<a href="#madissoon20-lung" class="list-group-item d-flex justify-content-between align-items-center">
+										Madissoon et al
+										<span class="badge badge-primary badge-pill">parenchyma</span>
+									</a>
+									<a href="#vieira19-nasal" class="list-group-item d-flex justify-content-between align-items-center">
+										Vieira Braga et al
+										<span class="badge badge-primary badge-pill">nasal</span>
+									</a>
+									<a href="#deprez19" class="list-group-item d-flex justify-content-between align-items-center">
+										Deprez et al
+										<span class="badge badge-primary badge-pill">airway</span>
+									</a>
+									<a href="#lukassen20-lung" class="list-group-item d-flex justify-content-between align-items-center">
+										Lukassen et al
+										<span class="badge badge-primary badge-pill">lung</span>
+									</a>
+									<a href="#vieira19-bronchi" class="list-group-item d-flex justify-content-between align-items-center">
+										Vieira Braga et al
+										<span class="badge badge-primary badge-pill">bronchi</span>
+									</a>
+									<a href="#lukassen20-hbec" class="list-group-item d-flex justify-content-between align-items-center">
+										Lukassen et al
+										<span class="badge badge-primary badge-pill">bronchial epithelial</span>
+									</a>
+									<a href="#baron16" class="list-group-item d-flex justify-content-between align-items-center">
+										Baron et al
+										<span class="badge badge-primary badge-pill">pancreas</span>
+									</a>
+									<a href="#cheng18" class="list-group-item d-flex justify-content-between align-items-center">
+										Cheng et al
+										<span class="badge badge-primary badge-pill">skin</span>
+									</a>
+									<a href="#habib17" class="list-group-item d-flex justify-content-between align-items-center">
+										Habib et al
+										<span class="badge badge-primary badge-pill">brain</span>
+									</a>
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="list-group">
+									<a href="#guo18" class="list-group-item d-flex justify-content-between align-items-center">
+										Guo et al
+										<span class="badge badge-primary badge-pill">testis</span>
+									</a>
+									<a href="#henry18" class="list-group-item d-flex justify-content-between align-items-center">
+										Hentry et al
+										<span class="badge badge-primary badge-pill">prostate</span>
+									</a>
+									<a href="#lako" class="list-group-item d-flex justify-content-between align-items-center">
+										<span>Unpublished <span style="font-size: x-small;">(Queen, Collin, Zerti, Lako)</span></span>
+										<span class="badge badge-primary badge-pill">cornea</span>
+									</a>
+									<a href="#litvinukova20" class="list-group-item d-flex justify-content-between align-items-center">
+										Litviňuková et al
+										<span class="badge badge-primary badge-pill">heart</span>
+									</a>
+									<a href="#macparland18" class="list-group-item d-flex justify-content-between align-items-center">
+										Macparland et al
+										<span class="badge badge-primary badge-pill">liver</span>
+									</a>
+									<a href="#popescu19" class="list-group-item d-flex justify-content-between align-items-center">
+										Popescu et al
+										<span class="badge badge-primary badge-pill">liver</span>
+									</a>
+									<a href="#miao20" class="list-group-item d-flex justify-content-between align-items-center">
+										<span>Unpublished <span style="font-size: x-small;">(Sampaziotis, Vallier)</span></span>
+										<span class="badge badge-primary badge-pill">gallbladder</span>
+									</a>
+									<a href="#james20" class="list-group-item d-flex justify-content-between align-items-center">
+										James et al
+										<span class="badge badge-primary badge-pill">colon,immune</span>
+									</a>
+									<a href="#smillie19" class="list-group-item d-flex justify-content-between align-items-center">
+										Smillie et al
+										<span class="badge badge-primary badge-pill">colon,epithelial</span>
+									</a>
+									<a href="#stewart19" class="list-group-item d-flex justify-content-between align-items-center">
+										Stewart et al
+										<span class="badge badge-primary badge-pill">kidney</span>
+									</a>
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="list-group">
+									<a href="#voigt19" class="list-group-item d-flex justify-content-between align-items-center">
+										Voigt et al
+										<span class="badge badge-primary badge-pill">retina</span>
+									</a>
+									<a href="#menon19" class="list-group-item d-flex justify-content-between align-items-center">
+										Menon et al
+										<span class="badge badge-primary badge-pill">retina</span>
+									</a>
+									<a href="#lukowski19" class="list-group-item d-flex justify-content-between align-items-center">
+										Lukowski et al
+										<span class="badge badge-primary badge-pill">retina</span>
+									</a>
+									<a href="#vento18-10x" class="list-group-item d-flex justify-content-between align-items-center">
+										Vento-Tormo et al
+										<span class="badge badge-primary badge-pill">placenta,decidua</span>
+									</a>
+									<a href="#wang20-colon" class="list-group-item d-flex justify-content-between align-items-center">
+										Wang et al
+										<span class="badge badge-primary badge-pill">colon</span>
+									</a>
+									<a href="#wang20-ileum" class="list-group-item d-flex justify-content-between align-items-center">
+										Wang et al
+										<span class="badge badge-primary badge-pill">ileum</span>
+									</a>
+									<a href="#wang20-rectum" class="list-group-item d-flex justify-content-between align-items-center">
+										Wang et al
+										<span class="badge badge-primary badge-pill">rectum</span>
+									</a>
+									<a href="#park20" class="list-group-item d-flex justify-content-between align-items-center">
+										Park et al
+										<span class="badge badge-primary badge-pill">thymus</span>
+									</a>
+									<a href="#madissoon20-spleen" class="list-group-item d-flex justify-content-between align-items-center">
+										Madissoon et al
+										<span class="badge badge-primary badge-pill">spleen</span>
+									</a>
+									<a href="#madissoon20-oesophagus" class="list-group-item d-flex justify-content-between align-items-center">
+										Madissoon et al
+										<span class="badge badge-primary badge-pill">oesophagus</span>
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Dataset list -->
+
+
+	<!-- Dataset deck (container) -->
 	<div class="container mt-5">
 
 		<div class="card-deck">
@@ -75,20 +247,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="vieira19-alveoli" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<!-- <a href="#" class="badge badge-danger">Authors: Vieira Braga et al</a></br>
-						<a href="#" class="badge badge-primary">Labels: parenchyma</a><br/>
-						<a href="https://www.ncbi.nlm.nih.gov/pubmed/31209336" class="badge badge-warning"><i class="ai ai-pubmed"></i> <i class="ai ai-pubmed"></i> 31209336</a><br/>
-						<a href="https://doi.org/10.1038/s41591-019-0468-5" class="badge badge-warning"><i class="ai ai-doi"></i> 10.1038/s41591-019-0468-5</a><br/>
-						<a href="https://asthma.cellgeni.sanger.ac.uk/" class="badge badge-dark">Source</a><br/> -->
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
 						<p>Labels: parenchyma</p>
 						<p><a href="https://asthma.cellgeni.sanger.ac.uk/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/vieira19-alveoli" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/vieira19-alveoli/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Alveoli_and_parenchyma_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -97,15 +264,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="vieira19-bronchi" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
 						<p>Labels: bronchi</p>
 						<p><a href="https://asthma.cellgeni.sanger.ac.uk/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/vieira19-bronchi" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/vieira19-bronchi/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Bronchi_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -114,15 +281,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="vieira19-nasal" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31209336">Vieira Braga et al <i class="ai ai-pubmed"></i> 31209336</a></p>
 						<p>Labels: nasal</p>
 						<p><a href="https://asthma.cellgeni.sanger.ac.uk/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/vieira19-nasal" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/vieira19-nasal/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vieira19_Nasal_anonymised.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -131,14 +298,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="deprez19" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://doi.org/10.1101/2019.12.21.884759">Deprez et al <i class="ai ai-doi"></i> 10.1101/2019.12.21.884759</a></p>
+						<p><a target="_blank" href="https://doi.org/10.1101/2019.12.21.884759">Deprez et al <i class="ai ai-doi"></i> 10.1101/2019.12.21.884759</a></p>
 						<p><a href="https://www.genomique.eu/cellbrowser/HCA/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/deprez19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/deprez19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/deprez19_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -147,16 +314,16 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="lukassen20-lung" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.biorxiv.org/content/10.1101/2020.03.13.991455v2">Lukassen et al <i class="ai ai-biorxiv"></i> 10.1101/2020.03.13.991455v2</a></p>
+						<p><a target="_blank" href="https://www.biorxiv.org/content/10.1101/2020.03.13.991455v2">Lukassen et al <i class="ai ai-biorxiv"></i> 10.1101/2020.03.13.991455v2</a></p>
 						<p>Labels: lung</p>
 						<p><a href="https://figshare.com/articles/Single-cell_RNA-Seq_of_human_primary_lung_and_bronchial_epithelium_cells/11981034/1">Source</p>
 						<span class="badge badge-pill badge-secondary">10x Chromium v2</span>
 					</div>
 					<div class="card-footer">
-						<a href="/lukassen20-lung" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/lukassen20-lung/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/lukassen20_lung.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -165,16 +332,16 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung and upper airway</h4>
+						<h4 id="lukassen20-hbec" class="my-0 font-weight-normal">Lung and upper airway</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.biorxiv.org/content/10.1101/2020.03.13.991455v2">Lukassen et al <i class="ai ai-biorxiv"></i> 10.1101/2020.03.13.991455v2</a></p>
+						<p><a target="_blank" href="https://www.biorxiv.org/content/10.1101/2020.03.13.991455v2">Lukassen et al <i class="ai ai-biorxiv"></i> 10.1101/2020.03.13.991455v2</a></p>
 						<p>Labels: bronchial epithelial cells</p>
 						<p><a href="https://figshare.com/articles/Single-cell_RNA-Seq_of_human_primary_lung_and_bronchial_epithelium_cells/11981034/1">Source</p>
 						<span class="badge badge-pill badge-secondary">10x Chromium 3' v2</span>
 					</div>
 					<div class="card-footer">
-						<a href="/lukassen20-hbec" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/lukassen20-hbec/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/lukassen20_hbec.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -183,15 +350,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Lung</h4>
+						<h4 id="madissoon20-lung" class="my-0 font-weight-normal">Lung</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
 						Labels: parenchyma
 						<p><a href="https://www.tissuestabilitycellatlas.org">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/madissoon19-lung" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/madissoon20-lung/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/madissoon19_lung.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -200,14 +367,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Pancreas</h4>
+						<h4 id="baron16" class="my-0 font-weight-normal">Pancreas</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/27667365">Baron et al <i class="ai ai-pubmed"></i> 27667365</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/27667365">Baron et al <i class="ai ai-pubmed"></i> 27667365</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE84133">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/baron16" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/baron16/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/baron16.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -216,14 +383,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Skin</h4>
+						<h4 id="cheng18" class="my-0 font-weight-normal">Skin</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/30355494">Cheng et al <i class="ai ai-pubmed"></i> 30355494</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30355494">Cheng et al <i class="ai ai-pubmed"></i> 30355494</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=EGAS00001002927">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/cheng18" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/cheng18/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/cheng18.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -232,14 +399,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Testis</h4>
+						<h4 id="guo18" class="my-0 font-weight-normal">Testis</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/3031527">Guo et al <i class="ai ai-pubmed"></i> 3031527</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3031527">Guo et al <i class="ai ai-pubmed"></i> 3031527</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120508">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/guo18" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/guo18/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/guo18.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -248,14 +415,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Brain</h4>
+						<h4 id="habib17" class="my-0 font-weight-normal">Brain</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/28846088">Habib et al <i class="ai ai-pubmed"></i> 28846088</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/28846088">Habib et al <i class="ai ai-pubmed"></i> 28846088</a></p>
 						<p><a href="http://www.gtexportal.org/home/data-sets">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/habib17" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/habib17/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/habib17.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -264,14 +431,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Prostate</h4>
+						<h4 id="henry18" class="my-0 font-weight-normal">Prostate</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/30566875">Hentry et al <i class="ai ai-pubmed"></i> 30566875</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30566875">Hentry et al <i class="ai ai-pubmed"></i> 30566875</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120716">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/henry18" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/henry18/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/henry18_0.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -280,14 +447,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Colon, immune cells</h4>
+						<h4 id="james20" class="my-0 font-weight-normal">Colon, immune cells</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/32066951">James et al <i class="ai ai-pubmed"></i> 32066951</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/32066951">James et al <i class="ai ai-pubmed"></i> 32066951</a></p>
 						<p><a href="https://www.gutcellatlas.org">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/james20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/james20/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/james20.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -296,7 +463,7 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Cornea</h4>
+						<h4 id="lako" class="my-0 font-weight-normal">Cornea</h4>
 					</div>
 					<div class="card-body">
 						<!-- <p>Lako et al</p> -->
@@ -309,7 +476,7 @@
 						</p>
 					</div>
 					<div class="card-footer">
-						<a href="/lako" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/lako/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/lako_cornea.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -319,7 +486,7 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Heart</h4>
+						<h4 id="litvinukova20" class="my-0 font-weight-normal">Heart</h4>
 					</div>
 					<div class="card-body">
 						<!-- <p>Lopez et al</p> -->
@@ -360,7 +527,7 @@
 						</ul>
 					</div>
 					<div class="card-footer">
-						<a href="/lopez20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/litvinukova20/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/litvinukova20_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -369,14 +536,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Adult liver</h4>
+						<h4 id="macparland18" class="my-0 font-weight-normal">Adult liver</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/30348985">Macparland et al <i class="ai ai-pubmed"></i> 30348985</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30348985">Macparland et al <i class="ai ai-pubmed"></i> 30348985</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE115469">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/macparland18" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/macparland18/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/macparland18.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -385,14 +552,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Fetal liver</h4>
+						<h4 id="popescu19" class="my-0 font-weight-normal">Fetal liver</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31597962">Popescu et al <i class="ai ai-pubmed"></i> 31597962</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31597962">Popescu et al <i class="ai ai-pubmed"></i> 31597962</a></p>
 						<p><a href="https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-7407/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/popescu19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/popescu19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/popescu19.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -401,7 +568,7 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Gallbladder</h4>
+						<h4 id="miao20" class="my-0 font-weight-normal">Gallbladder</h4>
 					</div>
 					<div class="card-body">
 						<!-- <p>Miao et al</p> -->
@@ -412,7 +579,7 @@
 							</p>
 					</div>
 					<div class="card-footer">
-						<a href="/miao20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/miao20/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vallier_restricted.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -421,14 +588,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Colon, epithelial</h4>
+						<h4 id="smillie19" class="my-0 font-weight-normal">Colon, epithelial</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31348891">Smillie et al <i class="ai ai-pubmed"></i> 31348891</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31348891">Smillie et al <i class="ai ai-pubmed"></i> 31348891</a></p>
 						<p><a href="https://portals.broadinstitute.org/single_cell">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/smillie19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/smillie19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/smillie19_epi.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -437,14 +604,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Kidney</h4>
+						<h4 id="stewart19" class="my-0 font-weight-normal">Kidney</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31604275">Stewart et al <i class="ai ai-pubmed"></i> 31604275</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31604275">Stewart et al <i class="ai ai-pubmed"></i> 31604275</a></p>
 						<p><a href="https://www.kidneycellatlas.org">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/stewart19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/stewart19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/stewart19_adult.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -453,14 +620,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Retina</h4>
+						<h4 id="voigt19" class="my-0 font-weight-normal">Retina</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31712411">Voigt et al <i class="ai ai-pubmed"></i> 31712411</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31712411">Voigt et al <i class="ai ai-pubmed"></i> 31712411</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE135922">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/voigt19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/voigt19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/voigt19.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -469,15 +636,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Retina</h4>
+						<h4 id="menon19" class="my-0 font-weight-normal">Retina</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31653841">Menon et al <i class="ai ai-pubmed"></i> 31653841</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31653841">Menon et al <i class="ai ai-pubmed"></i> 31653841</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE137537">Source</a></p>
 						<span class="badge badge-pill badge-secondary">10x Chromium 3′ v3</span>
 					</div>
 					<div class="card-footer">
-						<a href="/menon19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/menon19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/menon19.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -486,15 +653,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Retina</h4>
+						<h4 id="lukowski19" class="my-0 font-weight-normal">Retina</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31436334">Lukowski et al <i class="ai ai-pubmed"></i> 31436334</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31436334">Lukowski et al <i class="ai ai-pubmed"></i> 31436334</a></p>
 						<p><a href="https://data.humancellatlas.org/explore/projects/8185730f-4113-40d3-9cc3-929271784c2b">Source</a></p>
 						<span class="badge badge-pill badge-secondary">10X v2</span>
 					</div>
 					<div class="card-footer">
-						<a href="/lukowski19" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/lukowski19/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/lukowski19.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -503,15 +670,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Placenta/Decidua</h4>
+						<h4 id="vento18-10x" class="my-0 font-weight-normal">Placenta/Decidua</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/30429548">Vento-Tormo et al <i class="ai ai-pubmed"></i> 30429548</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30429548">Vento-Tormo et al <i class="ai ai-pubmed"></i> 30429548</a></p>
 						<p><a href="https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6701/">Source</a></p>
 						<span class="badge badge-secondary">10x</span>
 					</div>
 					<div class="card-footer">
-						<a href="/vento18-10x" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/vento18-10x/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vento18_10x.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -520,15 +687,15 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Placenta/Decidua</h4>
+						<h4 id="vento18-ss2" class="my-0 font-weight-normal">Placenta/Decidua</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/30429548">Vento-Tormo et al <i class="ai ai-pubmed"></i> 30429548</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/30429548">Vento-Tormo et al <i class="ai ai-pubmed"></i> 30429548</a></p>
 						<p><a href="https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6701/">Source</a></p>
 						<span class="badge badge-secondary">SS2</span>
 					</div>
 					<div class="card-footer">
-						<a href="/vento18-ss2" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/vento18-ss2/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/vento18_ss2.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -537,14 +704,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Colon</h4>
+						<h4 id="wang20-colon" class="my-0 font-weight-normal">Colon</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Want et al <i class="ai ai-pubmed"></i> 31753849</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Wang et al <i class="ai ai-pubmed"></i> 31753849</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125970">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/wang20-colon" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/wang20-colon/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/wang20_colon.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -553,14 +720,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Ileum</h4>
+						<h4 id="wang20-ileum" class="my-0 font-weight-normal">Ileum</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Want et al <i class="ai ai-pubmed"></i> 31753849</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Wang et al <i class="ai ai-pubmed"></i> 31753849</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125970">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/wang20-ileum" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/wang20-ileum/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/wang20_ileum.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -569,14 +736,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Rectum</h4>
+						<h4 id="wang20-rectum" class="my-0 font-weight-normal">Rectum</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Want et al <i class="ai ai-pubmed"></i> 31753849</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31753849">Wang et al <i class="ai ai-pubmed"></i> 31753849</a></p>
 						<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125970">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/wang20-rectum" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/wang20-rectum/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/wang20_rectum.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -585,14 +752,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Fetal thymus</h4>
+						<h4 id="park20" class="my-0 font-weight-normal">Fetal thymus</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/32079746">Park et al <i class="ai ai-pubmed"></i> 32079746</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/32079746">Park et al <i class="ai ai-pubmed"></i> 32079746</a></p>
 						<p><a href="https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-8581/">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/park20" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/park20/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/park20.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -601,14 +768,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Spleen</h4>
+						<h4 id="madissoon20-spleen" class="my-0 font-weight-normal">Spleen</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
 						<p><a href="https://www.tissuestabilitycellatlas.org">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/madissoon20-spleen" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/madissoon20-spleen/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/madissoon20_spleen.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -617,14 +784,14 @@
 			<div class="col-sm-4 mb-4 mt-2">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
 					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">Oesophagus</h4>
+						<h4 id="madissoon20-oesophagus" class="my-0 font-weight-normal">Oesophagus</h4>
 					</div>
 					<div class="card-body">
-						<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
+						<p><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31892341">Madissoon et al <i class="ai ai-pubmed"></i> 31892341</a></p>
 						<p><a href="https://www.tissuestabilitycellatlas.org">Source</a></p>
 					</div>
 					<div class="card-footer">
-						<a href="/madissoon20-oesophagus" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="/madissoon20-oesophagus/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 						<a href="https://covid19.cog.sanger.ac.uk/madissoon20_oesophagus.processed.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span></a>
 					</div>
 				</div>
@@ -634,7 +801,13 @@
 		</div>
 
 	</div>
-	<!-- /container -->
+	<!-- Dataset deck (container)-->
+
+	<div class="container mt-5">
+		<div class="alert alert-info text-center" role="alert">
+			For website support contact CellGenIT <strong>cellgeni@sanger.ac.uk</strong>
+		</div>
+	</div>
 
 	<!-- Optional JavaScript -->
 	<script src="/zxtm/piwik2.js"></script>
