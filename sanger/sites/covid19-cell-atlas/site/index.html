@@ -68,26 +68,238 @@
 		</div>
 		<!-- /row  -->
 	</div>
-
+	
 	<!-- Relevant genes -->
 	<div class="container mt-4">
 		<div class="row  justify-content-around">
 			<div class="col-md-8 align-self-center">
 				<div class="alert alert-warning shadow-lg" role="alert">
-					<h5 class="alert-heading">Relevant genes known for covid viral entry at this point in time <a href="https://www.ncbi.nlm.nih.gov/pubmed/32015507" title="A pneumonia outbreak associated with a new coronavirus of probable bat origin. Zhou et al." target="_blank">[1]</a> <a href="https://www.ncbi.nlm.nih.gov/pubmed/32142651" title="SARS-CoV-2 Cell Entry Depends on ACE2 and TMPRSS2 and Is Blocked by a Clinically Proven Protease Inhibitor. Hoffmann et al." target="_blank">[2]</a></h5>
-					<p></p>
+					<h5 class="alert-heading">COVID-19/SARS-CoV-2 entry-associated genes</h5>
+					<ul>
+						<li><strong>SARS-CoV-2 entry receptor:</strong> <span class="badge badge-dark">ACE2</span></li>
+						<li><strong>SARS-CoV-2 entry-associated proteases:</strong> <span class="badge badge-dark">TMPRSS2</span>, <span class="badge badge-dark">CTSB</span>, <span class="badge badge-dark">CTSL</span></li>
+					</ul>
+					Reference <a href="https://www.ncbi.nlm.nih.gov/pubmed/32015507" title="A pneumonia outbreak associated with a new coronavirus of probable bat origin. Zhou et al." target="_blank">[1]</a> <a href="https://www.ncbi.nlm.nih.gov/pubmed/32142651" title="SARS-CoV-2 Cell Entry Depends on ACE2 and TMPRSS2 and Is Blocked by a Clinically Proven Protease Inhibitor. Hoffmann et al." target="_blank">[2]</a>
 					<hr>
-					<p class="mb-0"></p><strong>Viral Receptor</strong>: <span style="font-size: 1rem" class="badge badge-pill badge-danger">ACE2</span></p>
-					<p class="mb-0"><strong>Viral Entry-Associated Proteases</strong>: <span style="font-size: 1rem" class="badge badge-pill badge-danger">TMPRSS2</span>, <span style="font-size: 1rem" class="badge badge-pill badge-danger">CTSB</span>, <span style="font-size: 1rem" class="badge badge-pill badge-danger">CTSL</span></p>
+					<h5 class="alert-heading">For unpublished datasets, the included genes are</h5>
+					<ul>
+						<li><strong>SARS-CoV-2/SARS-CoV entry receptor:</strong> <span class="badge badge-dark">ACE2</span></li>
+						<li><strong>SARS-CoV-2/SARS-CoV entry-associated proteases:</strong> <span class="badge badge-dark">TMPRSS2</span>, <span class="badge badge-dark">CTSB</span>, <span class="badge badge-dark">CTSL</span></li>
+						<li><strong>Other cathepsins:</strong> <span class="badge badge-dark">CTSA</span>, <span class="badge badge-dark">CTSC</span>, <span class="badge badge-dark">CTSD</span>, <span class="badge badge-dark">CTSE</span>, <span class="badge badge-dark">CTSF</span>, <span class="badge badge-dark">CTSG</span>, <span class="badge badge-dark">CTSH</span>, <span class="badge badge-dark">CTSK</span>, <span class="badge badge-dark">CTSO</span>, <span class="badge badge-dark">CTSS</span>, <span class="badge badge-dark">CTSV</span>, <span class="badge badge-dark">CTSW</span>, <span class="badge badge-dark">CTSZ</span></li>
+						<li><strong>Other viral receptors/receptor-associated enzymes:</strong> <span class="badge badge-dark">ANPEP</span> (HCoV-229E), <span class="badge badge-dark">DPP4</span> (MERS-CoV), <span class="badge badge-dark">ST6GAL1</span> (Influenza), <span class="badge badge-dark">ST3GAL4</span> (Influenza)</li>					
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- /Relevant genes -->
 
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col">
+				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
+					<div class="card-header text-center">
+						<h3 class="my-0">Datasets</h4>
+					</div>
+					<div class="card-body" style="font-size: 1rem;">
+						<div class="card-deck font-size-small">
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Respiratory system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#vieira19-nasal" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Nasal</span> Vieira Braga et al
+											</a>
+											<a href="#vieira19-bronchi" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Bronchi</span> Vieira Braga et al
+											</a>
+											<a href="#lukassen20-hbec" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Bronchi, epithelial</span> Lukassen et al.
+											</a>
+											<a href="#vieira19-alveoli" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Lung parenchyma</span> Vieira Braga et al.
+											</a>
+											<a href="#madissoon20-lung" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Lung parenchyma</span> Madissoon et al.
+											</a>
+											<a href="#deprez19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Total airway</span> Deprez et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Sensory/Nervous system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#lako" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Cornea</span> unpublished, Queen et al.
+											</a>
+											<a href="#voigt19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Retina</span> Voigt et al.
+											</a>
+											<a href="#lukassen20-lung" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Bronchi, epithelial</span> Lukassen et al.
+											</a>
+											<a href="#menon19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Retina</span> Menon et al.
+											</a>
+											<a href="#lukowski19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Retina</span> Lukowski et al.
+											</a>
+											<a href="#habib17" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Brain</span> Habib et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Lymphatic system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#park20" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Thymus</span> Park et al.
+											</a>
+											<a href="#madissoon20-spleen" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Spleen</span> Madissoon et al.
+											</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Cardiovascular system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#litvinukova20" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Heart</span> unpublished, Litvinukova et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Urinary system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#stewart19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Kidney</span> Stewart et al.
+											</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Integumentary system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#cheng18" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Skin</span> Cheng et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+	
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Reproductive system/Maternal-fetal interface</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#vento18-10x" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Placenta/Decidua (10X)</span> Vento-Tormo et al.
+											</a>
+											<a href="#vento18-ss2" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Placenta/Decidua (SS2)</span> Vento-Tormo et al.
+											</a>
+											<a href="#guo18" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Testis</span> Guo et al.
+											</a>
+											<a href="#henry18" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Prostate</span> Henry et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-md-4">
+								<div class="card mx-0 my-2 shadow-lg">
+									<div class="card-header">
+										<h4 class="my-0 font-weight-normal">Digestive system</h4>
+									</div>
+									<div class="card-body">
+										<div class="list-group">
+											<a href="#madissoon20-oesophagus" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Esophagus</span> Madissoon et al.
+											</a>
+											<a href="#wang20-ileum" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Ileum</span> Wang et al.
+											</a>
+											<a href="#wang20-colon" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Colon</span> Wang et al.
+											</a>
+											<a href="#smillie19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Colon, epithelial</span> Smillie et al.
+											</a>
+											<a href="#james20" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Colon, immune cells</span> James et al.
+											</a>
+											<a href="#wang20-rectum" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Rectum</span> Wang et al.
+											</a>
+											<a href="#macparland18" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Adult liver</span> Macparland et al.
+											</a>
+											<a href="#popescu19" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Fetal liver</span> Popescu et al.
+											</a>
+											<a href="#miao20" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Gallbladder</span> unpublished, Sampaziotis et al.
+											</a>
+											<a href="#baron16" class="list-group-item">
+												<span class="badge badge-primary badge-pill">Pancreas</span> Baron et al.
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Dataset list -->
-	<div class="container mt-4">
+	<!-- <div class="container mt-4">
 		<div class="row">
 			<div class="col">
 				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
@@ -236,7 +448,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- /Dataset list -->
 
 
