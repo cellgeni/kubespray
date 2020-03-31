@@ -63,13 +63,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-endothelium
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.endothelium.processed.20191205.h5ad", "-t", "fetal_skin.endothelium", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.endothelium.processed.20191205.h5ad", "-t", "fetal_skin.endothelium", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.endothelium.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -120,13 +120,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-erythroid
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.erythroid.processed.20191205.h5ad", "-t", "fetal_skin.erythroid", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.erythroid.processed.20191205.h5ad", "-t", "fetal_skin.erythroid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.erythroid.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -177,13 +177,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-fibroblasts
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.fibroblasts.processed.20191205.h5ad", "-t", "fetal_skin.fibroblasts", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.fibroblasts.processed.20191205.h5ad", "-t", "fetal_skin.fibroblasts", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.fibroblasts.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -234,13 +234,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-keratinocytes
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.keratinocytes.processed.20191205.h5ad", "-t", "fetal_skin.keratinocytes", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.keratinocytes.processed.20191205.h5ad", "-t", "fetal_skin.keratinocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.keratinocytes.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -291,13 +291,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-lymphoid-b
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad", "-t", "fetal_skin.lymphoid_B", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad", "-t", "fetal_skin.lymphoid_B", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.lymphoid_B.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -348,13 +348,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-lymphoid-t-nk
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad", "-t", "fetal_skin.lymphoid_T_NK", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad", "-t", "fetal_skin.lymphoid_T_NK", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.lymphoid_T_NK.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -405,13 +405,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-mast-cells
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.mast_cells.processed.20191205.h5ad", "-t", "fetal_skin.mast_cells", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.mast_cells.processed.20191205.h5ad", "-t", "fetal_skin.mast_cells", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.mast_cells.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -462,13 +462,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-melanocytes
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.melanocytes.processed.20191205.h5ad", "-t", "fetal_skin.melanocytes", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.melanocytes.processed.20191205.h5ad", "-t", "fetal_skin.melanocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.melanocytes.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -519,13 +519,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-monocytes
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.monocytes.processed.20191205.h5ad", "-t", "fetal_skin.monocytes", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.monocytes.processed.20191205.h5ad", "-t", "fetal_skin.monocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.monocytes.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -576,13 +576,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-overview
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.overview.processed.h5ad", "-t", "fetal_skin.overview", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.overview.processed.h5ad", "-t", "fetal_skin.overview", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.overview.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -633,13 +633,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-stroma
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.stroma.processed.20191205.h5ad", "-t", "fetal_skin.stroma", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.stroma.processed.20191205.h5ad", "-t", "fetal_skin.stroma", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.stroma.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -690,13 +690,13 @@ spec:
           persistentVolumeClaim:
             claimName: fetal-skin-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.12.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: fetal-skin-myeloid
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.myeloid.processed.20191205.h5ad", "-t", "fetal_skin.myeloid", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.myeloid.processed.20191205.h5ad", "-t", "fetal_skin.myeloid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.myeloid.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
