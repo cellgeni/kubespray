@@ -11,125 +11,110 @@
 	
 	<!-- Font CSS-->
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+
 
 	<title>Single-cell Atlas CVID</title>
-
+	<style>
+		html, body{
+			font-family: 'Roboto', sans-serif;
+		}
+		.bg-header{
+			background-color: #2d76b6;
+			color:white;
+		}
+		.descriptive-text{
+			font-size: 0.8rem;
+			text-align: justify;
+		}
+		.strong-title{
+			font-weight: bold;
+		}
+		.lead-title{
+			font-size:1.5rem;
+		}
+	</style>
   </head>
   <body>
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-		<a class="navbar-brand" href="#">Single-cell Atlas CVID</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-		  <ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-			  <a class="nav-link" href="#data">Data <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-			  <a class="nav-link" href="#viewers">Viewers</a>
-			</li>
-		  </ul>
-		</div>
-	  </nav>
-
-
-	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-		<h1 class="display-1">Single-cell Atlas CVID</h1>
-	</div>
-
-
-	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-		<h2 class="display-4" id="data">Data</h2>
-	</div>
-
-	<div class="container">
-		<div class="row my-2">
-			<div class="col-md-6">
-				<div class="card shadow-sm h-100">
-					<div class="card-body">
-						<p>Fully processed single-cell object for activated PBMCs (scRNA-seq, 10X) with raw data in .raw attribute</p>
-					</div>
-					<div class="card-footer">
-						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/adata_10X.h5ad" class="btn btn-sm btn-primary" download >Click to download <span class="badge badge-dark">adata_10X.h5ad</span> <i class="fa fa-download" aria-hidden="true"></i></a>
-					</div>
+	<!-- Header -->
+	<header class="bg-header py-2">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-5">
+					<h1 class="ml-5">Single-cell Atlas of Common Variable Immunodeficiency</h1>
 				</div>
-			</div>
-			
-			<div class="col-md-6">
-				<div class="card shadow-sm h-100">
-					<div class="card-body">
-						<p>Fully processed single-cell object for steady-state B cells (scRNA-seq, Smart-seq2) with raw data in .raw attribute</p>
-					</div>
-					<div class="card-footer">
-						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/adata_SS2.h5ad" class="btn btn-sm btn-primary" download >Click to download <span class="badge badge-dark">adata_SS2.h5ad</span> <i class="fa fa-download" aria-hidden="true"></i></a>
-					</div>
+				<div class="col-6">
+					<img src="assets/cvid-header.png" class="img-responsive" style="max-height: 100px;">
 				</div>
 			</div>
 		</div>
-
-		<div class="row my-2">
-			<div class="col-md-6">
-				<div class="card shadow-sm h-100">
-					<div class="card-body">
-						<p>Fully processed single-cell object for steady-state B cells (scATAC-seq) from binarised single-cell accessibility matrix with raw binarised accessibility values in .raw attribute</p>
-					</div>
-					<div class="card-footer">
-						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/bin_adata_atac_object.h5ad" class="btn btn-sm btn-primary" download >Click to download <span class="badge badge-dark">bin_adata_atac_object.h5ad</span> <i class="fa fa-download" aria-hidden="true"></i></a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-6">
-				<div class="card shadow-sm h-100">
-					<div class="card-body">
-						<p>Matrix of raw methylation values in pseudobulks aggregated by B cell state and donor in steady-state B cells.</p>
-					</div>
-					<div class="card-footer">
-						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/methylation_matrix.csv" class="btn btn-sm btn-primary" download >Click to download <span class="badge badge-dark">methylation_matrix.csv</span> <i class="fa fa-download" aria-hidden="true"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	</header>
 	
-	<div class="container">
-		<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-			<h2 class="display-4" id="viewers">Interactive viewers</h2>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="card mb-2 shadow-sm h-100">
-					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">steady_state_B_cells_Smart-seq2</h4>
+
+	
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+
+			<div class="col-5 border border-dark rounded m-1">
+				<div class="row h-100">
+					<div class="col">
+						<h3 class="strong-title py-3">1. Steady-state B cells</h3>
+						<img src="assets/steady-state-B-cells.png" class="img-responsive" style="max-width: 100%;" >
+						<h3 class="strong-title py-3">2. Activated PBMCs</h3>
+						<img src="assets/activated-PBMCs.png" class="img-responsive"  style="max-width: 100%;" >
 					</div>
-					<div class="card-body">
-						<p></p>
-					</div>
-					<div class="card-footer">
+				</div>
+			</div>
+
+			<div class="col-3 border border-dark rounded text-center m-1">
+				<h3 class="strong-title py-3">Steady-state B cells</h3>
+
+				<!-- <span class="lead-title">scRNA-seq</span> -->
+				<h4>scRNA-seq</h4>
+				<div class="card border-0">
+					<div class="card-body p-0">
 						<a href="/ss2" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/adata_SS2.h5ad" class="btn btn-sm btn-block btn-secondary" download title="adata_SS2.h5ad">Download <span class="badge badge-light">h5ad</span> data</a>
+						<p class="descriptive-text">Fully processed .h5ad single-cell object for steady-state B cells (scRNA-seq, Smart-seq2) with raw data in .raw attribute</p>
+					</div>
+				</div>
+
+				<!-- <span class="lead-title">scATAC-seq</span> -->
+				<h4>scATAC-seq</h4>
+				<div class="card border-0">
+					<div class="card-body p-0">
+						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/bin_adata_atac_object.h5ad" class="btn btn-sm btn-block btn-secondary" download title="bin_adata_atac_object.h5ad">Download <span class="badge badge-light">h5ad</span> data</a>
+						<p class="descriptive-text">Fully processed .h5ad single-cell object for steady-state B cells (scATAC-seq) from binarised single-cell accessibility matrix with raw binarised accessibility values in .raw attribute</p>
+					</div>
+				</div>
+
+				<!-- <span class="lead-title">scBS-seq</span> -->
+				<h4>scBS-seq</h4>
+				<div class="card border-0">
+					<div class="card-body p-0">
+						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/methylation_matrix.csv" class="btn btn-sm btn-block btn-secondary" download title="methylation_matrix.csv">Download <span class="badge badge-light">csv</span> data</a>
+						<p class="descriptive-text">Matrix of raw methylation values in pseudobulks aggregated by B cell state and donor in steady-state B cells</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-sm-6">
-				<div class="card mb-2 shadow-sm  h-100">
-					<div class="card-header">
-						<h4 class="my-0 font-weight-normal">activated_PBMC_10X</h4>
-					</div>
+			<div class="col-3 border border-dark rounded text-center m-1">
+				<h3 class="strong-title py-3">Activated PBMCs</h3>
+				<!-- <span class="lead-title">scRNA-seq</span> -->
+				<h4>scRNA-seq</h4>
+				<div class="card border-0">
+					<img class="card-img-top" src="assets/activated-PBMCs-UMAP.png" alt="Card image cap">
 					<div class="card-body">
-						<p></p>
-					</div>
-					<div class="card-footer">
 						<a href="/10x" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						<a href="https://cellgeni.cog.sanger.ac.uk/single-cell-atlas-cvid/adata_10X.h5ad" class="btn btn-sm btn-block btn-secondary" download title="adata_10X.h5ad">Download <span class="badge badge-light">h5ad</span> data</a>
+						<p class="descriptive-text">Fully processed .h5ad single-cell object for activated PBMCs (scRNA-seq, 10X) with raw data in .raw attribute</p>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
-	
 
 
     <!-- Optional JavaScript -->
