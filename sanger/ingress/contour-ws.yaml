@@ -1150,3 +1150,30 @@ spec:
         - name: single-cell-atlas-cvid-10x
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: cvidcellatlas
+spec:
+  virtualhost:
+    fqdn: www.cvidcellatlas.org
+  routes:
+    - match: /
+      services:
+        - name: single-cell-atlas-cvid
+          port: 80
+    - match: /static
+      services:
+        - name: single-cell-atlas-cvid-ss2
+          port: 80
+    - match: /ss2
+      prefixRewrite: "/" 
+      services:
+        - name: single-cell-atlas-cvid-ss2
+          port: 80
+    - match: /10x
+      prefixRewrite: "/" 
+      services:
+        - name: single-cell-atlas-cvid-10x
+          port: 80
+---

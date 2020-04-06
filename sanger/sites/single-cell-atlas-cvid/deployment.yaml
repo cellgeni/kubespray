@@ -69,7 +69,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/adata_SS2_cellxgene.h5ad", "-t", "steady_state_B_cells_Smart-seq2", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations-ss2.csv"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/adata_SS2_cellxgene.h5ad -t steady_state_B_cells_Smart-seq2 --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.cvidcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -126,7 +127,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/adata_10X_activation_cellxgene.h5ad", "-t", "activated_PBMC_10X", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/annotations-10x.csv"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/adata_10X_activation_cellxgene.h5ad -t activated_PBMC_10X --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.cvidcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
