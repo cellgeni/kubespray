@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.endothelium.processed.20191205.h5ad", "-t", "fetal_skin.endothelium", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.endothelium.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.endothelium.h5ad", "-t", "fetal_skin.endothelium", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.endothelium.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -84,7 +84,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.endothelium.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.endothelium.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -126,7 +126,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.erythroid.processed.20191205.h5ad", "-t", "fetal_skin.erythroid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.erythroid.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.erythroid.h5ad", "-t", "fetal_skin.erythroid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.erythroid.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -141,7 +141,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.erythroid.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.erythroid.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -198,7 +198,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.fibroblasts.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.fibroblasts.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -240,7 +240,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.keratinocytes.processed.20191205.h5ad", "-t", "fetal_skin.keratinocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.keratinocytes.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.keratinocytes.h5ad", "-t", "fetal_skin.keratinocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.keratinocytes.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -255,7 +255,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.keratinocytes.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.keratinocytes.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -297,7 +297,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad", "-t", "fetal_skin.lymphoid_B", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.lymphoid_B.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_B.h5ad", "-t", "fetal_skin.lymphoid_B", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -312,7 +312,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_B.doublet_removed_processed.20200130.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_B.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -354,7 +354,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad", "-t", "fetal_skin.lymphoid_T_NK", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.lymphoid_T_NK.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.lymphoid_T_NK.h5ad", "-t", "fetal_skin.lymphoid_T_NK", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -369,7 +369,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_T_NK.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.lymphoid_T_NK.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -411,7 +411,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.mast_cells.processed.20191205.h5ad", "-t", "fetal_skin.mast_cells", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.mast_cells.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.mast_cells.h5ad", "-t", "fetal_skin.mast_cells", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -426,7 +426,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.mast_cells.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.mast_cells.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -468,7 +468,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.melanocytes.processed.20191205.h5ad", "-t", "fetal_skin.melanocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.melanocytes.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.melanocytes.h5ad", "-t", "fetal_skin.melanocytes", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -483,7 +483,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.melanocytes.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.melanocytes.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -525,7 +525,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.monocytes.processed.20191205.h5ad", "-t", "fetal_skin.monocytes", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.monocytes.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.monocytes.h5ad", "-t", "fetal_skin.monocytes", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -540,7 +540,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.monocytes.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.monocytes.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -582,7 +582,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.overview.processed.h5ad", "-t", "fetal_skin.overview", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.overview.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.overview.h5ad", "-t", "fetal_skin.overview", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -597,7 +597,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.overview.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.overview.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -639,7 +639,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.stroma.processed.20191205.h5ad", "-t", "fetal_skin.stroma", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.stroma.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.stroma.h5ad", "-t", "fetal_skin.stroma", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -654,7 +654,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.stroma.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.stroma.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -696,7 +696,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.myeloid.processed.20191205.h5ad", "-t", "fetal_skin.myeloid", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.myeloid.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.myeloid.h5ad", "-t", "fetal_skin.myeloid", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -711,7 +711,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.myeloid.processed.20191205.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-skin/fetal_skin.myeloid.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
