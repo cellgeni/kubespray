@@ -43,66 +43,235 @@ spec:
           - name: indexfiles
             mountPath: /data
 ---
-# endometrium-all
-# endometrium-stromal
-# endometrium-epithelial
-# endometrium-epithelial-proliferative
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: reproductivecellatlas-endometrium-all
-# spec:
-#   selector:
-#     matchLabels:
-#       app: reproductivecellatlas-endometrium-all
-#   replicas: 1
-#   template:
-#     metadata: 
-#       name: reproductivecellatlas-endometrium-all
-#       labels:
-#         app: reproductivecellatlas-endometrium-all
-#     spec:
-#       volumes:
-#         - name: data
-#           persistentVolumeClaim:
-#             claimName: reproductivecellatlas-pvc
-#       containers:
-#       - image: quay.io/cellgeni/cellxgene:0.15.0
-#         imagePullPolicy: IfNotPresent
-#         name: reproductivecellatlas-endometrium-all
-#         ports:
-#         - containerPort: 5005
-#           name: cellxgene
-#         command: ["/bin/sh"]
-#         args: ["-c", "yes | cellxgene launch /data/endometrium-all.h5ad -t endometrium-all --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
-#         volumeMounts:
-#           - name: data
-#             mountPath: /data
-#         resources:
-#           requests:
-#             memory: "256M"
-#             cpu: "0.5"
-#           limits:
-#             memory: "1Gi"
-#             cpu: 1
-#       initContainers:
-#       - name: pull-data
-#         imagePullPolicy: IfNotPresent
-#         image: garland/aws-cli-docker
-#         command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium-all.h5ad', '/data']
-#         env:
-#           - name: AWS_ACCESS_KEY_ID
-#             valueFrom:
-#               secretKeyRef:
-#                 name: s3-secret
-#                 key: AWS_ACCESS_KEY_ID
-#           - name: AWS_SECRET_ACCESS_KEY
-#             valueFrom:
-#               secretKeyRef:
-#                 name: s3-secret
-#                 key: AWS_SECRET_ACCESS_KEY
-#         volumeMounts:
-#           - name: data
-#             mountPath: /data
-# ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reproductivecellatlas-endometrium-all
+spec:
+  selector:
+    matchLabels:
+      app: reproductivecellatlas-endometrium-all
+  replicas: 1
+  template:
+    metadata: 
+      name: reproductivecellatlas-endometrium-all
+      labels:
+        app: reproductivecellatlas-endometrium-all
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: reproductivecellatlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: reproductivecellatlas-endometrium-all
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_all.processed.h5ad -t 'Endometrium all' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "256M"
+            cpu: "0.5"
+          limits:
+            memory: "16Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_all.processed.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reproductivecellatlas-endometrium-stromal
+spec:
+  selector:
+    matchLabels:
+      app: reproductivecellatlas-endometrium-stromal
+  replicas: 1
+  template:
+    metadata: 
+      name: reproductivecellatlas-endometrium-stromal
+      labels:
+        app: reproductivecellatlas-endometrium-stromal
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: reproductivecellatlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: reproductivecellatlas-endometrium-stromal
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_stromal.h5ad -t 'Endometrium stromal' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "256M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_stromal.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reproductivecellatlas-endometrium-epithelial
+spec:
+  selector:
+    matchLabels:
+      app: reproductivecellatlas-endometrium-epithelial
+  replicas: 1
+  template:
+    metadata: 
+      name: reproductivecellatlas-endometrium-epithelial
+      labels:
+        app: reproductivecellatlas-endometrium-epithelial
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: reproductivecellatlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: reproductivecellatlas-endometrium-epithelial
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_epithelial.h5ad -t 'Endometrium epithelial' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "256M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reproductivecellatlas-endometrium-epithelial-proliferative
+spec:
+  selector:
+    matchLabels:
+      app: reproductivecellatlas-endometrium-epithelial-proliferative
+  replicas: 1
+  template:
+    metadata: 
+      name: reproductivecellatlas-endometrium-epithelial-proliferative
+      labels:
+        app: reproductivecellatlas-endometrium-epithelial-proliferative
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: reproductivecellatlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: reproductivecellatlas-endometrium-epithelial-proliferative
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_epithelial_proliferative.h5ad -t 'Endometrium epithelial proliferative' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "256M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial_proliferative.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

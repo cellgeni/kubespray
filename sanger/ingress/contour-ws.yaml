@@ -1189,6 +1189,30 @@ spec:
       services:
         - name: reproductivecellatlas
           port: 80
+    - match: /static
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial-proliferative
+          port: 80
+    - match: /all
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-all
+          port: 80
+    - match: /stromal
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-stromal
+          port: 80
+    - match: /epithelial
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial
+          port: 80
+    - match: /proliferative
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial-proliferative
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -1201,5 +1225,29 @@ spec:
     - match: /
       services:
         - name: reproductivecellatlas
+          port: 80
+    - match: /static
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial-proliferative
+          port: 80
+    - match: /all
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-all
+          port: 80
+    - match: /stromal
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-stromal
+          port: 80
+    - match: /epithelial
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial
+          port: 80
+    - match: /proliferative
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-epithelial-proliferative
           port: 80
 ---
