@@ -1208,7 +1208,7 @@ spec:
       services:
         - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /proliferative
+    - match: /epithelial-proliferative
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-epithelial-proliferative
