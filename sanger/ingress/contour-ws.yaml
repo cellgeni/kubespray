@@ -1177,3 +1177,29 @@ spec:
         - name: single-cell-atlas-cvid-10x
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: reproductivecellatlas
+spec:
+  virtualhost:
+    fqdn: www.reproductivecellatlas.org
+  routes:
+    - match: /
+      services:
+        - name: reproductivecellatlas
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: reproductivecellatlas-cellgeni
+spec:
+  virtualhost:
+    fqdn: reproductivecellatlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: reproductivecellatlas
+          port: 80
+---

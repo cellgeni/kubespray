@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: reproductivecellatlas
+  labels:
+    app: reproductivecellatlas
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: reproductivecellatlas
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reproductivecellatlas-ss2
+  labels:
+    app: reproductivecellatlas-ss2
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: reproductivecellatlas-ss2
+---
+endometrium-all.h5ad;
+endometrium-stromal.h5ad; endometrium_epithelial.h5ad, endometrium_epithelial_progenitors.h5ad . Please, may I ask you change the name of 
+endometrium-epithelial-progenitors.h5ad to endometrium_epithelial_proliferative
