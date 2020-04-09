@@ -68,7 +68,43 @@
 		</div>
 		<!-- /row  -->
 	</div>
-	
+
+	<!-- Data ingestion -->
+	<div class="container mt-4">
+		<div class="row  justify-content-around">
+			<div class="col-md-8 align-self-center">
+				<div class="alert alert-success shadow-lg" role="alert">
+					<p>If you would like your data to be added to this website please email us using the following email address: <a href="mailto:cv19caingest@sanger.ac.uk" class="badge badge-pill badge-success">cv19caingest@sanger.ac.uk</a></p>
+					<a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#ingestModal">Read more about data ingestion</a>
+					
+				</div>
+				<!-- Modal -->
+				<div class="modal fade" id="ingestModal" tabindex="-1" role="dialog" aria-labelledby="ingestModalTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+							<h5 class="modal-title" id="ingestModalTitle">COVID-19 Cell Atlas Data Ingestion</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							</div>
+							<div class="modal-body" style="font-size: 0.9rem; text-align:justify;">
+								<p style="text-align: center;"><strong>If you would like your data to be added to this website please email us using the following email address: <a href="mailto:cv19caingest@sanger.ac.uk" class="badge badge-pill badge-dark">cv19caingest@sanger.ac.uk</a></strong></p>
+								<p><strong>We accept all common data formats</strong> <i>(AnnData, Seurat, SingleCellExperiment, Loom, csv/tsv, etc)</i> as long as the object contains expression values and cell type annotations. Expression values can be in raw counts (which we will re-process) and/or normalised values (which we will serve directly).</p>
+								<p><strong>For visualisation</strong>, we use cell embeddings (e.g. UMAP) included in the object if available, or we will re-generate from expression values, where batch information will be essential. Other metadata, whether technical or biological, such as location of sampling, donor id (anonymised if necessary), age, sex, etc, that helps interpretation is hugely welcome.</p>
+								<p><strong>For unpublished data</strong>, we only show and allow retrieval of ~20 relevant genes <i>(please refer to the list at this page "For unpublished datasets, the included genes are")</i> until notified otherwise by the submitter. You can also opt to submit data of only the relevant genes, however in this case normalised expression values and cell embeddings are required.</p>			
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<!-- Relevant genes -->
 	<div class="container mt-4">
 		<div class="row  justify-content-around">
@@ -303,160 +339,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Dataset list -->
-	<!-- <div class="container mt-4">
-		<div class="row">
-			<div class="col">
-				<div class="card mb-2 shadow-lg h-100 bg-light border-dark">
-					<div class="card-header text-center">
-						<h3 class="my-0">Datasets</h4>
-					</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col">
-								<div class="list-group">
-									<a href="#vieira19-alveoli" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">parenchyma</span>
-										Vieira Braga et al
-									</a>
-									<a href="#madissoon20-lung" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">parenchyma</span>
-										Madissoon et al
-									</a>
-									<a href="#vieira19-nasal" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">nasal</span>
-										Vieira Braga et al
-									</a>
-									<a href="#deprez19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">airway</span>
-										Deprez et al
-									</a>
-									<a href="#lukassen20-lung" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">lung</span>
-										Lukassen et al
-									</a>
-									<a href="#vieira19-bronchi" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">bronchi</span>
-										Vieira Braga et al
-									</a>
-									<a href="#lukassen20-hbec" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">bronchial epithelial</span>
-										Lukassen et al
-									</a>
-									<a href="#madissoon20-oesophagus" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">oesophagus</span>
-										Madissoon et al
-									</a>
-									<a href="#cheng18" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">skin</span>
-										Cheng et al
-									</a>
-									<a href="#habib17" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">brain</span>
-										Habib et al
-									</a>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="list-group">
-									<a href="#guo18" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">testis</span>
-										Guo et al
-									</a>
-									<a href="#henry18" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">prostate</span>
-										Hentry et al
-									</a>
-									<a href="#vento18-10x" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">placenta,decidua</span>
-										Vento-Tormo et al
-									</a>
-									<a href="#litvinukova20" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">heart</span>
-										Litviňuková et al
-									</a>
-									<a href="#wang20-ileum" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">ileum</span>
-										Wang et al
-									</a>
-									<a href="#wang20-rectum" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">rectum</span>
-										Wang et al
-									</a>
-									<a href="#wang20-colon" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">colon</span>
-										Wang et al
-									</a>
-									<a href="#james20" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">colon,immune</span>
-										James et al
-									</a>
-									<a href="#smillie19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">colon,epithelial</span>
-										Smillie et al
-									</a>
-									<a href="#stewart19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">kidney</span>
-										Stewart et al
-									</a>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="list-group">
-									<a href="#lako" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">cornea</span>
-										<span>Unpublished <span style="font-size: x-small;">(Queen, Collin, Zerti, Lako)</span></span>
-									</a>
-									<a href="#voigt19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">retina</span>
-										Voigt et al
-									</a>
-									<a href="#menon19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">retina</span>
-										Menon et al
-									</a>
-									<a href="#lukowski19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">retina</span>
-										Lukowski et al
-									</a>
-									<a href="#macparland18" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">liver</span>
-										Macparland et al
-									</a>
-									<a href="#popescu19" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">fetal liver</span>
-										Popescu et al
-									</a>
-									<a href="#miao20" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">gallbladder</span>
-										<span>Unpublished <span style="font-size: x-small;">(Sampaziotis, Vallier)</span></span>
-									</a>
-									<a href="#park20" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">thymus</span>
-										Park et al
-									</a>
-									<a href="#madissoon20-spleen" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">spleen</span>
-										Madissoon et al
-									</a>
-									<a href="#baron16" class="list-group-item d-flex justify-content-between align-items-center">
-										<span class="badge badge-primary badge-pill">pancreas</span>
-										Baron et al
-									</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- /Dataset list -->
-
 
 	<!-- Dataset deck (container) -->
 	<div class="container mt-5">
