@@ -1,0 +1,132 @@
+html,
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  /* font-family: "Open Sans", sans-serif; */
+  text-align: justify;
+}
+
+.h-100v {
+  height: 100vh;
+}
+
+/* heart color navbar */
+.navbar-custom {
+  background-color: #b3363c;
+}
+
+ul.navbar-nav li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(20, 20, 20);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.5s;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+ul.navbar-nav li a.active {
+  color: white;
+  background-color: black;
+}
+
+ul.navbar-nav li a:hover {
+  color: white;
+  background-color: black;
+}
+
+/* hca titles */
+.hca-title {
+  font-size: 8rem;
+  line-height: 1em;
+  font-weight: 600;
+  text-shadow: 0.1em 0.1em 0.2em rgba(75, 75, 75, 0.6);
+}
+
+.hca-title .heart {
+  font-size: 9rem;
+  letter-spacing: 0.2rem;
+  color: #b3363c;
+}
+
+.hca-title .cell {
+  color: #353535;
+  font-weight: 700;
+}
+
+.hca-title .atlas {
+  color: #1c7cc7;
+  font-weight: 800;
+}
+
+/* reduce font size for laptops */
+@media all and (max-width: 959px) {
+  .hca-title {
+    font-size: 6rem;
+  }
+  .hca-title .heart {
+    font-size: 7rem;
+  }
+}
+
+.scroll-down {
+  position: absolute;
+  text-align: center;
+  bottom: 3em;
+  left: 30%;
+  /* color: white; */
+  letter-spacing: 0.4em;
+}
+
+/* team styles */
+.team ul li a {
+  color: #8d97ad;
+  padding-right: 15px;
+  -webkit-transition: 0.1s ease-in;
+  -o-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+  font-size: 1rem;
+}
+
+.team ul li a:hover {
+  -webkit-transform: translate3d(0px, -5px, 0px);
+  transform: translate3d(0px, -5px, 0px);
+  color: #b3363c;
+}
+
+.team-member:hover {
+  color: #b3363c;
+}
+
+.team-member:hover .hover-colored {
+  transform: scale(1);
+  -webkit-filter: none;
+  filter: none;
+}
+
+.hover-colored {
+  -webkit-filter: grayscale(100%);
+  transform: scale(0.9);
+  filter: grayscale(100%);
+  transition: transform 1s;
+}
+
+section {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+section#home {
+  height: calc(100vh - 80px);
+}
+
+.methodology-text {
+  color: #cacaca;
+  font-size: 2.5rem;
+}
