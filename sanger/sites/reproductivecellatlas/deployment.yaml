@@ -70,7 +70,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/endometrium_all.processed.h5ad -t 'Endometrium all' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_all.h5ad -t 'Endometrium all' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -85,7 +85,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_all.processed.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_all.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
