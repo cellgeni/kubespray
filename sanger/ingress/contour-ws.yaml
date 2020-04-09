@@ -848,6 +848,32 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
+  name: easter-buddies-backend
+spec:
+  virtualhost:
+    fqdn: easter-buddies-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: easter-buddies
+          port: 8005
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: easter-buddies
+spec:
+  virtualhost:
+    fqdn: easter-buddies.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: easter-buddies
+          port: 8005
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
   name: gutcellatlas-backend
 spec:
   virtualhost:
