@@ -53,16 +53,19 @@
 	
 	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 		<h1 class="display-1">COVID-19 Cell Atlas</h1>
-	</div>
+		</div>
 
 	<div class="logos container">
 		<div class="row">
 			<div class="col mx-auto text-center">
 				<a href="https://www.sanger.ac.uk/" target="_blank" class="mx-3">
-					<img src="logos/sanger.png" style="max-height: 100px;" class="img-responsive rounded" alt="Wellcome Trust">
+					<img src="logos/sanger.png" style="max-height: 100px;" class="img-responsive" alt="Wellcome Trust">
 				</a>
 				<a href="https://data.humancellatlas.org/" target="_blank"  class="mx-3">
-					<img src="logos/human-cell-atlas.png" style="max-height: 100px;" class="img-responsive rounded" alt="Human Cell Atlas">
+					<img src="logos/human-cell-atlas.png" style="max-height: 100px;" class="img-responsive" alt="Human Cell Atlas">
+				</a>
+				<a href="https://chanzuckerberg.com/" target="_blank"  class="mx-3">
+					<img src="logos/chan-zuckerberg-initiative.png" style="max-height: 100px;" class="img-responsive" alt="Human Cell Atlas">
 				</a>
 			</div>
 		</div>
@@ -104,11 +107,13 @@
 		</div>
 	</div>
 
-
 	<!-- Relevant genes -->
 	<div class="container mt-4">
 		<div class="row  justify-content-around">
 			<div class="col-md-8 align-self-center">
+				<div class="m-1" style="text-align:center; font-size: 1.5rem;">
+					Read the preprint <i class="ai ai-biorxiv"></i> <a href="https://arxiv.org/abs/2003.06122">≪SARS-CoV-2 Entry Genes Are Most Highly Expressed in Nasal Goblet and Ciliated Cells within Human Airways≫ Sungnak et al.</a>
+				</div>
 				<div class="alert alert-warning shadow-lg" role="alert">
 					<h5 class="alert-heading">COVID-19/SARS-CoV-2 entry-associated genes</h5>
 					<ul>
@@ -130,6 +135,8 @@
 	</div>
 	<!-- /Relevant genes -->
 
+
+	<!-- Dataset index -->
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col">
@@ -138,6 +145,10 @@
 						<h3 class="my-0">Datasets</h4>
 					</div>
 					<div class="card-body" style="font-size: 1rem;">
+
+						<span class="badge badge-primary">&squf;</span> Datasets included in the paper<br>
+						<span class="badge badge-secondary">&squf;</span> Datasets not included in the paper
+
 						<div class="card-deck font-size-small">
 
 							<div class="col-md-4">
@@ -154,19 +165,19 @@
 												<span class="badge badge-primary badge-pill">Bronchi</span> Vieira Braga et al
 											</a>
 											<a href="#lukassen20-hbec" class="list-group-item">
-												<span class="badge badge-primary badge-pill">Bronchi, epithelial</span> Lukassen et al.
+												<span class="badge badge-secondary badge-pill">Bronchi, epithelial</span> Lukassen et al.
 											</a>
 											<a href="#vieira19-alveoli" class="list-group-item">
 												<span class="badge badge-primary badge-pill">Lung parenchyma</span> Vieira Braga et al.
 											</a>
 											<a href="#madissoon20-lung" class="list-group-item">
-												<span class="badge badge-primary badge-pill">Lung parenchyma</span> Madissoon et al.
+												<span class="badge badge-secondary badge-pill">Lung parenchyma</span> Madissoon et al.
 											</a>
 											<a href="#lukassen20-lung" class="list-group-item">
-												<span class="badge badge-primary badge-pill">Lung parenchyma</span> Lukassen et al.
+												<span class="badge badge-secondary badge-pill">Lung parenchyma</span> Lukassen et al.
 											</a>
 											<a href="#miller20" class="list-group-item">
-												<span class="badge badge-primary badge-pill">Fetal lung</span> Miller et al.
+												<span class="badge badge-secondary badge-pill">Fetal lung</span> Miller et al.
 											</a>
 											<a href="#deprez19" class="list-group-item">
 												<span class="badge badge-primary badge-pill">Total airway</span> Deprez et al.
@@ -339,6 +350,8 @@
 			</div>
 		</div>
 	</div>
+	<!-- /Dataset index -->
+
 
 	<!-- Dataset deck (container) -->
 	<div class="container mt-5">
@@ -959,7 +972,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script>
 		$(function () {
-			$('[data-toggle="popover"]').popover()
+			$('[data-toggle="popover"]').popover();
+			$('[data-toggle="tooltip"]').tooltip();
 		})
 
 		$("html").on("mouseup", function (e) {
