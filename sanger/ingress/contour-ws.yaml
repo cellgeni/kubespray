@@ -1059,12 +1059,22 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: placental-organoid-experiment-vis1
+        - name: placental-organoid-experiment-donor-2
           port: 80
-    - match: /visualisation-1
+    - match: /donors-1-and-2
       prefixRewrite: "/" 
       services:
-        - name: placental-organoid-experiment-vis1
+        - name: placental-organoid-experiment-donors-1-and-2
+          port: 80
+    - match: /donor-1
+      prefixRewrite: "/" 
+      services:
+        - name: placental-organoid-experiment-donor-1
+          port: 80
+    - match: /donor-2
+      prefixRewrite: "/" 
+      services:
+        - name: placental-organoid-experiment-donor-2
           port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
