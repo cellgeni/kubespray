@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imaging-metabase
+spec:
+  selector:
+    matchLabels:
+      app: imaging-metabase
+  replicas: 1
+  template:
+    metadata:
+      name: imaging-metabase
+      labels:
+        app: imaging-metabase
+    spec:
+      volumes:
+        - name: metabase-db
+          persistentVolumeClaim:
+            claimName: imaging-metabase-pvc
+      containers:
+      - image: metabase/metabase:v0.35.1
+        imagePullPolicy: IfNotPresent
+        name: imaging-metabase
+        ports:
+        - containerPort: 3000
+          name: metabase
+        volumeMounts:
+        - name: metabase-db
+          mountPath: /metabase.db
+        env:
+          - name: MB_DB_FILE
+            value: /metabase.db/
+        resources:
+          requests:
+            memory: "512M"
+            cpu: 1
+          limits:
+            memory: "8Gi"
+            cpu: 4

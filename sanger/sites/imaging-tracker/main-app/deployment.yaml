@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imaging-tracker
+spec:
+  selector:
+    matchLabels:
+      app: imaging-tracker
+  replicas: 1
+  template:
+    metadata:
+      name: imaging-tracker
+      labels:
+        app: imaging-tracker
+    spec:
+      containers:
+      - image: quay.io/cellgeni/imaging-tracker:0.5.0
+        imagePullPolicy: IfNotPresent
+        name: imaging-tracker
+        env:
+          - name: SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: imaging-tracker
+                key: secret_key
+          - name: MAIN_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: imaging-tracker
+                key: main_db_password
+        ports:
+        - containerPort: 80
+          name: imaging-tracker
+        resources:
+          requests:
+            memory: "256M"
+            cpu: 1
+          limits:
+            memory: "8Gi"
+            cpu: 4
+
+      
