@@ -1,0 +1,23 @@
+
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: pan-immune-cellgeni
+spec:
+  virtualhost:
+    fqdn: pan-immune.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: pan-immune
+          port: 80
+    - match: /static
+      services:
+        - name: pan-immune-pip-b-z15-7
+          port: 80
+    - match: /pip-b-z15-7
+      prefixRewrite: "/" 
+      services:
+        - name: pan-immune-pip-b-z15-7
+          port: 80
+---
