@@ -15,14 +15,28 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: pan-immune-pip-b-z15-7
+  name: pan-immune-global
   labels:
-    app: pan-immune-pip-b-z15-7
+    app: pan-immune-global
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: pan-immune-pip-b-z15-7
+    app: pan-immune-global
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pan-immune-t-cells
+  labels:
+    app: pan-immune-t-cells
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: pan-immune-t-cells
 ---

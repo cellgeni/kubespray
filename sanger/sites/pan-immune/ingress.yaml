@@ -13,11 +13,17 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: pan-immune-pip-b-z15-7
+        - name: pan-immune-global
           port: 80
-    - match: /pip-b-z15-7
+    - match: /global
       prefixRewrite: "/" 
       services:
-        - name: pan-immune-pip-b-z15-7
+        - name: pan-immune-global
           port: 80
+    - match: /t-cells
+      prefixRewrite: "/" 
+      services:
+        - name: pan-immune-t-cells
+          port: 80
+
 ---
