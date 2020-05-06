@@ -20,6 +20,33 @@
 	
 	<div class="container">
 		<div class="row">
+			<div class="col-md-6">
+				<h2 class="text-center text-success">Non-lymphoid Tissues</h2>
+				<img src="non-lymphoid-tissues.png" class="img-responsive col-md-12 rounded shadow-lg border border-success" usemap="#non-lymphoid-map">
+
+				<map name="non-lymphoid-map">
+					<area target="" alt="Lungs" title="Lungs" href="#LNG" coords="523,62,476,64,476,140,383,220,362,219,356,146,240,152,250,260,368,256,363,226,403,234,376,375,515,352,631,390,635,276,530,140,531,70" shape="poly">
+					<area target="" alt="Liver" title="Liver" href="#LVR" coords="160,447,162,541,129,559,104,609,109,649,115,685,155,663,170,668,215,639,221,646,232,637,279,612,286,593,312,558,254,551,259,449" shape="poly">
+					<area target="" alt="Omentum" title="Omentum" href="#OME" coords="429,445,618,447,617,484,583,491,577,556,628,582,612,595,567,584,484,616,427,583,414,573,462,549,461,494,427,487" shape="poly">
+					<area target="" alt="Kidney" title="Kidney" href="#KID" coords="746,470,734,490,733,503,726,506,726,516,734,519,733,562,749,562,783,559,794,516,801,517,801,526,818,531,821,587,913,588,913,541,932,529,929,491,805,489,797,505,773,473" shape="poly">
+					<area target="" alt="Skeletal muscle" title="Skeletal muscle" href="#SKM" coords="790,697,789,743,746,829,746,931,710,975,725,997,743,969,740,1008,767,998,771,955,818,871,825,936,842,1005,951,1003,951,945,964,938,963,889,973,845,829,841,835,747,853,679,810,753,805,696" shape="poly">
+					<area target="" alt="Duodenum" title="Duodenum" href="#DUO" coords="161,790,161,834,214,835,215,893,330,891,328,834,379,830,451,857,444,869,470,884,476,864,479,853,458,836,443,848,378,816,368,793" shape="poly">
+					<area target="" alt="Sigmoid colon" title="Sigmoid colon" href="#SCL" coords="658,1142,659,1246,759,1244,759,1130,786,1127,784,1085,639,1089,626,1050,603,1068,561,1067,560,1102,594,1107,632,1091,630,1125" shape="poly">
+					<area target="" alt="Caecum" title="Caecum" href="#CAE" coords="429,1076,397,1021,449,1008,465,1050,472,1072,438,1078,447,1103,417,1110,420,1165,312,1169,310,1112,289,1108,289,1074" shape="poly">
+					<area target="" alt="Transverse colon" title="Transverse colon" href="#TCL" coords="478,879,458,918,522,934,617,904,592,860,585,743,637,741,636,709,426,708,432,738,480,742,485,860,581,856,582,868,537,886,501,888" shape="poly">
+					<area target="" alt="Ileum" title="Ileum" href="#ILE" coords="477,1283,521,1284,520,1234,491,1224,530,1223,530,1187,490,1182,493,1073,511,1077,526,1065,530,1034,463,1022,486,1071,488,1168,484,1188,429,1187,427,1216,477,1225,442,1231,440,1283" shape="poly">
+				</map>
+
+			</div>
+			<div class="col-md-6">
+				<h2 class="text-center text-info">Lymphoid Tissues</h2>
+				<img src="lymphoid-tissues.png" class="img-responsive col-md-12 shadow-lg rounded border border-info" >
+			</div>
+		</div>	
+	</div>
+	
+	<div class="container mt-5">
+		<div class="row mt-3">
 			<div class="col-sm-12">
 				<div class="card mb-2 shadow-sm h-100">
 					<div class="card-header">
@@ -35,7 +62,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col-sm-12">
 				<div class="card mb-2 shadow-sm h-100">
 					<div class="card-header">
@@ -56,6 +83,13 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="imageMapResizer.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('map').imageMapResize();
+		});
+	</script>
   </body>
 </html>
