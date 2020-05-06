@@ -14,8 +14,8 @@
   </head>
   <body>
 
-	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-		<h1 class="display-2">Pan-tissue Immune Cell Atlas</h1>
+	<div class="container">
+		<h1 class="text-center py-3 display-3 bold">Pan-tissue Immune Cell Atlas</h1>
 	</div>
 	
 	<div class="container">
@@ -40,7 +40,15 @@
 			</div>
 			<div class="col-md-6">
 				<h2 class="text-center text-info">Lymphoid Tissues</h2>
-				<img src="lymphoid-tissues.png" class="img-responsive col-md-12 shadow-lg rounded border border-info" >
+				<img src="lymphoid-tissues.png" class="img-responsive col-md-12 shadow-lg rounded border border-info" usemap="#lymphoid-map">
+
+				<map name="lymphoid-map">
+					<area target="" alt="Bone marrow" title="Bone marrow" href="#BMA" coords="271,1037,259,1048,255,1081,341,1213,329,1231,304,1226,204,1098,188,1131,188,1182,74,1185,77,1132,53,1123,54,1096,80,1069,81,1028,177,1029,178,1083,194,1085,193,1049,222,1042,213,1021,238,996,265,1000" shape="poly">
+					<area target="" alt="Spleen" title="Spleen" href="/spleen" id="SPL" coords="854,606,793,610,793,638,808,647,808,706,741,705,736,731,773,782,759,805,773,829,798,809,835,842,860,827,859,779,826,717,905,714,907,653,928,647,918,607" shape="poly">
+					<area target="" alt="Mesenteric lymph nodes" title="Mesenteric lymph nodes" href="#MLN" coords="160,660,159,701,147,699,148,758,210,760,208,813,324,817,325,761,390,752,389,699,382,699,376,657,354,650,428,557,490,595,531,510,474,465,402,504,418,550,334,660" shape="poly">
+					<area target="" alt="Thymus" title="Thymus" href="#THY" coords="301,221,297,249,274,251,275,310,163,309,165,258,144,245,140,281,127,294,93,291,53,301,41,273,71,158,100,171,117,164,141,229,143,210,290,211" shape="poly">
+					<area target="" alt="Thoracic lymph nodes" title="Thoracic lymph nodes" href="#TLN" coords="853,214,688,218,690,245,610,287,608,259,427,268,426,314,467,357,559,349,593,306,694,250,710,251,710,351,725,419,823,416,823,364,832,359,828,255,855,251" shape="poly">
+				</map>
 			</div>
 		</div>	
 	</div>
@@ -73,6 +81,22 @@
 					</div>
 					<div class="card-footer">
 						<a href="/t-cells" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-sm-12">
+				<div class="card mb-2 shadow-sm h-100">
+					<div class="card-header">
+						<h4 class="my-0 font-weight-normal">Spleen</h4>
+					</div>
+					<div class="card-body">
+						<p>Spleen: adata_PIP-B_SPL.h5ad</p>
+					</div>
+					<div class="card-footer">
+						<a href="/spleen" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
 					</div>
 				</div>
 			</div>

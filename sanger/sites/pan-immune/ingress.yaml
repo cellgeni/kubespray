@@ -25,5 +25,9 @@ spec:
       services:
         - name: pan-immune-t-cells
           port: 80
-
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: pan-immune-spleen
+          port: 80
 ---

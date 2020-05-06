@@ -40,3 +40,17 @@ spec:
   selector:
     app: pan-immune-t-cells
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pan-immune-spleen
+  labels:
+    app: pan-immune-spleen
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: pan-immune-spleen
+---
