@@ -1,0 +1,14 @@
+
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: chondrocytes
+spec:
+  virtualhost:
+    fqdn: chondrocytes.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: chondrocytes
+          port: 80
+---
