@@ -54,3 +54,8 @@ spec:
       services:
         - name: heart-dev-endothelial
           port: 80
+    - match: /vascular-200512
+      prefixRewrite: "/" 
+      services:
+        - name: heart-dev-vascular-200512
+          port: 80
