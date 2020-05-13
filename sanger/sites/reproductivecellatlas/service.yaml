@@ -68,3 +68,17 @@ spec:
   selector:
     app: reproductivecellatlas-endometrium-epithelial-proliferative
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reproductivecellatlas-endometrium-organoid
+  labels:
+    app: reproductivecellatlas-endometrium-organoid
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: reproductivecellatlas-endometrium-organoid
+---

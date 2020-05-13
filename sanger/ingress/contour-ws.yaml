@@ -1249,6 +1249,11 @@ spec:
       services:
         - name: reproductivecellatlas-endometrium-epithelial-proliferative
           port: 80
+    - match: /endometrium-organoid
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-organoid
+          port: 80
 ---
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
@@ -1285,5 +1290,10 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-epithelial-proliferative
+          port: 80
+    - match: /endometrium-organoid
+      prefixRewrite: "/" 
+      services:
+        - name: reproductivecellatlas-endometrium-organoid
           port: 80
 ---
