@@ -59,3 +59,8 @@ spec:
       services:
         - name: heart-dev-vascular-200512
           port: 80
+    - match: /fibroblasts-200514
+      prefixRewrite: "/" 
+      services:
+        - name: heart-dev-fibroblasts-200514
+          port: 80
