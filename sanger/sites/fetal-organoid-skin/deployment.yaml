@@ -1,0 +1,273 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-organoid-skin
+spec:
+  selector:
+    matchLabels:
+      app: fetal-organoid-skin
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-organoid-skin
+      labels:
+        app: fetal-organoid-skin
+    spec:
+      volumes:
+        - name: indexfiles
+          emptyDir: {}
+      containers:
+      - image: nginx
+        imagePullPolicy: IfNotPresent
+        name: fetal-organoid-skin
+        ports:
+        - containerPort: 80
+          name: http
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/fetal-organoid-skin/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.1"
+          limits:
+            memory: "512M"
+            cpu: "0.7"
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: alpine/git
+        command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-organoid-skin-keratinocytes
+spec:
+  selector:
+    matchLabels:
+      app: fetal-organoid-skin-keratinocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-organoid-skin-keratinocytes
+      labels:
+        app: fetal-organoid-skin-keratinocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-organoid-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-organoid-skin-keratinocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/pooled_keratinocytes.cellxgene.h5ad", "-t", "Keratinocytes", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-organoid-skin/pooled_keratinocytes.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-organoid-skin-melanocytes
+spec:
+  selector:
+    matchLabels:
+      app: fetal-organoid-skin-melanocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-organoid-skin-melanocytes
+      labels:
+        app: fetal-organoid-skin-melanocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-organoid-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-organoid-skin-melanocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/pooled_melanocytes.cellxgene.h5ad", "-t", "Melanocytes", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-organoid-skin/pooled_melanocytes.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-organoid-skin-neuronal
+spec:
+  selector:
+    matchLabels:
+      app: fetal-organoid-skin-neuronal
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-organoid-skin-neuronal
+      labels:
+        app: fetal-organoid-skin-neuronal
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-organoid-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-organoid-skin-neuronal
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/pooled_neuronal.cellxgene.h5ad", "-t", "Neuronal", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-organoid-skin/pooled_neuronal.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-organoid-skin-stroma
+spec:
+  selector:
+    matchLabels:
+      app: fetal-organoid-skin-stroma
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-organoid-skin-stroma
+      labels:
+        app: fetal-organoid-skin-stroma
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-organoid-skin-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-organoid-skin-stroma
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/pooled_stroma.cellxgene.h5ad", "-t", "Stroma", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.5"
+          limits:
+            memory: "1Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-organoid-skin/pooled_stroma.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

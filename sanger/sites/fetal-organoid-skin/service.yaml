@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin
+  labels:
+    app: fetal-organoid-skin
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: fetal-organoid-skin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin-keratinocytes
+  labels:
+    app: fetal-organoid-skin-keratinocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-organoid-skin-keratinocytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin-melanocytes
+  labels:
+    app: fetal-organoid-skin-melanocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-organoid-skin-melanocytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin-neuronal
+  labels:
+    app: fetal-organoid-skin-neuronal
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-organoid-skin-neuronal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin-stroma
+  labels:
+    app: fetal-organoid-skin-stroma
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-organoid-skin-stroma
+---

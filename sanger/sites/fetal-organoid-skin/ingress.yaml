@@ -1,0 +1,38 @@
+
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: fetal-organoid-skin-cellgeni
+spec:
+  virtualhost:
+    fqdn: fetal-organoid-skin.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: fetal-organoid-skin
+          port: 80
+    - match: /static
+      services:
+        - name: fetal-organoid-skin-melanocytes
+          port: 80
+    - match: /keratinocytes
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-organoid-skin-keratinocytes
+          port: 80
+    - match: /melanocytes
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-organoid-skin-melanocytes
+          port: 80
+    - match: /neuronal
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-organoid-skin-neuronal
+          port: 80
+    - match: /stroma
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-organoid-skin-stroma
+          port: 80
+---
