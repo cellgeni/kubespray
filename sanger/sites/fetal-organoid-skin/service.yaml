@@ -68,3 +68,17 @@ spec:
   selector:
     app: fetal-organoid-skin-stroma
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-organoid-skin-endothelium
+  labels:
+    app: fetal-organoid-skin-endothelium
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-organoid-skin-endothelium
+---

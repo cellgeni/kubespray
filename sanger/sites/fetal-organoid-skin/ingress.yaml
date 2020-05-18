@@ -35,4 +35,9 @@ spec:
       services:
         - name: fetal-organoid-skin-stroma
           port: 80
+    - match: /endothelium
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-organoid-skin-endothelium
+          port: 80
 ---
