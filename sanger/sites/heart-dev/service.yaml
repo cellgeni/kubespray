@@ -85,30 +85,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-dev-myeloid
+  name: heart-dev-immune
   labels:
-    app: heart-dev-myeloid
+    app: heart-dev-immune
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-dev-myeloid
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: heart-dev-lymphoid
-  labels:
-    app: heart-dev-lymphoid
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: cellxgene
-  selector:
-    app: heart-dev-lymphoid
+    app: heart-dev-immune
 ---
 apiVersion: v1
 kind: Service

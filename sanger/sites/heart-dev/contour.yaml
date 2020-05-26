@@ -35,19 +35,14 @@ spec:
       services:
         - name: heart-dev-fibroblasts
           port: 80
-    - match: /myeloid
+    - match: /immune
       prefixRewrite: "/" 
       services:
-        - name: heart-dev-myeloid
-          port: 80
-    - match: /lymphoid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-dev-lymphoid
+        - name: heart-dev-immune
           port: 80
     - match: /static
       services:
-        - name: heart-dev-lymphoid
+        - name: heart-dev-immune
           port: 80
     - match: /endothelial
       prefixRewrite: "/" 
