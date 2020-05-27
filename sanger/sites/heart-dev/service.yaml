@@ -138,3 +138,18 @@ spec:
   selector:
     app: heart-dev-fibroblasts-200514
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-dev-neuronal
+  labels:
+    app: heart-dev-neuronal
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-dev-neuronal
+---
+

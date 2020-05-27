@@ -59,3 +59,8 @@ spec:
       services:
         - name: heart-dev-fibroblasts-200514
           port: 80
+    - match: /neuronal
+      prefixRewrite: "/" 
+      services:
+        - name: heart-dev-neuronal
+          port: 80
