@@ -152,4 +152,17 @@ spec:
   selector:
     app: heart-dev-neuronal
 ---
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-dev-adipocytes
+  labels:
+    app: heart-dev-adipocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-dev-adipocytes
+---

@@ -64,3 +64,8 @@ spec:
       services:
         - name: heart-dev-neuronal
           port: 80
+    - match: /adipocytes
+      prefixRewrite: "/" 
+      services:
+        - name: heart-dev-adipocytes
+          port: 80
