@@ -96,3 +96,17 @@ spec:
   selector:
     app: fetal-lung-imm
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-cluster0
+  labels:
+    app: fetal-lung-cluster0
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-cluster0
+---
