@@ -183,7 +183,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/fetal_skin.fibroblasts.processed.20191205.h5ad", "-t", "fetal_skin.fibroblasts", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.fibroblasts.csv"]
+        command: ["cellxgene", "launch", "/data/fetal_skin.fibroblasts.h5ad", "-t", "fetal_skin.fibroblasts", "--host", "0.0.0.0", "--port", "5005", "--annotations-file", "/data/fetal_skin.fibroblasts.csv"]
         volumeMounts:
           - name: data
             mountPath: /data
