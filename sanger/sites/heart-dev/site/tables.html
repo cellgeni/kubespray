@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+
+    <title>Supplementary tables</title>
+    <style>
+      .bg-heart{
+        background-color: #b3363c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="bg-heart mb-2">
+      <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+        <h1 class="display-4 text-white mt-5 mb-2">Heart Cell Atlas (mirror)</h1>
+        </div>
+      </div>
+      </div>
+    </header>
+  
+    <div class="container-fluid">
+      <div class="row" id="loading-row">
+        <div class="col text-center">
+          <button class="btn btn-sm btn-outline-danger align-middle" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+            Loading supplementary table...
+          </button>            
+        </div>
+      </div>
+      <div class="row d-none" id="title-row">
+        <div class="col">
+          <h4><span id="title"></span> <button id="export" type="button" class="btn btn-outline-danger btn-sm">Download</button></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div id="cell-cell-reactions" class="hot handsontable htColumnHeaders"></div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script>
+
+      const supplementaryPath = "/supplementary";
+
+      function createTable(dataSource){
+        var debounceFn = Handsontable.helper.debounce(function (colIndex, event) {
+          var filtersPlugin = hot.getPlugin('filters');
+          filtersPlugin.removeConditions(colIndex);
+          filtersPlugin.addCondition(colIndex, 'contains', [event.target.value]);
+          filtersPlugin.filter();
+        }, 200);
+
+        var addEventListeners = function (input, colIndex) {
+          input.addEventListener('keydown', function(event) {
+            debounceFn(colIndex, event);
+          });
+        };
+
+        // Build elements which will be displayed in header.
+        var getInitializedElements = function(colIndex) {
+          var div = document.createElement('div');
+          var input = document.createElement('input');
+          div.className = 'filterHeader';
+          addEventListeners(input, colIndex);
+          div.appendChild(input);
+          return div;
+        };
+
+        // Add elements to header on `afterGetColHeader` hook.
+        var addInput = function(col, TH) {
+          // Hooks can return value other than number (for example `columnSorting` plugin use this).
+          if (typeof col !== 'number') {
+            return col;
+          }
+          if (col >= 0 && TH.childElementCount < 2) {
+            TH.appendChild(getInitializedElements(col));
+          }
+        };
+
+        // Deselect column after click on input.
+        var doNotSelectColumn = function (event, coords) {
+          if (coords.row === -1 && event.target.nodeName === 'INPUT') {
+            event.stopImmediatePropagation();
+            this.deselectCell();
+          }
+        };
+        
+        $("#loading-row").addClass("d-none") 
+        $("#title-row").removeClass("d-none") 
+
+        const container = document.getElementById('cell-cell-reactions');
+        const hot = new Handsontable(container, {
+          data: dataSource.rows,
+          colHeaders: dataSource.columns,
+          rowHeaders: true,
+          filters: true,
+          minSpareRows: 1,
+          afterGetColHeader: addInput,
+          beforeOnCellMouseDown: doNotSelectColumn,
+          licenseKey:'non-commercial-and-evaluation'
+        });
+
+        // access to exportFile plugin instance
+        const exportPlugin = hot.getPlugin('exportFile');
+        document.getElementById('export').addEventListener('click', function() {
+          exportPlugin.downloadFile('csv', {
+            columnHeaders: true,
+            filename: `HeartCellAtlas-${dataSource.title}`,
+            columnDelimiter: ';',
+          });
+        });
+      }
+
+      function setPrettyTitle(dataSource){
+        let title = `${dataSource.file} - ${dataSource.title}`;
+        title = title.split("_").join(" ");
+        document.getElementById("title").textContent = title;
+      }
+      const params = new URLSearchParams(window.location.search);  
+      const dataSetName = params.get("data");
+      fetch(`${supplementaryPath}/${dataSetName}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        setPrettyTitle(data);
+        createTable(data);
+      })
+      .catch(err => {
+        alert(err);
+      })
+    </script>
+  </body>
+</html>
