@@ -43,3 +43,60 @@ spec:
           - name: indexfiles
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chondrocytes-limb-and-bone
+spec:
+  selector:
+    matchLabels:
+      app: chondrocytes-limb-and-bone
+  replicas: 1
+  template:
+    metadata: 
+      name: chondrocytes-limb-and-bone
+      labels:
+        app: chondrocytes-limb-and-bone
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: chondrocytes-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: chondrocytes-limb-and-bone
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/limb_and_bone.h5ad", "-t", "limb and bone", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/chondrocytes/limb_and_bone.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

@@ -11,4 +11,14 @@ spec:
       services:
         - name: chondrocytes
           port: 80
+    - match: /static
+      services:
+        - name: chondrocytes-limb-and-bone
+          port: 80
+    - match: /limb-and-bone
+      prefixRewrite: "/" 
+      services:
+        - name: chondrocytes-limb-and-bone
+          port: 80
+
 ---

@@ -12,3 +12,17 @@ spec:
   selector:
     app: chondrocytes
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chondrocytes-limb-and-bone
+  labels:
+    app: chondrocytes-limb-and-bone
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: chondrocytes-limb-and-bone
+---
