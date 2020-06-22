@@ -924,63 +924,6 @@ spec:
 apiVersion: contour.heptio.com/v1beta1
 kind: IngressRoute
 metadata:
-  name: fetal-lung
-spec:
-  virtualhost:
-    fqdn: fetal-lung.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      services:
-        - name: fetal-lung
-          port: 80
-    - match: /static
-      services:
-        - name: fetal-lung-main
-          port: 80
-    - match: /main
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-main
-          port: 80
-    - match: /rbc
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-rbc
-          port: 80
-    - match: /endo
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-endo
-          port: 80
-    - match: /epi
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-epi
-          port: 80
-    - match: /fsm
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-fsm
-          port: 80
-    - match: /imm
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-imm
-          port: 80
-    - match: /cluster0
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-cluster0
-          port: 80
-    - match: /cluster1
-      prefixRewrite: "/" 
-      services:
-        - name: fetal-lung-cluster1
-          port: 80
----
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
   name: rachel-fetal-skin
 spec:
   virtualhost:
