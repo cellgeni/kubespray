@@ -220,17 +220,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reproductivecellatlas-endometrium-epithelial-proliferative
+  name: reproductivecellatlas-endometrium-epithelial-regenerative
 spec:
   selector:
     matchLabels:
-      app: reproductivecellatlas-endometrium-epithelial-proliferative
+      app: reproductivecellatlas-endometrium-epithelial-regenerative
   replicas: 1
   template:
     metadata: 
-      name: reproductivecellatlas-endometrium-epithelial-proliferative
+      name: reproductivecellatlas-endometrium-epithelial-regenerative
       labels:
-        app: reproductivecellatlas-endometrium-epithelial-proliferative
+        app: reproductivecellatlas-endometrium-epithelial-regenerative
     spec:
       volumes:
         - name: data
@@ -239,12 +239,12 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
-        name: reproductivecellatlas-endometrium-epithelial-proliferative
+        name: reproductivecellatlas-endometrium-epithelial-regenerative
         ports:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/endometrium_epithelial_proliferative.h5ad -t 'Endometrium epithelial proliferative' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
+        args: ["-c", "yes | cellxgene launch /data/endometrium_epithelial_regenerative.h5ad -t 'Endometrium epithelial regenerative' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://www.reproductivecellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -259,7 +259,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial_proliferative.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial_regenerative.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

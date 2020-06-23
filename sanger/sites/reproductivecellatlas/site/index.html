@@ -31,6 +31,16 @@
 		.lead-title{
 			font-size:1.5rem;
 		}
+		.rca-title{
+			font-weight: bolder;
+			font-size: 3rem;
+		}
+		.light-text{
+			color:white !important;
+		}
+		.slightly-larger{
+			font-size: 1.25rem;
+		}
 		@media only screen and (min-width: 768px) {
 			.col-height {
 				min-height: 75vh;
@@ -40,19 +50,25 @@
   </head>
   <body>
 
-	<!-- Header -->
-	<header class="bg-header py-4">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-5">
-					<h1 class="ml-5">Reproductive Cell Atlas</h1>
-				</div>
-				<div class="col-6">
-				</div>
-			</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-header">
+		<a class="navbar-brand rca-title light-text ml-5" href="#">Reproductive Cell Atlas</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="nav navbar-nav ml-auto mr-5">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle light-text slightly-larger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Supplementary tables</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/supplementary/Table_S3.xlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Table S3</a>
+						<a class="dropdown-item" href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/supplementary/Table_S5.xlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Table S5</a>
+						<a class="dropdown-item" href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/supplementary/Table_S8.xlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Table S8</a>
+					</div>
+				</li>
+			</ul>
 		</div>
-	</header>
-	
+	</nav>
 
 	
 	<div class="container-fluid">
@@ -68,30 +84,54 @@
 
 			<div class="col-md-4 text-center m-1 col-height">
 				<div clas="card-deck">
-						<div class="card border-dark">
-							<h2 class="card-title mt-2">Pregnant uterus</h2>
-							<div class="card-body p-4">
-								<p>Single-cell reconstruction of the early maternal-fetal interface in humans. Vento-Tormo R, Efremova M, et al., Nature. 2018 Nov;563(7731):347-353. </p>
-								<p><a href="https://www.nature.com/articles/s41586-018-0698-6"><i class="ai ai-doi"></i> 10.1038/s41586-018-0698-6. Epub 2018 Nov 14.</a> </p>
-								<a href="https://maternal-fetal-interface.cellgeni.sanger.ac.uk/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+					<div class="card border-dark">
+						<h2 class="card-title mt-2">Pregnant uterus</h2>
+						<div class="card-body p-4">
+							<p>Single-cell reconstruction of the early maternal-fetal interface in humans. Vento-Tormo R, Efremova M, et al., Nature. 2018 Nov;563(7731):347-353. </p>
+							<p><a href="https://www.nature.com/articles/s41586-018-0698-6"><i class="ai ai-doi"></i> 10.1038/s41586-018-0698-6. Epub 2018 Nov 14.</a> </p>
+							<a href="https://maternal-fetal-interface.cellgeni.sanger.ac.uk/" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+						</div>
+					</div>	
+					
+					<div class="card border-dark mt-2">
+						<h2 class="card-title mt-2">Non-pregnant uterus</h2>
+						<div class="card-body mx-4 py-2">
+							<p class="mb-2">Unpublished</p>
+							<div class="row my-2">
+								<div class="btn-group btn-block" role="group" aria-label="all">
+									<a href="/all" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium (all)</strong></a>
+									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_all.h5ad" class=" col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>
+								</div>
 							</div>
-						</div>	
-						
-						<div class="card border-dark mt-2">
-							<h2 class="card-title mt-2">Non-pregnant uterus</h2>
-							<div class="card-body px-4 py-2">
-								<p class="mb-2">Unpublished</p>
-								<a href="/all" class="btn btn-sm btn-block btn-primary">Interactive viewer: <span class="badge badge-pill badge-secondary">Endometrium (all)</a>
-								<a href="/stromal" class="btn btn-sm btn-block btn-primary">Interactive viewer <span class="badge badge-pill badge-secondary">Endometrium Stromal</a>
-								<a href="/epithelial" class="btn btn-sm btn-block btn-primary">Interactive viewer <span class="badge badge-pill badge-secondary">Endometrium Epithelial</a>
-								<a href="/epithelial-proliferative" class="btn btn-sm btn-block btn-primary">Interactive viewer <span class="badge badge-pill badge-secondary">Endometrium Epithelial Proliferative</a>
-									<a href="/endometrium-organoid" class="btn btn-sm btn-block btn-primary">Interactive viewer <span class="badge badge-pill badge-secondary">Endometrium Organoid</a>
+							<div class="row my-2">
+								<div class="btn-group btn-block" role="group" aria-label="stromal">
+									<a href="/stromal" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Stromal</strong></a>
+									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_stromal.h5ad" class="col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>
+								</div>
 							</div>
-						</div>	
+							<div class="row my-2">	
+								<div class="btn-group btn-block" role="group" aria-label="epithelial">
+									<a href="/epithelial" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Epithelial</strong></a>
+									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_epithelial.h5ad" class="col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>	
+								</div>
+							</div>
+							<div class="row my-2">
+								<div class="btn-group btn-block" role="group" aria-label="epithelial-regenerative">
+									<a href="/epithelial-regenerative" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Epithelial Regenerative</strong></a>
+									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_epithelial_regenerative.h5ad" class="col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>
+								</div>
+							</div>
+							<div class="row my-2">
+								<div class="btn-group btn-block" role="group" aria-label="endometrium-organoid">
+									<a href="/endometrium-organoid" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Organoid</strong></a>
+									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_organoid.h5ad" class="col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>
+								</div>
+							</div>
+							
+						</div>
+					</div>	
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 

@@ -57,16 +57,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: reproductivecellatlas-endometrium-epithelial-proliferative
+  name: reproductivecellatlas-endometrium-epithelial-regenerative
   labels:
-    app: reproductivecellatlas-endometrium-epithelial-proliferative
+    app: reproductivecellatlas-endometrium-epithelial-regenerative
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: reproductivecellatlas-endometrium-epithelial-proliferative
+    app: reproductivecellatlas-endometrium-epithelial-regenerative
 ---
 apiVersion: v1
 kind: Service
