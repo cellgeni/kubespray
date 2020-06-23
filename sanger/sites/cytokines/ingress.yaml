@@ -1,0 +1,35 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: cytokines
+  annotations:
+    contour.heptio.com/ingress.class: contour
+    contour.heptio.com/request-timeout: 1000s
+spec:
+  virtualhost:
+    fqdn: cytokines.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: cytokines-app
+          port: 80
+    - match: /static
+      enableWebsockets: true
+      services:
+        - name: cytokines-resting
+          port: 80
+    - match: /simulated
+      prefixRewrite: "/" 
+      enableWebsockets: true
+      services:
+        - name: cytokines-simulated
+          port: 80
+    - match: /resting
+      prefixRewrite: "/" 
+      #enableWebsockets: true
+      services:
+        - name: cytokines-resting
+          port: 80
+---

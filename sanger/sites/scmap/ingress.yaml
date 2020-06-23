@@ -1,0 +1,29 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scmap-backend
+spec:
+  virtualhost:
+    fqdn: scmap-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scmap
+          port: 9000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scmap
+spec:
+  virtualhost:
+    fqdn: scmap.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scmap
+          port: 9000
+---

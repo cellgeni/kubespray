@@ -1,0 +1,15 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: melanoma
+spec:
+  virtualhost:
+    fqdn: melanoma.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: melanoma
+          port: 80
+---

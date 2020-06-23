@@ -1,0 +1,29 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: cvid-activation
+spec:
+  virtualhost:
+    fqdn: cvid-activation.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: cvid-activation
+          port: 80
+    - match: /static
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-harmony
+          port: 80
+    - match: /nocpg
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-nocpg
+          port: 80
+    - match: /harmony
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-harmony
+          port: 80
+---

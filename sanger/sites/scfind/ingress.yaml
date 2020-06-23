@@ -1,0 +1,29 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scfind-backend
+spec:
+  virtualhost:
+    fqdn: scfind-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scfind
+          port: 9000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: scfind
+spec:
+  virtualhost:
+    fqdn: scfind.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: scfind
+          port: 9000
+---

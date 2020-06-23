@@ -1,0 +1,15 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: hemocytes
+spec:
+  virtualhost:
+    fqdn: hemocytes.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: hemocytes
+          port: 80
+---

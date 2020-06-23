@@ -1,0 +1,45 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: biliarytree
+spec:
+  virtualhost:
+    fqdn: biliarytree.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: biliarytree
+          port: 80
+    - match: /biliarytree-human-primary
+      prefixRewrite: "/" 
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+    - match: /static
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: biliarytree-backend
+spec:
+  virtualhost:
+    fqdn: biliarytree-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: biliarytree
+          port: 80
+    - match: /biliarytree-human-primary
+      prefixRewrite: "/" 
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+    - match: /static
+      services:
+        - name: biliarytree-human-primary
+          port: 80
+---

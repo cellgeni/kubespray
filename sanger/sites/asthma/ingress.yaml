@@ -1,0 +1,35 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: asthma-backend
+  annotations:
+    contour.heptio.com/ingress.class: contour
+    contour.heptio.com/request-timeout: 1000s
+spec:
+  virtualhost:
+    fqdn: asthma-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: asthma
+          port: 9001
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: asthma
+  annotations:
+    contour.heptio.com/ingress.class: contour
+    contour.heptio.com/request-timeout: 1000s
+spec:
+  virtualhost:
+    fqdn: asthma.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: asthma
+          port: 9001
+---

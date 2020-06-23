@@ -1,0 +1,29 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: transcriptomics
+spec:
+  virtualhost:
+    fqdn: spatial-transcriptomics-research.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: transcriptomics
+          port: 8080
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: transcriptomics-backend
+spec:
+  virtualhost:
+    fqdn: spatial-transcriptomics-research-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: transcriptomics
+          port: 8080
+---

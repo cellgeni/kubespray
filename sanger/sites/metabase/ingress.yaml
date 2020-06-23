@@ -1,0 +1,37 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: metabase
+spec:
+  virtualhost:
+    fqdn: metabase.cellgeni.sanger.ac.uk
+    annotations:
+      contour.heptio.com/request-timeout: infinity
+    tls: 
+      secretName: cert-secret
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: metabase
+          port: 3000
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: metabase-backend
+spec:
+  virtualhost:
+    fqdn: metabase-backend.cellgeni.sanger.ac.uk
+    annotations:
+      contour.heptio.com/request-timeout: infinity
+    tls: 
+      secretName: cert-secret
+  routes:
+    - match: /
+      enableWebsockets: true
+      services:
+        - name: metabase
+          port: 3000
+---

@@ -1,0 +1,53 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: kidneycellatlas
+spec:
+  virtualhost:
+    fqdn: www.kidneycellatlas.org
+  routes:
+    - match: /
+      services:
+        - name: index-page
+          port: 80
+    - match: /static
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-immune
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-immune
+          port: 80
+    - match: /mature-kidney-global
+      prefixRewrite: "/" 
+      services:
+        - name: mature-kidney-global
+          port: 80
+    - match: /mature-non-pt-parenchyma
+      prefixRewrite: "/" 
+      services:
+        - name: mature-non-pt-parenchyma
+          port: 80
+    - match: /fetal-kidney-stroma
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-stroma
+          port: 80
+    - match: /fetal-kidney-global
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-global
+          port: 80
+    - match: /fetal-kidney-developing-nephron
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-developing-nephron
+          port: 80
+    - match: /fetal-kidney-immune
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-kidney-immune
+          port: 80
+---

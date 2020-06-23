@@ -1,0 +1,97 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestability
+spec:
+  virtualhost:
+    fqdn: www.tissuestabilitycellatlas.org
+  routes:
+    - match: /oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestability-backend
+spec:
+  virtualhost:
+    fqdn: tissuestability-backend.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
+          port: 80
+    - match: /oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tissuestability-cellgeni
+spec:
+  virtualhost:
+    fqdn: tissuestability.cellgeni.sanger.ac.uk
+  routes:
+    - match: /oesophagus
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-oesophagus
+          port: 80
+    - match: /lung
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-lung
+          port: 80
+    - match: /spleen
+      prefixRewrite: "/" 
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /static
+      services:
+        - name: tissue-stability-spleen
+          port: 80
+    - match: /
+      services:
+        - name: tissue-stability-cell-atlas
+          port: 80
+---

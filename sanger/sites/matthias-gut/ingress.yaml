@@ -1,0 +1,28 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: matthias-gut
+spec:
+  virtualhost:
+    fqdn: matthias-gut.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: matthias-gut
+          port: 80
+    - match: /static
+      services:
+        - name: matthias-gut-atac
+          port: 80
+    - match: /atac
+      prefixRewrite: "/" 
+      services:
+        - name: matthias-gut-atac
+          port: 80
+    - match: /rna
+      prefixRewrite: "/" 
+      services:
+        - name: matthias-gut-rna
+          port: 80
+---
