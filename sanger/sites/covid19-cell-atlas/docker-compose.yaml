@@ -271,7 +271,7 @@ services:
     - "5033:5005"
     volumes:
     - /home/ubuntu/data:/data
-    entrypoint: /bin/sh -c "yes | cellxgene launch /data/aldinger_cerebellum_restricted.processed.h5ad -t 'Fetal cerebellum (aldinger20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js  --disable-annotations"
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/aldinger.processed.h5ad -t 'Fetal cerebellum (aldinger20)' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js  --disable-annotations"
   byrd20:
     container_name: byrd20
     image: quay.io/cellgeni/cellxgene:0.15.0
