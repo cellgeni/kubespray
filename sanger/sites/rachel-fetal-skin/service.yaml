@@ -180,3 +180,33 @@ spec:
   selector:
     app: fetal-skin-myeloid
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-muscle
+  labels:
+    app: fetal-skin-muscle
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-muscle
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-skin-neuronal
+  labels:
+    app: fetal-skin-neuronal
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-skin-neuronal
+---
+
+

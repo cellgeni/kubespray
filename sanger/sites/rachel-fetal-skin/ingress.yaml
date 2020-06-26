@@ -75,4 +75,14 @@ spec:
       services:
         - name: fetal-skin-myeloid
           port: 80
+    - match: /fetal-skin-muscle
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-skin-muscle
+          port: 80
+    - match: /fetal-skin-neuronal
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-skin-neuronal
+          port: 80
 ---
