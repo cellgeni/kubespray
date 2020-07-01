@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 80
           name: http
-        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/mfi-atlas-/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/mfi-atlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
           - name: indexfiles
             mountPath: /data
