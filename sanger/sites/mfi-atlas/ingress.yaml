@@ -1,0 +1,23 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: mfi-atlas
+spec:
+  virtualhost:
+    fqdn: mfi-atlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: mfi-atlas
+          port: 80
+    - match: /static
+      services:
+        - name: mfi-atlas-p13-snrna-seq
+          port: 80
+    - match: /p13-snrna-seq
+      prefixRewrite: "/" 
+      services:
+        - name: mfi-atlas-p13-snrna-seq
+          port: 80
+---
