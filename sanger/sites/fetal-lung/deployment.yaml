@@ -418,7 +418,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/200525C0.h5ad -t 'Cluster 0, 200528' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        args: ["-c", "yes | cellxgene launch /data/cluster_0.h5ad -t 'Cluster 0, 200528' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -433,7 +433,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/200525C0.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/cluster_0.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -476,7 +476,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/200612C1.h5ad -t 'Cluster 1, 200612' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        args: ["-c", "yes | cellxgene launch /data/cluster_1.h5ad -t 'Cluster 1, 200612' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -491,7 +491,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/200612C1.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/cluster_1.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -534,7 +534,7 @@ spec:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/200618C2.h5ad -t 'Cluster 2, 200618' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        args: ["-c", "yes | cellxgene launch /data/cluster_2.h5ad -t 'Cluster 2, 200618' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -549,7 +549,65 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/200618C2.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/cluster_2.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-cluster3
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-cluster3
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-cluster3
+      labels:
+        app: fetal-lung-cluster3
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-cluster3
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/cluster_3.h5ad -t 'Cluster 3, 200701' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "3Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/cluster_3.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
