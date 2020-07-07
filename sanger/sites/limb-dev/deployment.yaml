@@ -62,14 +62,14 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.14.1
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: limb-dev-hindlimb
         ports:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/191204hindlimb.h5ad -t 'Hindlimb (log-normalized)' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js"]
+        args: ["-c", "yes | cellxgene launch /data/191204hindlimb.h5ad -t 'Hindlimb (log-normalized)' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -99,3 +99,120 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: limb-dev-ucla-pcw6
+spec:
+  selector:
+    matchLabels:
+      app: limb-dev-ucla-pcw6
+  replicas: 1
+  template:
+    metadata: 
+      name: limb-dev-ucla-pcw6
+      labels:
+        app: limb-dev-ucla-pcw6
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: limb-dev-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: limb-dev-ucla-pcw6
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/ucla-pcw6.h5ad -t 'UCLA-PCW6' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/limb-dev/ucla-pcw6.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: limb-dev-ucla-pcw7
+spec:
+  selector:
+    matchLabels:
+      app: limb-dev-ucla-pcw7
+  replicas: 1
+  template:
+    metadata: 
+      name: limb-dev-ucla-pcw7
+      labels:
+        app: limb-dev-ucla-pcw7
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: limb-dev-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: limb-dev-ucla-pcw7
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/ucla-pcw7.h5ad -t 'UCLA-PCW7' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/limb-dev/ucla-pcw7.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

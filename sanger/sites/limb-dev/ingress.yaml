@@ -20,4 +20,14 @@ spec:
       services:
         - name: limb-dev-hindlimb
           port: 80
+    - match: /ucla-pcw6
+      prefixRewrite: "/" 
+      services:
+        - name: limb-dev-ucla-pcw6
+          port: 80
+    - match: /ucla-pcw7
+      prefixRewrite: "/" 
+      services:
+        - name: limb-dev-ucla-pcw7
+          port: 80
 ---
