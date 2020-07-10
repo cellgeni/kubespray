@@ -120,13 +120,13 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.15.0
+      - image: quay.io/cellgeni/cellxgene:0.1-hindlimb
         imagePullPolicy: IfNotPresent
         name: limb-dev-ucla-pcw6
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["/bin/sh"]
+        command: ["/bin/bash"]
         args: ["-c", "yes | cellxgene launch /data/ucla-pcw6.h5ad -t 'UCLA-PCW6' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
@@ -178,7 +178,7 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.15.0
+      - image: quay.io/cellgeni/cellxgene:0.1-hindlimb
         imagePullPolicy: IfNotPresent
         name: limb-dev-ucla-pcw7
         ports:
@@ -194,7 +194,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "2Gi"
+            memory: "4Gi"
             cpu: 1
       initContainers:
       - name: pull-data
