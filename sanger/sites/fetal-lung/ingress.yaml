@@ -69,3 +69,8 @@ spec:
       services:
         - name: fetal-lung-cluster4
           port: 80
+    - match: /cluster5
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-cluster5
+          port: 80
