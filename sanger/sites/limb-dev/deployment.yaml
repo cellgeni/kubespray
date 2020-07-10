@@ -120,7 +120,7 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.1-hindlimb
+      - image: quay.io/cellgeni/cellxgene:0.2-hindlimb
         imagePullPolicy: IfNotPresent
         name: limb-dev-ucla-pcw6
         ports:
@@ -178,7 +178,7 @@ spec:
           persistentVolumeClaim:
             claimName: limb-dev-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.1-hindlimb
+      - image: quay.io/cellgeni/cellxgene:0.2-hindlimb
         imagePullPolicy: IfNotPresent
         name: limb-dev-ucla-pcw7
         ports:
@@ -194,7 +194,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "4Gi"
+            memory: "6Gi"
             cpu: 1
       initContainers:
       - name: pull-data
