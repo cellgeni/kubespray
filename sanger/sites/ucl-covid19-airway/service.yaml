@@ -12,17 +12,17 @@ spec:
   selector:
     app: ucl-covid19-airway
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: ucl-covid19-airway-data
-#   labels:
-#     app: ucl-covid19-airway-data
-# spec:
-#   type: NodePort
-#   ports:
-#   - port: 80
-#     targetPort: cellxgene
-#   selector:
-#     app: ucl-covid19-airway-data
-# ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ucl-covid19-airway-data
+  labels:
+    app: ucl-covid19-airway-data
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: ucl-covid19-airway-data
+---

@@ -43,60 +43,60 @@ spec:
           - name: indexfiles
             mountPath: /data
 ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: ucl-covid19-airway-data
-# spec:
-#   selector:
-#     matchLabels:
-#       app: ucl-covid19-airway-data
-#   replicas: 1
-#   template:
-#     metadata: 
-#       name: ucl-covid19-airway-data
-#       labels:
-#         app: ucl-covid19-airway-data
-#     spec:
-#       volumes:
-#         - name: data
-#           persistentVolumeClaim:
-#             claimName: ucl-covid19-airway-pvc
-#       containers:
-#       - image: quay.io/cellgeni/cellxgene:0.15.0
-#         imagePullPolicy: IfNotPresent
-#         name: ucl-covid19-airway-data
-#         ports:
-#         - containerPort: 5005
-#           name: cellxgene
-#         command: ["cellxgene", "launch", "/data/p13_snrna-seq.h5ad", "--title", "P13 snRNA-seq", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
-#         volumeMounts:
-#           - name: data
-#             mountPath: /data
-#         resources:
-#           requests:
-#             memory: "512M"
-#             cpu: "0.5"
-#           limits:
-#             memory: "2Gi"
-#             cpu: 1
-#       initContainers:
-#       - name: pull-data
-#         imagePullPolicy: IfNotPresent
-#         image: garland/aws-cli-docker
-#         command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/ucl-covid19-airway/p13_snrna-seq.h5ad', '/data']
-#         env:
-#           - name: AWS_ACCESS_KEY_ID
-#             valueFrom:
-#               secretKeyRef:
-#                 name: s3-secret
-#                 key: AWS_ACCESS_KEY_ID
-#           - name: AWS_SECRET_ACCESS_KEY
-#             valueFrom:
-#               secretKeyRef:
-#                 name: s3-secret
-#                 key: AWS_SECRET_ACCESS_KEY
-#         volumeMounts:
-#           - name: data
-#             mountPath: /data
-# ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ucl-covid19-airway-data
+spec:
+  selector:
+    matchLabels:
+      app: ucl-covid19-airway-data
+  replicas: 1
+  template:
+    metadata: 
+      name: ucl-covid19-airway-data
+      labels:
+        app: ucl-covid19-airway-data
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: ucl-covid19-airway-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: ucl-covid19-airway-data
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/ucl_covid19_airway.processed.cellxgene.20200716.h5ad", "--title", "UCL COVID19 AIRWAY", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/ucl-covid19-airway/ucl_covid19_airway.processed.cellxgene.20200716.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

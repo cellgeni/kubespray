@@ -11,13 +11,13 @@ spec:
       services:
         - name: ucl-covid19-airway
           port: 80
-    # - match: /static
-    #   services:
-    #     - name: ucl-covid19-airway-data
-    #       port: 80
-    # - match: /data
-    #   prefixRewrite: "/" 
-    #   services:
-    #     - name: ucl-covid19-airway-data
-    #       port: 80
+    - match: /static
+      services:
+        - name: ucl-covid19-airway-data
+          port: 80
+    - match: /data
+      prefixRewrite: "/" 
+      services:
+        - name: ucl-covid19-airway-data
+          port: 80
 ---
