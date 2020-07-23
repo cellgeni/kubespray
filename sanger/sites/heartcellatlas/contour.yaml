@@ -6,7 +6,6 @@ spec:
   virtualhost:
     fqdn: www.heartcellatlas.org
   routes:
-  routes:
     - match: /
       services:
         - name: heart-cell-atlas
@@ -49,56 +48,53 @@ spec:
     - match: /static
       services:
         - name: heart-cell-atlas-lymphoid
+          port: 80
+    - match: /
+      services:
+        - name: heart-cell-atlas
+          port: 80
+    - match: /global
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-global
+          port: 80
+    - match: /atrial
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-atrial
+          port: 80
+    - match: /ventricular
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-ventricular
+          port: 80
+    - match: /vascular
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-vascular
+          port: 80
+    - match: /fibroblasts
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-fibroblasts
+          port: 80
+    - match: /immune
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-immune
+          port: 80
+    - match: /static
+      services:
+        - name: heart-cell-atlas-immune
+          port: 80
+    - match: /neuronal
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-neuronal
+          port: 80
+    - match: /adipocytes
+      prefixRewrite: "/" 
+      services:
+        - name: heart-cell-atlas-adipocytes
           port: 80
 ---
-apiVersion: contour.heptio.com/v1beta1
-kind: IngressRoute
-metadata:
-  name: heartcellatlas-backend
-spec:
-  virtualhost:
-    fqdn: heartcellatlas-backend.cellgeni.sanger.ac.uk
-  routes:
-    - match: /
-      services:
-        - name: heart-cell-atlas
-          port: 80
-    - match: /global
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-global
-          port: 80
-    - match: /atrial-cm
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-atrial-cm
-          port: 80
-    - match: /ventricular-cm
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-ventricular-cm
-          port: 80
-    - match: /vascular
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-vascular
-          port: 80
-    - match: /fibroblasts
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-fibroblasts
-          port: 80
-    - match: /myeloid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-myeloid
-          port: 80
-    - match: /lymphoid
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-lymphoid
-          port: 80
-    - match: /static
-      services:
-        - name: heart-cell-atlas-lymphoid
-          port: 80

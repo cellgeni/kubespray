@@ -29,30 +29,30 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-atlas-atrial-cm
+  name: heart-cell-atlas-atrial
   labels:
-    app: heart-cell-atlas-atrial-cm
+    app: heart-cell-atlas-atrial
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-atlas-atrial-cm
+    app: heart-cell-atlas-atrial
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-atlas-ventricular-cm
+  name: heart-cell-atlas-ventricular
   labels:
-    app: heart-cell-atlas-ventricular-cm
+    app: heart-cell-atlas-ventricular
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-atlas-ventricular-cm
+    app: heart-cell-atlas-ventricular
 ---
 apiVersion: v1
 kind: Service
@@ -71,20 +71,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-fibroblasts
-  labels:
-    app: heart-cell-fibroblasts
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: cellxgene
-  selector:
-    app: heart-cell-fibroblasts
----
-apiVersion: v1
-kind: Service
-metadata:
   name: heart-cell-atlas-vascular
   labels:
     app: heart-cell-atlas-vascular
@@ -99,28 +85,42 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-atlas-myeloid
+  name: heart-cell-atlas-immune
   labels:
-    app: heart-cell-atlas-myeloid
+    app: heart-cell-atlas-immune
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-atlas-myeloid
+    app: heart-cell-atlas-immune
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: heart-cell-atlas-lymphoid
+  name: heart-cell-atlas-neuronal
   labels:
-    app: heart-cell-atlas-lymphoid
+    app: heart-cell-atlas-neuronal
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: heart-cell-atlas-lymphoid
+    app: heart-cell-atlas-neuronal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-cell-atlas-adipocytes
+  labels:
+    app: heart-cell-atlas-adipocytes
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: heart-cell-atlas-adipocytes
 ---

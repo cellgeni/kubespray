@@ -106,6 +106,7 @@ ul.navbar-nav li a:hover {
 }
 
 .hover-colored {
+  max-width: 200px;
   -webkit-filter: grayscale(100%);
   transform: scale(0.9);
   filter: grayscale(100%);

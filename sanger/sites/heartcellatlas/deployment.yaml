@@ -69,7 +69,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch /data/HCA_Heart_ctl200210_website.h5ad --title 'Heart Global' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/global.h5ad --title 'Heart Global' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -84,7 +85,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/HCA_Heart_ctl200210_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/global.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -126,7 +127,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch /data/HCA_Heart_Atrial_CM_c200110_website.h5ad --title 'Heart Atrial Cardiomyocytes' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/atrial.h5ad --title 'Heart Atrial Cardiomyocytes' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -141,7 +143,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/HCA_Heart_Atrial_CM_c200110_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/atrial.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -183,7 +185,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch /data/HCA_Heart_Ventricular_CM_c200110_website.h5ad --title 'Heart Ventricular Cardiomyocytes' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/ventricular.h5ad --title 'Heart Ventricular Cardiomyocytes' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -198,7 +201,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/HCA_Heart_Ventricular_CM_c200110_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/ventricular.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -240,7 +243,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch /data/heart_Fibroblasts_scGEN_new_annotation_ml200403_website.h5ad --title 'Heart Fibroblasts' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/fibroblasts.h5ad --title 'Heart Fibroblasts' --host '0.0.0.0' --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -255,7 +259,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_Fibroblasts_scGEN_new_annotation_ml200403_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/fibroblasts.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -297,7 +301,8 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch", "/data/heart_Vascular_scGEN_new_annotation_ml200403_website.h5ad", "-t", "Heart Vascular", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations", "--scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/vascular.h5ad --title 'Heart Vascular' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -312,7 +317,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/heart_Vascular_scGEN_new_annotation_ml200403_website.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/vascular.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -331,17 +336,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heart-cell-atlas-myeloid
+  name: heart-cell-atlas-immune
 spec:
   selector:
     matchLabels:
-      app: heart-cell-atlas-myeloid
+      app: heart-cell-atlas-immune
   replicas: 1
   template:
     metadata: 
-      name: heart-cell-atlas-myeloid
+      name: heart-cell-atlas-immune
       labels:
-        app: heart-cell-atlas-myeloid
+        app: heart-cell-atlas-immune
     spec:
       volumes:
         - name: data
@@ -350,11 +355,12 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
-        name: heart-cell-atlas-myeloid
+        name: heart-cell-atlas-immune
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch", "/data/myeloid.h5ad", "-t", "Heart Myeloid", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations", "--scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/immune.h5ad --title 'Heart Immune' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -369,7 +375,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/myeloid.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/immune.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -388,17 +394,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heart-cell-atlas-lymphoid
+  name: heart-cell-atlas-neuronal
 spec:
   selector:
     matchLabels:
-      app: heart-cell-atlas-lymphoid
+      app: heart-cell-atlas-neuronal
   replicas: 1
   template:
     metadata: 
-      name: heart-cell-atlas-lymphoid
+      name: heart-cell-atlas-neuronal
       labels:
-        app: heart-cell-atlas-lymphoid
+        app: heart-cell-atlas-neuronal
     spec:
       volumes:
         - name: data
@@ -407,11 +413,12 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
-        name: heart-cell-atlas-lymphoid
+        name: heart-cell-atlas-neuronal
         ports:
         - containerPort: 5005
           name: cellxgene
-        args: ["-c", "yes | cellxgene launch", "/data/lymphoid.h5ad", "-t", "Heart Lymphoid", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations", "--scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/neuronal.h5ad --title 'Heart Neuronal' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -426,7 +433,65 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/lymphoid.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/neuronal.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-cell-atlas-adipocytes
+spec:
+  selector:
+    matchLabels:
+      app: heart-cell-atlas-adipocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: heart-cell-atlas-adipocytes
+      labels:
+        app: heart-cell-atlas-adipocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: heart-cell-atlas-cellxgene-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: heart-cell-atlas-adipocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/adipocytes.h5ad --title 'Heart Adipocytes' --host 0.0.0.0 --port 5005 --disable-annotations --scripts https://heartcellatlas.org/zxtm/piwik2.js"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/heartcellatlas/data/adipocytes.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
