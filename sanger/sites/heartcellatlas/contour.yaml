@@ -15,12 +15,12 @@ spec:
       services:
         - name: heart-cell-atlas-global
           port: 80
-    - match: /atrial-cm
+    - match: /atrial
       prefixRewrite: "/" 
       services:
         - name: heart-cell-atlas-atrial-cm
           port: 80
-    - match: /ventricular-cm
+    - match: /ventricular
       prefixRewrite: "/" 
       services:
         - name: heart-cell-atlas-ventricular-cm
@@ -61,12 +61,12 @@ spec:
     - match: /atrial
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-atlas-atrial
+        - name: heart-cell-atlas-atrial-cm
           port: 80
     - match: /ventricular
       prefixRewrite: "/" 
       services:
-        - name: heart-cell-atlas-ventricular
+        - name: heart-cell-atlas-ventricular-cm
           port: 80
     - match: /vascular
       prefixRewrite: "/" 
