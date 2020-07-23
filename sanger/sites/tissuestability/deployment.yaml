@@ -62,19 +62,19 @@ spec:
           persistentVolumeClaim:
             claimName: tissue-stability-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: tissue-stability-oesophagus
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/oesophagus.cellxgene.h5ad", "-t", "Oesophagus", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/oesophagus.cellxgene.h5ad", "-t", "Oesophagus", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
         resources:
           requests:
-            memory: "512M"
+            memory: "1Gi"
             cpu: "0.5"
           limits:
             memory: "5Gi"
@@ -82,7 +82,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/oesophagus.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/oesophagus.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -107,13 +107,13 @@ spec:
           persistentVolumeClaim:
             claimName: tissue-stability-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: tissue-stability-lung
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/lung.cellxgene.h5ad", "-t", "Lung", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/lung.cellxgene.h5ad", "-t", "Lung", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -127,7 +127,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/lung.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/lung.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
@@ -152,13 +152,13 @@ spec:
           persistentVolumeClaim:
             claimName: tissue-stability-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
         name: tissue-stability-spleen
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/spleen.cellxgene.h5ad", "-t", "Spleen", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/spleen.cellxgene.h5ad", "-t", "Spleen", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -172,7 +172,7 @@ spec:
       initContainers:
       - name: pull-data
         image: mwendler/wget
-        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/tissue-stability/spleen.cellxgene.h5ad', '-P', '/data']
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/tissue-stability/spleen.cellxgene.h5ad', '-P', '/data']
         volumeMounts:
           - name: data
             mountPath: /data
