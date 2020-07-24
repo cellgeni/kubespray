@@ -40,3 +40,17 @@ spec:
   selector:
     app: chondrocytes-sid-lawrence-bone-atlas
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chondrocytes-hongbo
+  labels:
+    app: chondrocytes-hongbo
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: chondrocytes-hongbo
+---
