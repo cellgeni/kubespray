@@ -66,23 +66,19 @@
   <!-- /NavBar -->
 
   <!-- HOME -->
-  <section id="home">
+  <section id="home" class="my-3">
     <div class="container-fluid">
       <div class="row d-flex align-items-center justify-content-around" style="height: 75vh;">
         <div class="col text-center">
-          <div class="hca-title">
-            <span class="heart">HEART</span><br />
-            <span class="cell">CELL</span><br />
-            <span class="atlas">ATLAS</span>
+          <div class="hca-title text-center">
+            <span class="heart">HEART</span> <span class="cell">CELL</span> <span class="atlas">ATLAS</span>
           </div>
-
-        </div>
-        <div class="col">
-          <img src="assets/global.png" style="max-width:50vw; max-height:80vh;" class="img-responsive">
-        </div>
+          <img src="assets/main_hd.png" style="max-width:99vw; max-height: 720px;" class="img-responsive">
+          <div class="scroll-down">
+            scroll down<br>
+            <i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i>
+          </div>
       </div>
-      <div class="scroll-down" style="cursor: pointer;">scroll down<br>
-        <i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i></div>
     </div>
   </section>
   <!-- /HOME -->
@@ -92,7 +88,7 @@
   <div id="regions" class="regions"  style="min-height: 100vh;">
     <div class="row justify-content-center mb-2">
       <div class="col text-center">
-        <h1 class="section-title">REGIONS</h1>
+        <h1 class="display-1">REGIONS</h1>
       </div>
     </div>
 
@@ -144,7 +140,7 @@
 
     <div class="row justify-content-center mb-2">
       <div class="col text-center">
-        <h1 class="section-title">COMPOSITION</h1>
+        <h1 class="display-1">COMPOSITION</h1>
       </div>
     </div>
 
@@ -169,40 +165,39 @@
 
     <div class="row justify-content-center mb-2">
       <div class="col text-center">
-        <h1 class="section-title">VISUALISATIONS</h1>
+        <h1 class="display-1">VISUALISATIONS</h1>
       </div>
     </div>
     
-    <div class="row mb-3">
+    <div class="row mb-3 h-100">
       <div class="col mx-auto shadow-lg text-center">
-        <div class="row h-100">
-          <div class="col">
-            <div class="display-4">Heart Global</div>
-            <p class="lead">
-              Combined single cell and single nuclei RNA-Seq data of 485K cardiac cells with annotations
-            </p>
-            <div class="row py-2 mx-auto">
-              <div class="col-md-3">
-                <h4>486134</h4>                   
-                <small class="badge badge-primary">cells</small>
-              </div>
-              <div class="col-md-3">
-                <h4>24</h4>                   
-                <small class="badge badge-info">clusters</small>
-              </div>
-              <div class="col-md-3">
-                <h4>14</h4>                   
-                <small class="badge badge-success">donors</small>
-              </div>
-              <div class="col-md-3">
-                <h4>40-75</h4>                   
-                <small class="badge badge-warning">age group</small>
-              </div>
-            </div>
+        <div class="display-4">Heart Global</div>
+        <p class="lead">
+          Combined single cell and single nuclei RNA-Seq data of 485K cardiac cells with annotations
+        </p>
+        <div class="row py-2 mx-auto">
+          <div class="col-md-3">
+            <h4>486,134</h4>   
+            <small class="badge badge-primary">cells</small>
           </div>
-
+          <div class="col-md-3">
+            <h4>24</h4>                   
+            <small class="badge badge-info">clusters</small>
+          </div>
+          <div class="col-md-3">
+            <h4>14</h4>                   
+            <small class="badge badge-success">donors</small>
+          </div>
+          <div class="col-md-3">
+            <h4>40-75</h4>                   
+            <small class="badge badge-warning">age group</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">  
             <a href="/global" class="btn btn-block btn-danger">Interactive viewer</a>
-            <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/global.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+            <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/global.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -211,13 +206,13 @@
       <div class="col mx-1 py-4 shadow text-center">
           <div class="display-4">Heart Atrial Cardiomyocytes</div>
           <a href="/atrial" class="btn btn-block btn-danger">Interactive viewer</a>
-          <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/atrial.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+          <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/atrial.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
 
       <div class="col mx-1 py-4 border-dark shadow text-center">
         <div class="display-4">Heart Ventricular Cardiomyocytes</div>
         <a href="/ventricular" class="btn btn-block btn-danger">Interactive viewer</a>
-        <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/ventricular.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+        <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/ventricular.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
     </div>
 
@@ -225,42 +220,99 @@
       <div class="col mx-1 py-4 shadow text-center">
           <div class="display-4">Heart Vascular</div>
           <a href="/vascular" class="btn btn-block btn-danger">Interactive viewer</a>
-          <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/atrial.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+          <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/vascular.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
 
       <div class="col mx-1 py-4 border-dark shadow text-center">
         <div class="display-4">Heart Fibroblasts</div>
         <a href="/fibroblasts" class="btn btn-block btn-danger">Interactive viewer</a>
-        <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/ventricular.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+        <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/fibroblasts.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
     </div>
 
     <div class="row my-5">
       <div class="col mx-1 py-4 shadow text-center">
           <div class="display-4">Heart Immune</div>
-          <a href="/vascular" class="btn btn-block btn-danger">Interactive viewer</a>
-          <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/atrial.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+          <a href="/immune" class="btn btn-block btn-danger">Interactive viewer</a>
+          <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/immune.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
 
-      <div class="col mx-1 py-4 border-dark shadow text-center">
-        <div class="display-4">Heart Fibroblasts</div>
-        <a href="/fibroblasts" class="btn btn-block btn-danger">Interactive viewer</a>
-        <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/ventricular.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+      <div class="col mx-1 py-4 shadow text-center">
+        <div class="display-4">Heart Neuronal</div>
+        <a href="/neuronal" class="btn btn-block btn-danger">Interactive viewer</a>
+        <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/neuronal.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
       </div>
     </div>
 
-
-    <div class="row my-5">
-      <div class="col mx-1 py-4 shadow text-center">
-          <div class="display-4">Heart Neuronal</div>
-          <a href="/neuronal" class="btn btn-block btn-danger">Interactive viewer</a>
-          <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/atrial.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
-      </div>
-
+    <div class="row my-5 mb-4">
       <div class="col mx-1 py-4 border-dark shadow text-center">
         <div class="display-4">Heart Adipocytes</div>
         <a href="/adipocytes" class="btn btn-block btn-danger">Interactive viewer</a>
-        <!-- <a href="https://cellgeni.cog.sangger.ac.uk/heartcellatlas/data/ventricular.h5ad" class="btn btn-lg btn-outline-secondary">Download <span class="badge badge-secondary">h5ad</span></a> -->
+        <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/adipocytes.h5ad" class="btn btn-block btn-outline-danger" target="_blank">Download <span class="badge badge-secondary">h5ad</span></a>
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row my-5 mb-2">
+      <div class="col mx-1 py-4 border-dark shadow text-center">
+        <div class="display-4">Human Adult Skeletal Muscle</div>
+        <p class="lead">Analysis of 52,825 single cells and nuclei from five donors</p>
+        <div class="row py-2 mx-auto">
+          <div class="col-md-3">
+            <h4>34,577</h4>   
+            <small class="badge badge-primary">cells</small>
+          </div>
+          <div class="col-md-3">
+            <h4>18,248</h4>                   
+            <small class="badge badge-dark">nuceli</small>
+          </div>
+          <div class="col-md-3">
+            <h4>5</h4>                   
+            <small class="badge badge-success">donors</small>
+          </div>
+          <div class="col-md-3">
+            <h4>60-75</h4>                   
+            <small class="badge badge-warning">age group</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href="/skm" class="btn btn-block btn-primary">Interactive viewer</a>
+            <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/skm.h5ad" class="btn btn-block btn-outline-primary">Download <span class="badge badge-secondary">h5ad</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="row my-5 mb-2">
+      <div class="col mx-1 py-4 border-dark shadow text-center">
+        <div class="display-4">RNA Velocity of vascular cells</div>
+        <p class="lead">RNA velocity of human cardiac vascular cells calculated using scVelo</p>
+        <div class="row py-2 mx-auto">
+          <div class="col-md-3">
+            <h4>160,982</h4>   
+            <small class="badge badge-primary">cells</small>
+          </div>
+          <div class="col-md-3">
+            <h4>23</h4>                   
+            <small class="badge badge-info">clusters</small>
+          </div>
+          <div class="col-md-3">
+            <h4>7</h4>                   
+            <small class="badge badge-success">donors</small>
+          </div>
+          <div class="col-md-3">
+            <h4>50-75</h4>                   
+            <small class="badge badge-warning">age group</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href="/velo" class="btn btn-block btn-primary">Interactive viewer</a>
+            <a href="https://cellgeni.cog.sanger.ac.uk/heartcellatlas/data/velo.h5ad" class="btn btn-block btn-outline-primary">Download <span class="badge badge-secondary">h5ad</span></a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -269,10 +321,10 @@
   
 
   <!-- TEAM -->
-  <div id="team" class="team container"  style="min-height: 100vh;">
+  <div id="team" class="team container" style="min-height: 100vh;">
     <div class="row justify-content-center mb-2">
       <div class="col text-center">
-        <h1 class="section-title">TEAM</h1>
+        <h1 class="display-1">TEAM</h1>
       </div>
     </div>
     <!-- /row  -->
@@ -282,7 +334,7 @@
       <div class="col-lg-4 team-member">
         <div class="row">
           <div class="col-md-12  text-center">
-            <img src="https://www.sanger.ac.uk/userpics/200/st9.jpg" alt="Sarah Teichmann"
+            <img src="assets/team/st9.jpg" alt="Sarah Teichmann"
               class="hover-colored img-fluid rounded-circle shadow" />
           </div>
           <div class="col-md-12 text-center">
@@ -310,7 +362,7 @@
         <div class="row">
           <div class="col-md-12  text-center">
             <img
-              src="https://images.squarespace-cdn.com/content/v1/56d85b53c6fc08fe12541664/1543920416113-E9OSW2APNUXMOVAWSXJH/ke17ZwdGBToddI8pDm48kNiEM88mrzHRsd1mQ3bxVct7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0topjEaZcWjtmMYdCWL4dkGbxs35J-ZjFa9s1e3LsxrX8g4qcOj2k2AL08mW_Htcgg/image-asset.png?format=500w"
+              src="assets/team/ml13.png"
               alt="Monika Litvinukova" class="hover-colored img-fluid rounded-circle shadow" />
           </div>
           <div class="col-md-12 text-center">
@@ -335,7 +387,7 @@
       <div class="col-lg-4 team-member">
         <div class="row">
           <div class="col-md-12 text-center">
-            <img src="assets/ct5.jpg" alt="Carlos Talavera-Lopez"
+            <img src="assets/team/ct5.jpg" alt="Carlos Talavera-Lopez"
               class="hover-colored img-fluid rounded-circle shadow" />
           </div>
           <div class="col-md-12 text-center">
@@ -369,7 +421,7 @@
 
     <div class="row justify-content-center mb-4">
       <div class="col text-center">
-        <h1 class="section-title">PARTNERS</h1>
+        <h1 class="display-1">PARTNERS</h1>
       </div>
     </div>
     <!-- /row  -->

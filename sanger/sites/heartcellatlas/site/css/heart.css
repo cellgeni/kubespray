@@ -38,26 +38,29 @@ ul.navbar-nav li a:hover {
 
 /* hca titles */
 .hca-title {
-  font-size: 8rem;
+  text-align: center;
+  font-size: 9rem;
   line-height: 1em;
-  font-weight: 600;
+  font-weight: 700;
   text-shadow: 0.1em 0.1em 0.2em rgba(75, 75, 75, 0.6);
+  background: -webkit-linear-gradient(#b3363c, #741d21);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hca-title .heart {
-  font-size: 9rem;
-  letter-spacing: 0.2rem;
-  color: #b3363c;
+  /* letter-spacing: 0.2rem; */
+  /* color: #b3363c; */
 }
 
 .hca-title .cell {
-  color: #353535;
-  font-weight: 700;
+  /* color: #353535; */
+  /* font-weight: 700; */
 }
 
 .hca-title .atlas {
-  color: #1c7cc7;
-  font-weight: 800;
+  /* color: #1c7cc7; */
+  /* font-weight: 800; */
 }
 
 /* reduce font size for laptops */
@@ -71,11 +74,8 @@ ul.navbar-nav li a:hover {
 }
 
 .scroll-down {
-  position: absolute;
+  cursor: pointer;
   text-align: center;
-  bottom: 3em;
-  left: 30%;
-  /* color: white; */
   letter-spacing: 0.4em;
 }
 
@@ -123,10 +123,12 @@ section {
   font-weight: 600;
 }
 
+/*
 section#home {
   height: calc(100vh - 80px);
+  overflow: visible;
 }
-
+*/
 .methodology-text {
   color: #cacaca;
   font-size: 2.5rem;
