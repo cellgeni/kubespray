@@ -54,3 +54,17 @@ spec:
   selector:
     app: chondrocytes-hongbo
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chondrocytes-ucla-hindlimb
+  labels:
+    app: chondrocytes-ucla-hindlimb
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: chondrocytes-ucla-hindlimb
+---
