@@ -1,5 +1,6 @@
 $(document).ready(function(e) {
-
+  $('[data-toggle="tooltip"]').tooltip()
+  
   //lead scroll down
   $(".scroll-down").click(function() {
     $('html, body').animate({scrollTop: $("#regions").offset().top},'slow');
