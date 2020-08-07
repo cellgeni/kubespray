@@ -148,3 +148,15 @@ section {
   font-weight: 300;
   line-height: 1.5;
 }
+
+.panel-1{
+  height:100vh;
+}
+
+.panel-2{
+  margin-top: 4rem;
+}
+
+.figure-4-2-text{
+  min-height: 700px;
+}
