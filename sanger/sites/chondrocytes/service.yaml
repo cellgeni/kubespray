@@ -68,3 +68,17 @@ spec:
   selector:
     app: chondrocytes-ucla-hindlimb
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chondrocytes-bone-marrow
+  labels:
+    app: chondrocytes-bone-marrow
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: chondrocytes-bone-marrow
+---
