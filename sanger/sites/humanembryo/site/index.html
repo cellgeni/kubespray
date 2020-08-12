@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+	<!-- Font CSS-->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap" rel="stylesheet">
+
+
+	<title>Reproductive Cell Atlas</title>
+	<style>
+		body{
+			font-family: 'Roboto', sans-serif;
+			font-weight: 300;
+		}
+		.paint-background{
+			background-color: black;
+		}
+	</style>
+  </head>
+  <body>
+
+	<div class="container">
+		<h1 class="text-center px-3 display-4">Day 9 human embryo cultured <i>in vitro</i></h1>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 d-flex justify-content-between">
+				<h3 class="trophoblast-link" style="color: #a7d084">Trophoblast</h3>
+				<h3 class="hypoblast-link" style="color: #bc87ba">Hypoblast</h3>
+				<h3 class="epiblast-link" style="color: red">Epiblast</h3>
+			</div>
+			<div class="col-md-6 text-center">
+				<a href="/integrated" class="btn btn-lg btn-outline-primary">Open interactive viewer</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row d-flex justify-content-between">
+			<img src="assets/embryo-main.png" class="maphilight w-100" usemap="#embrio-map">
+			<map name="embrio-map">
+				<!-- Trophoblast -->
+				<area target="_self" alt="Trophoblast" class="trophoblast" title="Trophoblast" href="#_self" 
+					data-maphilight='{"groupBy":".trophoblast","stroke":false, "fillColor":"a7d084","fillOpacity":0.5}'
+					coords="397,649,388,646,370,660,348,664,324,659,279,693,275,676,265,655,253,641,234,642,210,668,190,685,174,683,161,664,149,655,130,645,124,631,115,630,114,616,107,607,93,604,81,595,81,569,75,558,60,548,51,537,52,521,63,496,74,471,81,426,69,396,64,363,69,344,82,337,99,333,111,318,127,291,144,270,160,262,180,250,197,231,219,206,243,169,260,152,276,138,291,134,296,119,307,116,325,120,348,131,369,137,385,130,400,109,414,105,427,116,442,128,459,137,520,153,546,164,566,164,579,154,577,168,577,180,584,197,595,216,618,244,637,276,659,295,676,303,688,312,692,327,695,342,707,353,714,362,714,370,712,381,701,392,691,396,682,402,684,413,689,431,704,447,677,453,685,464,697,477,707,494,710,507,707,525,703,544,707,573,710,590,708,611,701,622,692,627,680,629,661,616,648,600,632,595,616,601,602,614,598,629,594,637,535,637,528,653,509,653,476,650,448,645,408,655,396,634,400,615,405,595,419,581,445,584,463,580,486,567,504,559,534,552,550,539,570,513,595,481,603,460,601,442,594,428,591,411,577,394,549,360,525,334,508,318,494,299,480,285,459,269,435,255,422,242,408,228,381,221,358,221,330,233,314,252,303,277,294,281,285,293,257,315,245,336,231,352,213,363,212,389,213,415,217,461,225,499,239,526,249,551,268,574,292,587,307,591,322,586,344,579,355,576,387,583,427,583" shape="poly">
+				<area target="_self" alt="Trophoblast" class="trophoblast" title="Trophoblast" href="#_self" 
+				    data-maphilight='{"groupBy":".trophoblast","stroke":false, "fillColor":"a7d084","fillOpacity":0.5}'
+					coords="985,582,985,551,981,523,985,490,985,476,993,459,1007,436,1028,431,1049,431,1073,431,1094,433,1128,431,1158,431,1218,431,1239,445,1244,469,1263,502,1263,530,1267,561,1267,578,1237,582,1189,589,1156,589,1094,589,1021,589,997,596,988,618,1002,637,1033,646,1087,667,1118,675,1170,677,1213,665,1239,646,1270,620,1310,596,1367,525,1398,509,1414,478,1435,400,1431,327,1393,263,1379,246,1350,198,1315,174,1277,146,1220,111,1192,102,1147,107,1130,109,1109,123,1092,144,1080,159,1059,166,1042,166,985,170,931,194,910,215,900,253,884,289,884,338,881,374,865,426,891,480,905,499,948,540,959,568" shape="poly">
+				<!-- Hypoblast -->
+				<area target="_self" alt="Hypoblast" class="hypoblast" title="Hypoblast" href="#_self" 
+					data-maphilight='{"groupBy":".hypoblast","stroke":false, "fillColor":"bc87ba","fillOpacity":0.5}' 
+					coords="263,442,251,452,236,465,231,485,235,500,255,521,274,536,300,548,321,555,349,563,368,563,396,563,415,563,443,561,466,555,484,545,505,533,522,517,531,499,533,484,535,467,535,446,529,431,524,443,509,462,501,472,481,487,468,492,445,499,430,502,411,502,375,506,346,500,310,487,286,466" shape="poly">
+				<area target="_self" alt="Hypoblast" class="hypoblast" title="Hypoblast" href="#_self" 
+					data-maphilight='{"groupBy":".hypoblast","stroke":false, "fillColor":"bc87ba","fillOpacity":0.5}' 
+					coords="1085,430,1063,430,1044,430,1021,427,1004,439,990,463,992,482,990,505,983,527,987,543,1002,557,1018,557,1044,567,1059,574,1077,574,1106,572,1120,572,1146,572,1177,572,1201,569,1241,572,1262,564,1267,546,1257,536,1250,517,1250,496,1248,475,1241,458,1210,444,1208,460,1217,467,1210,479,1205,498,1196,515,1177,527,1160,534,1130,529,1108,520,1092,510,1080,491,1082,472,1096,458,1113,446,1108,430" shape="poly">
+				<!-- Epiblast -->
+				<area target="_self" alt="Epiblast" class="epiblast" title="Epiblast" href="#_self" 
+					data-maphilight='{"groupBy":".epiblast","stroke":false, "fillColor":"ff0000","fillOpacity":0.5}' 
+					coords="263,439,266,397,282,363,297,353,323,338,351,330,376,326,402,324,419,327,458,334,483,350,506,365,517,378,522,401,528,424,517,450,495,473,475,489,441,500,402,502,375,506,340,496,314,489,291,470" shape="poly">
+				<area target="_self" alt="Epiblast" class="epiblast" title="Epiblast" href="#_self"
+					data-maphilight='{"groupBy":".epiblast","stroke":false, "fillColor":"ff0000","fillOpacity":0.5}'  
+					coords="1139,450,1122,450,1106,452,1087,459,1082,471,1082,488,1087,507,1099,518,1120,537,1141,544,1158,537,1175,530,1189,521,1203,511,1210,495,1215,478,1210,459,1208,440,1191,436,1165,436" shape="poly">
+			</map>
+		</div>
+	</div>
+
+
+	<!-- Optional JavaScript -->
+	<!-- <script src="/zxtm/piwik2.js"></script> -->
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="imageMapResizer.min.js"></script>
+	<script src="jquery.maphilight.js"></script>
+
+	<script>
+
+		$('area').mouseenter(function (event){
+			let cls = $(event.target).attr("class");
+			console.log("link", cls);
+			$(`.${cls}-link`).toggleClass("paint-background")
+		});
+
+		$('area').mouseleave(function (event){
+			let cls = $(event.target).attr("class");
+			console.log("link", cls);
+			$(`.${cls}-link`).toggleClass("paint-background")
+		});
+
+		$(document).ready(function() {
+			$('map').imageMapResize();
+			$('.maphilight').maphilight();
+		});
+
+		$('.trophoblast-link').mouseover(function(e) {
+			$('.trophoblast').mouseover();
+		}).mouseout(function(e) {
+			$('.trophoblast').mouseout();
+		}).click(function(e) { e.preventDefault(); });
+		
+		$('.hypoblast-link').mouseover(function(e) {
+			$('.hypoblast').mouseover();
+		}).mouseout(function(e) {
+			$('.hypoblast').mouseout();
+		}).click(function(e) { e.preventDefault(); });
+
+		$('.epiblast-link').mouseover(function(e) {
+			$('.epiblast').mouseover();
+		}).mouseout(function(e) {
+			$('.epiblast').mouseout();
+		}).click(function(e) { e.preventDefault(); });
+	</script>
+
+  </body>
+</html>

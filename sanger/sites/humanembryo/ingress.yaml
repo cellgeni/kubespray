@@ -1,0 +1,45 @@
+# ---
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: humanembryo
+# spec:
+#   virtualhost:
+#     fqdn: www.humanembryo.org
+#   routes:
+#     - match: /
+#       services:
+#         - name: humanembryo
+#           port: 80
+#     - match: /static
+#       services:
+#         - name: humanembryo-integrated
+#           port: 80
+#     - match: /integrated
+#       prefixRewrite: "/" 
+#       services:
+#         - name: humanembryo-integrated
+#           port: 80
+# ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: humanembryo-cellgeni
+spec:
+  virtualhost:
+    fqdn: humanembryo.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: humanembryo
+          port: 80
+    - match: /static
+      services:
+        - name: humanembryo-integrated
+          port: 80
+    - match: /integrated
+      prefixRewrite: "/" 
+      services:
+        - name: humanembryo-integrated
+          port: 80
+---
