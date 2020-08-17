@@ -25,7 +25,7 @@ spec:
         - name: w2v
           mountPath: /w2v
       containers:
-      - image: quay.io/hemberg-group/scfind-shiny:2.0.2
+      - image: quay.io/hemberg-group/scfind-shiny:3.0.0
         imagePullPolicy: IfNotPresent
         name: scfind
         volumeMounts:
