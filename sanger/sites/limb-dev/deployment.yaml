@@ -219,17 +219,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: limb-dev-bao
+  name: limb-dev-hindlimb2
 spec:
   selector:
     matchLabels:
-      app: limb-dev-bao
+      app: limb-dev-hindlimb2
   replicas: 1
   template:
     metadata: 
-      name: limb-dev-ubao
+      name: limb-dev-hindlimb2
       labels:
-        app: limb-dev-bao
+        app: limb-dev-hindlimb2
     spec:
       volumes:
         - name: data
@@ -238,12 +238,12 @@ spec:
       containers:
       - image: quay.io/cellgeni/cellxgene:0.15.0
         imagePullPolicy: IfNotPresent
-        name: limb-dev-ucla-pcw7
+        name: limb-dev-hindlimb2
         ports:
         - containerPort: 5005
           name: cellxgene
         command: ["/bin/sh"]
-        args: ["-c", "yes | cellxgene launch /data/bao_hindandbody.h5ad -t 'Human Embryonic Limb' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        args: ["-c", "yes | cellxgene launch /data/hindlimb2.h5ad -t 'Human Embryonic Limb 2020 August' --host 0.0.0.0 --port 5005 --about https://limb-dev.cellgeni.sanger.ac.uk --scripts https://limb-dev.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -258,7 +258,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/limb-dev/bao_hindandbody.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/limb-dev/hindlimb2.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

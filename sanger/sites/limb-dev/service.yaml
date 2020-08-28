@@ -57,14 +57,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: limb-dev-bao
+  name: limb-dev-hindlimb2
   labels:
-    app: limb-dev-bao
+    app: limb-dev-hindlimb2
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: limb-dev-bao
+    app: limb-dev-hindlimb2
 ---

@@ -30,9 +30,9 @@ spec:
       services:
         - name: limb-dev-ucla-pcw7
           port: 80
-    - match: /bao/
+    - match: /hindlimb2/
       prefixRewrite: "/" 
       services:
-        - name: limb-dev-bao
+        - name: limb-dev-hindlimb2
           port: 80
 ---
