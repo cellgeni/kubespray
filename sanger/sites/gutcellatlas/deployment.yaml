@@ -62,13 +62,13 @@ spec:
           persistentVolumeClaim:
             claimName: gut-cell-atlas-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: gut-cell-atlas-tcr-bcr
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Colon_cell_atlas.h5ad", "-t", "Colon Immune Cells", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Colon_cell_atlas.h5ad", "--title", "Colon Immune Cells", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -77,7 +77,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "5Gi"
+            memory: "8Gi"
             cpu: 1
       initContainers:
       - name: pull-data

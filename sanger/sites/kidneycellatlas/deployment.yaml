@@ -62,13 +62,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: mature-non-pt-parenchyma
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.1.h5ad", "-t", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0"]
+        command: ["cellxgene", "launch", "/data/Mature_non_PT_parenchyma_v2.1.h5ad", "--title", "Mature kidney non-PT parenchyma", "--host", "0.0.0.0", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -107,13 +107,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: mature-kidney-immune
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.1.h5ad", "-t", "Mature kidney immune", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Mature_Immune_v2.1.h5ad", "--title", "Mature kidney immune", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -152,13 +152,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: mature-kidney-global
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Mature_Full_v2.1.h5ad", "-t", "Mature kidney global", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Mature_Full_v2.1.h5ad", "--title", "Mature kidney global", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -197,13 +197,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-stroma
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_stroma.h5ad", "-t", "Fetal kidney stroma", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Fetal_stroma.h5ad", "--title", "Fetal kidney stroma", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -242,13 +242,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-global
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_full.h5ad", "-t", "Fetal kidney global", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Fetal_full.h5ad", "--title", "Fetal kidney global", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -287,13 +287,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-developing-nephron
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_nephron.h5ad", "-t", "Fetal kidney developing nephron", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Fetal_nephron.h5ad", "--title", "Fetal kidney developing nephron", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -302,7 +302,7 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "3Gi"
+            memory: "5Gi"
             cpu: 1
       initContainers:
       - name: pull-data
@@ -332,13 +332,13 @@ spec:
           persistentVolumeClaim:
             claimName: cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.11.0
+      - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
         name: fetal-kidney-immune
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/Fetal_immune.h5ad", "-t", "Fetal kidney immune", "--host", "0.0.0.0", "--port", "5005"]
+        command: ["cellxgene", "launch", "/data/Fetal_immune.h5ad", "--title", "Fetal kidney immune", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
