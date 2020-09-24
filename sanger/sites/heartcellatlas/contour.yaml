@@ -102,9 +102,9 @@ spec:
       services:
         - name: heart-cell-atlas-skm
           port: 80
-    - match: /velo
-      prefixRewrite: "/" 
-      services:
-        - name: heart-cell-atlas-velo
-          port: 80
+    # - match: /velo
+    #   prefixRewrite: "/" 
+    #   services:
+    #     - name: heart-cell-atlas-velo
+    #       port: 80
 ---

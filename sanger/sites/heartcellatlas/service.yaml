@@ -138,17 +138,17 @@ spec:
   selector:
     app: heart-cell-atlas-skm
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: heart-cell-atlas-velo
-  labels:
-    app: heart-cell-atlas-velo
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: cellxgene
-  selector:
-    app: heart-cell-atlas-velo
----
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: heart-cell-atlas-velo
+#   labels:
+#     app: heart-cell-atlas-velo
+# spec:
+#   type: NodePort
+#   ports:
+#   - port: 80
+#     targetPort: cellxgene
+#   selector:
+#     app: heart-cell-atlas-velo
+# ---
