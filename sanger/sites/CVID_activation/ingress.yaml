@@ -26,4 +26,9 @@ spec:
       services:
         - name: cvid-activation-harmony
           port: 80
+    - match: /gex-only
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-gex-only
+          port: 80
 ---

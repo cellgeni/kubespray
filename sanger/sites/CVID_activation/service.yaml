@@ -40,3 +40,17 @@ spec:
   selector:
     app: cvid-activation-nocpg
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvid-activation-gex-only
+  labels:
+    app: cvid-activation-gex-only
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: cvid-activation-gex-only
+---
