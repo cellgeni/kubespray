@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity
+  labels:
+    app: oral-cavity
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: http
+  selector:
+    app: oral-cavity
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity-human
+  labels:
+    app: oral-cavity-human
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: oral-cavity-human
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity-mouse
+  labels:
+    app: oral-cavity-mouse
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: oral-cavity-mouse
+---

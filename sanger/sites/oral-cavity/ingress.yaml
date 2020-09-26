@@ -1,0 +1,26 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: oral-cavity
+spec:
+  virtualhost:
+    fqdn: oral-cavity.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: oral-cavity
+          port: 80
+    - match: /static
+      services:
+        - name: oral-cavity-human
+          port: 80
+    - match: /human
+      services:
+        - name: oral-cavity-human
+          port: 80
+    - match: /mouse 
+      services:
+        - name: oral-cavity-mouse
+          port: 80
+---
