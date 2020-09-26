@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/", "--title", "Oral Cavity Human", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/pooled_human_gv_sg.processed.cellxgene.h5ad", "--title", "Oral Cavity Human", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -84,7 +84,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/pooled_human_gv_sg.processed.cellxgene.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -126,7 +126,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/", "--title", "Oral Cavity Mouse", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/pooled_mouse.processed.cellxgene.h5ad", "--title", "Oral Cavity Mouse", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -141,7 +141,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/pooled_mouse.processed.cellxgene.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

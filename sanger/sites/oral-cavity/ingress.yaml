@@ -16,10 +16,12 @@ spec:
         - name: oral-cavity-human
           port: 80
     - match: /human
+      prefixRewrite: "/" 
       services:
         - name: oral-cavity-human
           port: 80
     - match: /mouse 
+      prefixRewrite: "/" 
       services:
         - name: oral-cavity-mouse
           port: 80
