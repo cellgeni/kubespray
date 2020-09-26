@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/pooled_human_gv_sg.processed.cellxgene.h5ad", "--title", "Oral Cavity Human", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/pooled_human_gv_sg.processed.cellxgene.h5ad", "--title", "Oral Cavity Human", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -126,7 +126,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/pooled_mouse.processed.cellxgene.h5ad", "--title", "Oral Cavity Mouse", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/pooled_mouse.processed.cellxgene.h5ad", "--title", "Oral Cavity Mouse", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
         volumeMounts:
           - name: data
             mountPath: /data
