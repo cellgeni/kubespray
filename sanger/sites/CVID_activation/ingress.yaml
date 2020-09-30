@@ -12,7 +12,7 @@ spec:
         - name: cvid-activation
           port: 80
     - match: /static
-      prefixRewrite: "/" 
+      # prefixRewrite: "/" 
       services:
         - name: cvid-activation-harmony
           port: 80
@@ -30,5 +30,10 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: cvid-activation-gex-only
+          port: 80
+    - match: /object4
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-gex-only-no-batch
           port: 80
 ---

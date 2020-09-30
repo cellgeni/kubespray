@@ -54,3 +54,17 @@ spec:
   selector:
     app: cvid-activation-gex-only
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvid-activation-gex-only-no-batch
+  labels:
+    app: cvid-activation-gex-only-no-batch
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: cvid-activation-gex-only-no-batch
+---

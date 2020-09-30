@@ -192,13 +192,70 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "2.5Gi"
+            memory: "20Gi"
             cpu: 1
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
         command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_only.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvid-activation-gex-only-no-batch
+spec:
+  selector:
+    matchLabels:
+      app: cvid-activation-gex-only-no-batch
+  replicas: 1
+  template:
+    metadata: 
+      name: cvid-activation-gex-only-no-batch
+      labels:
+        app: cvid-activation-gex-only-no-batch
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cvid-activation-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: cvid-activation-gex-only-no-batch
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/adata_for_cellxgene_GEX_only_B_cells_not_batch_corrected.h5ad", "--title", " B cells, GEX only, no batch correction", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "15Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_only_B_cells_not_batch_corrected.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
