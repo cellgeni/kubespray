@@ -25,4 +25,14 @@ spec:
       services:
         - name: oral-cavity-mouse
           port: 80
+    - match: /human-gingival
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-human-gingival
+          port: 80
+    - match: /human-salivary
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-human-salivary
+          port: 80
 ---

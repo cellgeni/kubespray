@@ -157,3 +157,117 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-human-gingival
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-human-gingival
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-human-gingival
+      labels:
+        app: oral-cavity-human-gingival
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-human-gingival
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/human_gingival.processed_v4.cellxgene.h5ad", "--title", "Oral Cavity Human Gingival", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/human_gingival.processed_v4.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-human-salivary
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-human-salivary
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-human-salivary
+      labels:
+        app: oral-cavity-human-salivary
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-human-salivary
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/human_salivary_gland.processed.cellxgene.h5ad", "--title", "Oral Cavity Human Salivary Gland", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/human_salivary_gland.processed.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
