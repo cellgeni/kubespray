@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schistosomula-cell-atlas-cxg
+spec:
+  selector:
+    matchLabels:
+      app: schistosomula-cell-atlas-cxg
+  replicas: 1
+  template:
+    metadata: 
+      name: schistosomula-cell-atlas-cxg
+      labels:
+        app: schistosomula-cell-atlas-cxg
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: schistosomula-cell-atlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: schistosomula-cell-atlas-cxg
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/schistosomula.h5ad", "--title", "carmen_somules_filtered", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"] #"--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/schistosomula.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

@@ -1,0 +1,14 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: schistosomula-cell-atlas-cellgeni
+spec:
+  virtualhost:
+    fqdn: schistosomulacellatlas.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: schistosomula-cell-atlas-cxg
+          port: 80
+---
