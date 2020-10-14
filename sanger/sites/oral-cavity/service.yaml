@@ -57,14 +57,56 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: oral-cavity-human-salivary
+  name: oral-cavity-mouse-tongue
   labels:
-    app: ooral-cavity-human-salivary
+    app: oral-cavity-mouse-tongue
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: oral-cavity-human-salivary
+    app: oral-cavity-mouse-tongue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity-mouse-buccal-mucosa
+  labels:
+    app: oral-cavity-mouse-buccal-mucosa
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: oral-cavity-mouse-buccal-mucosa
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity-mouse-parotid-gland
+  labels:
+    app: oral-cavity-mouse-parotid-gland
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: oral-cavity-mouse-parotid-gland
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oral-cavity-mouse-submandibular-gland
+  labels:
+    app: oral-cavity-mouse-submandibular-gland
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: oral-cavity-mouse-submandibular-gland
 ---

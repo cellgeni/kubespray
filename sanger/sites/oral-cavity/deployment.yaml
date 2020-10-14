@@ -271,3 +271,231 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-mouse-tongue
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-mouse-tongue
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-mouse-tongue
+      labels:
+        app: oral-cavity-mouse-tongue
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-mouse-tongue
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/tabula_muris_tongue.processed.cellxgene.h5ad", "--title", "Mouse Tongue", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/tabula_muris_tongue.processed.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-mouse-buccal-mucosa
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-mouse-buccal-mucosa
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-mouse-buccal-mucosa
+      labels:
+        app: oral-cavity-mouse-buccal-mucosa
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-mouse-buccal-mucosa
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/jones19.processed.cellxgene.h5ad", "--title", "Mouse Buccal Mucosa", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/jones19.processed.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-mouse-parotid-gland
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-mouse-parotid-gland
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-mouse-parotid-gland
+      labels:
+        app: oral-cavity-mouse-parotid-gland
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-mouse-parotid-gland
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/song18_mouse_saliva_gland.processed.cellxgene.h5ad", "--title", "Mouse SG Parotid Gland", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/song18_mouse_saliva_gland.processed.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oral-cavity-mouse-submandibular-gland
+spec:
+  selector:
+    matchLabels:
+      app: oral-cavity-mouse-submandibular-gland
+  replicas: 1
+  template:
+    metadata: 
+      name: oral-cavity-mouse-submandibular-gland
+      labels:
+        app: oral-cavity-mouse-submandibular-gland
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: oral-cavity-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: oral-cavity-mouse-submandibular-gland
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/song18_mouse_saliva_gland.processed.cellxgene.h5ad", "--title", "Mouse SG Submandibular Gland", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "4Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/song18_mouse_saliva_gland.processed.cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

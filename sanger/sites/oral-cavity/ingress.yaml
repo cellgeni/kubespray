@@ -35,4 +35,24 @@ spec:
       services:
         - name: oral-cavity-human-salivary
           port: 80
+    - match: /mouse-tongue
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-mouse-tongue
+          port: 80
+    - match: /mouse-buccal-mucosa
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-mouse-buccal-mucosa
+          port: 80
+    - match: /mouse-parotid-gland
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-mouse-parotid-gland
+          port: 80
+    - match: /mouse-submandibular-gland
+      prefixRewrite: "/" 
+      services:
+        - name: oral-cavity-mouse-submandibular-gland
+          port: 80
 ---
