@@ -1,0 +1,76 @@
+# ---
+# apiVersion: contour.heptio.com/v1beta1
+# kind: IngressRoute
+# metadata:
+#   name: tonsil-immune
+# spec:
+#   virtualhost:
+#     fqdn: www.tissuestabilitycellatlas.org
+#   routes:
+#     - match: /oesophagus
+#       prefixRewrite: "/" 
+#       services:
+#         - name: tissue-stability-oesophagus
+#           port: 80
+#     - match: /lung
+#       prefixRewrite: "/" 
+#       services:
+#         - name: tissue-stability-lung
+#           port: 80
+#     - match: /spleen
+#       prefixRewrite: "/" 
+#       services:
+#         - name: tissue-stability-spleen
+#           port: 80
+#     - match: /static
+#       services:
+#         - name: tissue-stability-spleen
+#           port: 80
+#     - match: /
+#       services:
+#         - name: tissue-stability-cell-atlas
+#           port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: tonsil-immune-cellgeni
+spec:
+  virtualhost:
+    fqdn: tonsilimmune.cellgeni.sanger.ac.uk
+  routes:
+   
+    - match: /b-cells
+      prefixRewrite: "/" 
+      services:
+        - name: tonsil-immune-b-cells
+          port: 80
+    - match: /all
+      prefixRewrite: "/" 
+      services:
+        - name: tonsil-immune-all
+          port: 80
+    - match: /myeloid
+      prefixRewrite: "/" 
+      services:
+        - name: tonsil-immune-myeloid
+          port: 80
+    - match: /memory-b-cells
+      prefixRewrite: "/" 
+      services:
+        - name: tonsil-immune-memory-b-cells
+          port: 80
+    - match: /t-cells
+      prefixRewrite: "/" 
+      services:
+        - name: tonsil-immune-t-cells
+          port: 80
+    - match: /static
+      services:
+        - name: tonsil-immune-myeloid
+          port: 80
+    - match: /
+      services:
+        - name: tonsil-immune
+          port: 80
+---
