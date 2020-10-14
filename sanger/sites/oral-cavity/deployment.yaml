@@ -468,7 +468,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/song18_mouse_saliva_gland.processed.cellxgene.h5ad", "--title", "Mouse SG Submandibular Gland", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
+        command: ["cellxgene", "launch", "/data/oyelakin_mouse_p18_saliva_gland.processed.cellxgene.h5ad", "--title", "Mouse SG Submandibular Gland", "--host", "0.0.0.0", "--port", "5005", "--annotations-dir", "/data/"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -483,7 +483,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/song18_mouse_saliva_gland.processed.cellxgene.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/oral-cavity/oyelakin_mouse_p18_saliva_gland.processed.cellxgene.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
