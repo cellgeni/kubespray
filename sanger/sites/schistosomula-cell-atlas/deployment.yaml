@@ -24,7 +24,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/schistosomula.h5ad", "--title", "carmen_somules_filtered", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"] #"--annotations-dir", "/data/"]
+        command: ["cellxgene", "launch", "/data/schistosomula.h5ad", "--title", "Atlas larval Schistosoma mansoni", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"] #"--annotations-dir", "/data/"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -39,7 +39,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/schistosomula.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/schistosomulacellatlas/schistosomula.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:

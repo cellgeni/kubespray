@@ -12,3 +12,16 @@ spec:
         - name: schistosomula-cell-atlas-cxg
           port: 80
 ---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: schistosomula-cell-atlas
+spec:
+  virtualhost:
+    fqdn: www.schistosomulacellatlas.org
+  routes:
+    - match: /
+      services:
+        - name: schistosomula-cell-atlas-cxg
+          port: 80
+---
