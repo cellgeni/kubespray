@@ -36,4 +36,9 @@ spec:
       services:
         - name: cvid-activation-gex-only-no-batch
           port: 80
+    - match: /object5
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-gex-and-soupx-denoised
+          port: 80       
 ---
