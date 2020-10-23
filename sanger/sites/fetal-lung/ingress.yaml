@@ -89,4 +89,10 @@ spec:
       services:
         - name: fetal-lung-cluster8
           port: 80
+    - match: /10domains
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-10domains
+          port: 80
+          
 ---
