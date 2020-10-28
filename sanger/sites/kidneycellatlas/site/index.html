@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="title" content="Kidney Cell Atlas">
+	<meta name="description" content="Kidney Cell Atlas">
+	<meta name="keywords" content="kidney, single-cell, scRNAseq, nephron, cell atlas, science">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+
+	<!-- favicon -->
+	<link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<!-- Icons CSS -->
+	<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	<!-- Font CSS -->
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+
+
+	<style>
+	table, th, td {
+		border: 0px solid  #3399ff;
+		border-collapse: collapse;
+		text-align: center;
+		padding: 2px
+	}
+	th {
+		background-color: #e6f2ff;
+		color: black
+	}
+	a:link {
+		color: darkblue; 
+		background-color: transparent; 
+		text-decoration: none;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<header style="font-family:'helvetica'; text-align: left" class="text-left my-2 text-white">
+	  <div class="container-fluid", style="background-color: darkred; opacity: 0.9; color: white">
+		<div class="row align-items-center">
+		  <div class="col-lg-5">
+			<h1 style="font-size:300%">Kidney Cell Atlas</h1>
+		  </div>
+		</div>
+	  </div>
+	</header>
+
+	<div class="container-fluid">
+		<div class="row">
+					
+			<div class="col-md-4">
+				<div class="card h-100 shadow-lg">
+					<a><strong>An atlas of single-cell gene expression from fetal and mature human kidneys</strong></a>
+					<img src="intro_figure.png" style="max-width: 400px">
+				</div>
+			</div>
+						
+			<div class="col-md-4">
+				<div class="card h-100 shadow-lg">
+					<h3 class="text-left"> Mature kidney dataset</h3>
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<th style = "background-color: darkblue; color:white">Interactive viewer</th>
+							<th style = "background-color: darkgreen; color:white">Download data</th>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/mature-kidney-immune">Mature immune </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_Immune_v2.1.h5ad" style="color:darkgreen;text-decoration: none;">Mature immune </a> </td>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/mature-non-pt-parenchyma">Mature non-PT parenchyma </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_non_PT_parenchyma_v2.1.h5ad" style="color:darkgreen;text-decoration: none;">Mature non-PT parenchyma </a> </td>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/mature-kidney-global">Mature full </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Mature_Full_v2.1.h5ad" style="color:darkgreen;text-decoration: none;">Mature full </a> </td>
+						</tr>
+					</table>
+
+					<h3 class="text-left">Fetal kidney dataset</h3>
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<th style = "background-color: darkblue; color:white;">Interactive viewer</th>
+							<th style = "background-color: darkgreen; color:white;">Download data</th>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/fetal-kidney-immune">Fetal immune</a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_immune.h5ad" style="color:darkgreen;text-decoration: none;">Fetal immune </a> </td>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/fetal-kidney-stroma">Fetal stroma </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_stroma.h5ad" style="color:darkgreen;text-decoration: none;">Fetal stroma </a> </td>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/fetal-kidney-developing-nephron">Fetal developing nephron </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_nephron.h5ad" style="color:darkgreen;text-decoration: none;">Fetal developing nephron </a> </td>
+						</tr>
+						<tr>
+							<td> <a class ="btn btn-primary btn-sm btn-block text-center" href="/fetal-kidney-global">Fetal full </a> </td>
+							<td> <a class ="btn btn-success btn-sm btn-block text-center" href="https://cellgeni.cog.sanger.ac.uk/BenKidney_v2.1/Fetal_full.h5ad" style="color:darkgreen;text-decoration: none;">Fetal full </a> </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card h-100 shadow-lg">
+					<h3> Cite this resource </h3>
+					<a class ="btn btn-outline-secondary" href="https://science.sciencemag.org/content/365/6460/1461">
+						<strong>Stewart BJ et al. Science 2019;365(6460):1461-1466 DOI: 10.1126/science.aat5031</strong>
+						<img src="paper_summary.png" class="text-center" style="max-width: 400px">
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="container my-4 py-2">
+		<div class="row">
+			<div class="col mx-auto text-center">
+				<a href="https://www.sanger.ac.uk/" target="_blank" class="mx-3">
+					<img src="sanger.png" style="max-height: 75px;" class="img-responsive" alt="Wellcome Trust">
+				</a>
+				<a href="https://data.humancellatlas.org/" target="_blank"  class="mx-3">
+					<img src="human-cell-atlas.png" style="max-height: 75px;" class="img-responsive" alt="Human Cell Atlas">
+				</a>
+				<a href="https://chanzuckerberg.com/" target="_blank"  class="mx-3">
+					<img src="chan-zuckerberg-initiative.png" style="max-height: 75px;" class="img-responsive" alt="Human Cell Atlas">
+				</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ spec:
   routes:
     - match: /
       services:
-        - name: index-page
+        - name: kidney-cell-atlas
           port: 80
     - match: /static
       services:

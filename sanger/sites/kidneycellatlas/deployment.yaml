@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: index-page
+  name: kidney-cell-atlas
 spec:
   selector:
     matchLabels:
-      app: index-page
+      app: kidney-cell-atlas
   replicas: 1
   template:
     metadata: 
-      name: index-page
+      name: kidney-cell-atlas
       labels:
-        app: index-page
+        app: kidney-cell-atlas
     spec:
       volumes:
         - name: indexfiles
@@ -22,8 +22,8 @@ spec:
         name: index-page
         ports:
         - containerPort: 80
-          name: index-page
-        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/kidneycellatlas/index/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+          name: http
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/kidneycellatlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
         volumeMounts:
           - name: indexfiles
             mountPath: /data
@@ -60,7 +60,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -105,7 +105,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -150,7 +150,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -195,7 +195,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -240,7 +240,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -285,7 +285,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
@@ -330,7 +330,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: cellxgene-pvc
+            claimName: kidney-cell-atlas-pvc
       containers:
       - image: quay.io/cellgeni/cellxgene:0.16.4
         imagePullPolicy: IfNotPresent
