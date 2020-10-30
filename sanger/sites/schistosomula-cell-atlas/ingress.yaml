@@ -9,6 +9,15 @@ spec:
   routes:
     - match: /
       services:
+        - name: schistosomula-cell-atlas
+          port: 80
+    - match: /view
+      prefixRewrite: "/" 
+      services:
+        - name: schistosomula-cell-atlas-cxg
+          port: 80
+    - match: /static
+      services:
         - name: schistosomula-cell-atlas-cxg
           port: 80
 ---
@@ -21,6 +30,15 @@ spec:
     fqdn: www.schistosomulacellatlas.org
   routes:
     - match: /
+      services:
+        - name: schistosomula-cell-atlas
+          port: 80
+    - match: /view
+      prefixRewrite: "/" 
+      services:
+        - name: schistosomula-cell-atlas-cxg
+          port: 80
+    - match: /static
       services:
         - name: schistosomula-cell-atlas-cxg
           port: 80
