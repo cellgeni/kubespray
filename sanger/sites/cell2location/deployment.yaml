@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cell2location-mouse-brain
+spec:
+  selector:
+    matchLabels:
+      app: cell2location-mouse-brain
+  replicas: 1
+  template:
+    metadata: 
+      name: cell2location-mouse-brain
+      labels:
+        app: cell2location-mouse-brain
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cell2location-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: cell2location-mouse-brain
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/mouse_brain_snRNA_with_UMAP_cellxgene.h5ad", "-t", "mouse brain snRNA", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "5Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cell2location/cellxgene/mouse_brain_snRNA_with_UMAP_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cell2location-mouse-brain-astrocytes
+spec:
+  selector:
+    matchLabels:
+      app: cell2location-mouse-brain-astrocytes
+  replicas: 1
+  template:
+    metadata: 
+      name: cell2location-mouse-brain-astrocytes
+      labels:
+        app: cell2location-mouse-brain-astrocytes
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: cell2location-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: cell2location-mouse-brain-astrocytes
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/mouse_brain_snRNA_with_UMAP_astrocytes_cellxgene.h5ad", "-t", "mouse brain snRNA astrocytes", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "6Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cell2location/cellxgene/mouse_brain_snRNA_with_UMAP_astrocytes_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
