@@ -90,7 +90,7 @@
 		<div class="row  justify-content-around">
 			<div class="col-md-8 align-self-center">
 				<div class="alert alert-success shadow-lg" role="alert">
-					<p>If you would like your data to be added to this website please email us using the following email address: <a href="mailto:cv19caingest@sanger.ac.uk" class="badge badge-pill badge-success">cv19caingest@sanger.ac.uk</a></p>
+					<p>If you would like your data to be added to this website please email us using the <a href="#" id="prompt-em"> following email address: <img src="email.png"></a></p>
 					<a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#ingestModal">Read more about data ingestion</a>
 					
 				</div>
@@ -147,6 +147,13 @@
 					$(this).popover("hide");
 				});
 			}
+		});
+
+		$("#prompt-em").on("click", function (e) {
+			let aaa = ["cv","19","ca","ingest"];
+			let bbb = ["@"];
+			let ccc = ["sanger","ac","uk"];	
+			prompt("If you would like your data to be added to this website please email us using the following email address", aaa.join("")+bbb[0]+ccc.join("."));
 		});
 	</script>
   </body>
