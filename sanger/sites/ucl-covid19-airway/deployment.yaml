@@ -69,7 +69,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/ucl_covid19_airway.processed.cellxgene.20200716.h5ad", "--title", "UCL COVID19 AIRWAY", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/ucl_covid19_airway.processed.cellxgene.h5ad", "--title", "UCL COVID19 AIRWAY", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -78,13 +78,13 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "5Gi"
+            memory: "8Gi"
             cpu: 1
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/ucl-covid19-airway/ucl_covid19_airway.processed.cellxgene.20200716.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/ucl-covid19-airway/ucl_covid19_airway.processed.cellxgene.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
