@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: tonsil-immune
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: tonsil-immune

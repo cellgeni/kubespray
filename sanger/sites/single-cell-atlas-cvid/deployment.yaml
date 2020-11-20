@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: single-cell-atlas-cvid
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: single-cell-atlas-cvid

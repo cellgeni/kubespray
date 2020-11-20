@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: ucl-covid19-airway
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: ucl-covid19-airway

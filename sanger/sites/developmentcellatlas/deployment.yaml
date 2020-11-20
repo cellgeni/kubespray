@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: developmentcellatlas
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: developmentcellatlas

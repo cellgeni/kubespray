@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: fetal-organoid-skin
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: fetal-organoid-skin

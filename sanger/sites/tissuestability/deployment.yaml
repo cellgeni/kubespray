@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: tissue-stability-cell-atlas
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: tissue-stability-cell-atlas
