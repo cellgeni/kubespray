@@ -54,6 +54,26 @@ spec:
       services:
         - name: fetal-lung-cluster1
           port: 80
+    - match: /cluster0_2
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-cluster0-201119
+          port: 80
+    - match: /cluster1_2
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-cluster1-201119
+          port: 80
+    - match: /cluster0f_2
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-cluster0f-201119
+          port: 80
+    - match: /cluster1f_2
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-cluster1f-201119
+          port: 80
     - match: /cluster2
       prefixRewrite: "/" 
       services:
