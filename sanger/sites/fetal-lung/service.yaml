@@ -293,5 +293,258 @@ spec:
   selector:
     app: fetal-lung-10domains
 ---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201119c0filtered
+  labels:
+    app: fetal-lung-201119c0filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201119c0filtered
+---
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201119c0
+  labels:
+    app: fetal-lung-201119c0
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201119c0
+---
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201119c1filtered
+  labels:
+    app: fetal-lung-201119c1filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201119c1filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201119c1
+  labels:
+    app: fetal-lung-201119c1
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201119c1
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201120c2filtered
+  labels:
+    app: fetal-lung-201120c2filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201120c2filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201120c2
+  labels:
+    app: fetal-lung-201120c2
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201120c2
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201121c3filtered
+  labels:
+    app: fetal-lung-201121c3filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201121c3filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201121c3
+  labels:
+    app: fetal-lung-201121c3
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201121c3
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201122c4filtered
+  labels:
+    app: fetal-lung-201122c4filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201122c4filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201122c4
+  labels:
+    app: fetal-lung-201122c4
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201122c4
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201123c5filtered
+  labels:
+    app: fetal-lung-201123c5filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201123c5filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201123c5
+  labels:
+    app: fetal-lung-201123c5
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201123c5
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201123c6filtered
+  labels:
+    app: fetal-lung-201123c6filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201123c6filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201123c6
+  labels:
+    app: fetal-lung-201123c6
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201123c6
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201124c7filtered
+  labels:
+    app: fetal-lung-201124c7filtered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201124c7filtered
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201124c7
+  labels:
+    app: fetal-lung-201124c7
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201124c7
+---

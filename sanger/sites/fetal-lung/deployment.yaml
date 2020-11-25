@@ -1203,4 +1203,962 @@ spec:
           - name: data
             mountPath: /data
 ---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201119c0filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201119c0filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201119c0filtered
+      labels:
+        app: fetal-lung-201119c0filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201119c0filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201119C0filtered.h5ad -t '201119C0filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201119C0filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201119c0
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201119c0
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201119c0
+      labels:
+        app: fetal-lung-201119c0
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201119c0
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201119C0.h5ad -t '201119C0' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201119C0.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201119c1filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201119c1filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201119c1filtered
+      labels:
+        app: fetal-lung-201119c1filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201119c1filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201119C1filtered.h5ad -t '201119C1filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201119C1filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201119c1
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201119c1
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201119c1
+      labels:
+        app: fetal-lung-201119c1
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201119c1
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201119C1.h5ad -t '201119C1' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201119C1.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201120c2filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201120c2filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201120c2filtered
+      labels:
+        app: fetal-lung-201120c2filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201120c2filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201120C2filtered.h5ad -t '201120C2filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201120C2filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201120c2
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201120c2
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201120c2
+      labels:
+        app: fetal-lung-201120c2
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201120c2
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201120C2.h5ad -t '201120C2' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201120C2.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201121c3filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201121c3filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201121c3filtered
+      labels:
+        app: fetal-lung-201121c3filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201121c3filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201121C3filtered.h5ad -t '201121C3filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201121C3filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201121c3
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201121c3
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201121c3
+      labels:
+        app: fetal-lung-201121c3
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201121c3
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201121C3.h5ad -t '201121C3' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201121C3.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201122c4filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201122c4filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201122c4filtered
+      labels:
+        app: fetal-lung-201122c4filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201122c4filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201122C4filtered.h5ad -t '201122C4filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201122C4filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201122c4
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201122c4
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201122c4
+      labels:
+        app: fetal-lung-201122c4
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201122c4
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201122C4.h5ad -t '201122C4' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201122C4.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201123c5filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201123c5filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201123c5filtered
+      labels:
+        app: fetal-lung-201123c5filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201123c5filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201123C5filtered.h5ad -t '201123C5filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201123C5filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201123c5
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201123c5
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201123c5
+      labels:
+        app: fetal-lung-201123c5
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201123c5
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201123C5.h5ad -t '201123C5' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201123C5.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201123c6filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201123c6filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201123c6filtered
+      labels:
+        app: fetal-lung-201123c6filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201123c6filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201123C6filtered.h5ad -t '201123C6filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201123C6filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201123c6
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201123c6
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201123c6
+      labels:
+        app: fetal-lung-201123c6
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201123c6
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201123C6.h5ad -t '201123C6' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201123C6.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201124c7filtered
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201124c7filtered
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201124c7filtered
+      labels:
+        app: fetal-lung-201124c7filtered
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201124c7filtered
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201124C7filtered.h5ad -t '201124C7filtered' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201124C7filtered.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetal-lung-201124c7
+spec:
+  selector:
+    matchLabels:
+      app: fetal-lung-201124c7
+  replicas: 1
+  template:
+    metadata: 
+      name: fetal-lung-201124c7
+      labels:
+        app: fetal-lung-201124c7
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fetal-lung-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.15.0
+        imagePullPolicy: IfNotPresent
+        name: fetal-lung-201124c7
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["/bin/sh"]
+        args: ["-c", "yes | cellxgene launch /data/201124C7.h5ad -t '201124C7' --host 0.0.0.0 --port 5005 --about https://fetal-lung.cellgeni.sanger.ac.uk --scripts https://fetal-lung.cellgeni.sanger.ac.uk/piwik.js --disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/fetal-lung/201124C7.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

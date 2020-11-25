@@ -114,5 +114,100 @@ spec:
       services:
         - name: fetal-lung-10domains
           port: 80
-          
+
+    - match: /201119C0filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201119c0filtered
+          port: 80
+
+    - match: /201119C0
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201119c0
+          port: 80
+
+    - match: /201119C1filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201119c1filtered
+          port: 80
+
+    - match: /201119C1
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201119c1
+          port: 80
+
+    - match: /201120C2filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201120c2filtered
+          port: 80
+
+    - match: /201120C2
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201120c2
+          port: 80
+
+    - match: /201121C3filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201121c3filtered
+          port: 80
+
+    - match: /201121C3
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201121c3
+          port: 80
+
+    - match: /201122C4filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201122c4filtered
+          port: 80
+
+    - match: /201122C4
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201122c4
+          port: 80
+
+    - match: /201123C5filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201123c5filtered
+          port: 80
+
+    - match: /201123C5
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201123c5
+          port: 80
+
+    - match: /201123C6filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201123c6filtered
+          port: 80
+
+    - match: /201123C6
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201123c6
+          port: 80
+
+    - match: /201124C7filtered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201124c7filtered
+          port: 80
+
+    - match: /201124C7
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201124c7
+          port: 80
 ---
