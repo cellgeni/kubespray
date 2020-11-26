@@ -548,3 +548,36 @@ spec:
   selector:
     app: fetal-lung-201124c7
 ---
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201125assembled10domains
+  labels:
+    app: fetal-lung-201125assembled10domains
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201125assembled10domains
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetal-lung-201125assembled10domainsfiltered
+  labels:
+    app: fetal-lung-201125assembled10domainsfiltered
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: cellxgene
+  selector:
+    app: fetal-lung-201125assembled10domainsfiltered
+---

@@ -210,4 +210,16 @@ spec:
       services:
         - name: fetal-lung-201124c7
           port: 80
+
+    - match: /201125assembled10domains
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201125assembled10domains
+          port: 80
+
+    - match: /201125assembled10domainsfiltered
+      prefixRewrite: "/" 
+      services:
+        - name: fetal-lung-201125assembled10domainsfiltered
+          port: 80
 ---
