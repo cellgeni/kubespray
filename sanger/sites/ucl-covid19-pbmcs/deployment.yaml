@@ -63,7 +63,7 @@ spec:
           persistentVolumeClaim:
             claimName: ucl-covid19-pbmcs-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.15.0
+      - image: quay.io/cellgeni/cellxgene:0.16.6
         imagePullPolicy: IfNotPresent
         name: ucl-covid19-pbmcs-data
         ports:
