@@ -78,8 +78,8 @@ spec:
             memory: "512M"
             cpu: "0.5"
           limits:
-            memory: "8Gi"
-            cpu: 1
+            memory: "12Gi"
+            cpu: 2
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
