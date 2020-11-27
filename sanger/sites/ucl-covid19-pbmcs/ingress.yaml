@@ -1,0 +1,23 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: ucl-covid19-pbmcs
+spec:
+  virtualhost:
+    fqdn: ucl-covid19-pbmcs.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: ucl-covid19-pbmcs
+          port: 80
+    - match: /static
+      services:
+        - name: ucl-covid19-pbmcs-data
+          port: 80
+    - match: /data
+      prefixRewrite: "/" 
+      services:
+        - name: ucl-covid19-pbmcs-data
+          port: 80
+---
