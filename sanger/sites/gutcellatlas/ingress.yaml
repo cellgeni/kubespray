@@ -21,4 +21,10 @@ spec:
       services:        
         - name: gut-cell-atlas-tcr-bcr
           port: 80
+    - match: /fetal
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:        
+        - name: gut-cell-atlas-fetal
+          port: 80
 ---

@@ -87,3 +87,48 @@ spec:
           - name: data
             mountPath: /data
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gut-cell-atlas-fetal
+spec:
+  selector:
+    matchLabels:
+      app: gut-cell-atlas-fetal
+  replicas: 1
+  template:
+    metadata: 
+      name: gut-cell-atlas-fetal
+      labels:
+        app: gut-cell-atlas-fetal
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: gut-cell-atlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: gut-cell-atlas-fetal
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/final_fetal_object_cellxgene.h5ad", "--title", "Fetal Gut Cell Atlas", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "8Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        image: mwendler/wget
+        command: ['wget', '-N', '--no-check-certificate', 'https://cellgeni.cog.sanger.ac.uk/gutcellatlas/final_fetal_object_cellxgene.h5ad', '-P', '/data']
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
