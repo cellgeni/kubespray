@@ -27,4 +27,10 @@ spec:
       services:        
         - name: gut-cell-atlas-fetal
           port: 80
+    - match: /paediatric
+      enableWebsockets: true
+      prefixRewrite: "/" 
+      services:        
+        - name: gut-cell-atlas-paediatric
+          port: 80
 ---
