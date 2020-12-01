@@ -35,4 +35,9 @@ spec:
       services:
         - name: limb-dev-hindlimb2
           port: 80
+    - match: /ew6-pcw5/
+      prefixRewrite: "/" 
+      services:
+        - name: limb-dev-ew6-pcw5
+          port: 80
 ---
