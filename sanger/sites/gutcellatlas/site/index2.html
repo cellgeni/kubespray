@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+		<title>Gut Cell Atlas</title>
+		<!-- Bootstrap core CSS -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+		<style>
+			body{
+				font-family: 'Montserrat', sans-serif;
+				padding-top: 70px;
+			}
+			.navbar-custom { 
+    			background-color: #3c1733; 
+			} 
+			.navbar-custom .navbar-brand, 
+			.navbar-custom .nav-link,
+			.navbar-custom .navbar-text { 
+				font-size: 2rem !important;
+				color: whitesmoke; 
+			} 
+			.navbar-custom .nav-link:hover {
+				color: yellow;
+				font-weight: bolder;
+			}
+			p.justified {
+				font-size: 2rem;
+				text-align: justify;
+			}
+			p.right{
+				font-size: 2rem;
+				text-align: start;
+			}
+			p.left{
+				font-size: 2rem;
+				text-align: end;
+			}
+			.badge-berry {
+				background-color: #3c1733;
+				color:whitesmoke;
+				font-weight: normal;
+			}
+		</style>
+	
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-custom mb-4 fixed-top">
+			<a class="navbar-brand" href="#">Gut Cell Atlas</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#colon">Colon</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#fetal">Fetal Gut</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#paediatric">Paediatric Gut</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<main role="main" class="container">
+		  <h1 class="display-1 text-center pb-3 font-weight-bolder">Gut Cell Atlas</h1>
+		</main>
+
+		<div class="container my-4"  id="colon">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="display-3 text-center">Colon Immune Atlas</h1>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<p class="justified">The colon, as a barrier tissue, represents a unique immune environment where immune cells display tolerance toward a diverse community of microbes, which are collectively known as the microbiome.</p>
+				</div>
+				<div class="col-md-6">
+					<img class="img-fluid" src="ColonSchematic.png" alt="Colon Schematic">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="justified">The <a class="badge badge-pill badge-success" href="https://www.nature.com/articles/s41590-020-0602-z" target="_blank">published study <i class="fas fa-external-link-alt"></i></a> revealed that not only were there differences between the immune cells in different parts of the colon, but that the microbiome also subtly changed, with a broader range of bacteria further down the colon.</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<img class="card-img-top p-2 mx-auto d-block" src="ColonUMAP.png" style="max-width: 400px;" alt="Image description">
+				</div>
+				<div class="col-md-6">
+					<p class="card-text">Single cell transcriptomes for <span class="badge badge-pill badge-berry">41,650 cells</span> isolated from the caeacum, transverse colon and sigmoid colon of 5 individuals.</p>
+					<a href="/tcr-bcr" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_cell_atlas.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span> data</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_immune_counts.mtx" class="btn btn-sm btn-block btn-secondary">Colon_immune_counts.mtx</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_immune_gene_names.csv" class="btn btn-sm btn-block btn-secondary">Colon_immune_gene_names.csv</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/Colon_immune_metadata.csv" class="btn btn-sm btn-block btn-secondary">Colon_immune_metadata.csv</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container mt-5 mb-5"  id="fetal">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="display-3 text-center">Fetal Cell Atlas</h1>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<img class="img-fluid" src="fetal.png" alt="">
+				</div>
+				<div class="col-md-6">
+					<p class="right">Single-cell transcriptomes for <span class="badge badge-pill badge-berry">62,849 cells</span> isolated from 6-11 weeks post-conception developing human gut. This data includes intestinal cells from duo-jejunum, ileum and colon.</p>
+					<a href="/fetal" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span> data</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container mt-5 mb-5"  id="paediatric">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="display-3 text-center">Paediatric Cell Atlas</h1>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<p class="left">Single-cell transcriptomes isolated from terminal ileum of childhood onset Crohn's disease and matched healthy controls. This map includes total of <span class="badge badge-pill badge-berry">22,500 cells</span> from 8 control samples and 7 Chron's disease samples.</p>
+					<a href="/paediatric" class="btn btn-sm btn-block btn-primary">Interactive viewer</a>
+					<a href="https://cellgeni.cog.sanger.ac.uk/gutcellatlas/pediatric_RAWCOUNTS_cellxgene.h5ad" class="btn btn-sm btn-block btn-secondary">Download <span class="badge badge-light">.h5ad</span> data</a>
+				</div>
+				<div class="col-md-6">
+					<img class="img-fluid" src="paediatric.png" alt="">
+				</div>
+			</div>
+		</div>
+
+		<div class="container text-center border-top border-dark" style="margin-top: 100px;">
+			<div class="alert alert-light " role="alert">
+				This site is hosted by the <a href="http://www.sanger.ac.uk/" class="badge badge-primary badge-xs">Wellcome Sanger Institute</a> read the <a href="http://www.sanger.ac.uk/legal/" class="badge badge-secondary badge-xs">Terms & Conditions</a> - <a href="http://www.sanger.ac.uk/legal/cookiespolicy.html" class="badge badge-secondary badge-xs">Cookies policy</a>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<script src="/zxtm/piwik2.js"></script>
+		
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</body>
+</html>
