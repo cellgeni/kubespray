@@ -1,0 +1,216 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neuroblastoma-cell-atlas
+spec:
+  selector:
+    matchLabels:
+      app: neuroblastoma-cell-atlas
+  replicas: 1
+  template:
+    metadata: 
+      name: neuroblastoma-cell-atlas
+      labels:
+        app: neuroblastoma-cell-atlas
+    spec:
+      volumes:
+        - name: indexfiles
+          emptyDir: {}
+      containers:
+      - image: nginx
+        imagePullPolicy: IfNotPresent
+        name: neuroblastoma-cell-atlas
+        ports:
+        - containerPort: 80
+          name: http
+        command: ["/bin/sh", "-c", "cp -r /data/kubespray/sanger/sites/neuroblastoma-cell-atlas/site/. /usr/share/nginx/html/ && nginx -g 'daemon off;'"]
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "0.1"
+          limits:
+            memory: "512M"
+            cpu: "0.7"
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: alpine/git
+        command: ['/bin/sh', '-c', 'git -C /data/kubespray pull || git clone https://github.com/cellgeni/kubespray /data/kubespray']
+        volumeMounts:
+          - name: indexfiles
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neuroblastoma-cell-atlas-all
+spec:
+  selector:
+    matchLabels:
+      app: neuroblastoma-cell-atlas-all
+  replicas: 1
+  template:
+    metadata: 
+      name: neuroblastoma-cell-atlas-all
+      labels:
+        app: neuroblastoma-cell-atlas-all
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: neuroblastoma-cell-atlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: neuroblastoma-cell-atlas-all
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/adr_all_cellxgene.h5ad", "--title", "adr_all_cellxgene", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://neuroblastoma-cell-atlas/adr_all_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neuroblastoma-cell-atlas-gosh
+spec:
+  selector:
+    matchLabels:
+      app: neuroblastoma-cell-atlas-gosh
+  replicas: 1
+  template:
+    metadata: 
+      name: neuroblastoma-cell-atlas-gosh
+      labels:
+        app: neuroblastoma-cell-atlas-gosh
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: neuroblastoma-cell-atlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: neuroblastoma-cell-atlas-gosh
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/nb_GOSH_cellxgene.h5ad", "--title", "nb_GOSH_cellxgene", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://neuroblastoma-cell-atlas/nb_GOSH_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neuroblastoma-cell-atlas-pmc
+spec:
+  selector:
+    matchLabels:
+      app: neuroblastoma-cell-atlas-pmc
+  replicas: 1
+  template:
+    metadata: 
+      name: neuroblastoma-cell-atlas-pmc
+      labels:
+        app: neuroblastoma-cell-atlas-pmc
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: neuroblastoma-cell-atlas-pvc
+      containers:
+      - image: quay.io/cellgeni/cellxgene:0.16.4
+        imagePullPolicy: IfNotPresent
+        name: neuroblastoma-cell-atlas-pmc
+        ports:
+        - containerPort: 5005
+          name: cellxgene
+        command: ["cellxgene", "launch", "/data/nb_PMC_cellxgene.h5ad", "--title", "nb_PMC_cellxgene", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: 1
+      initContainers:
+      - name: pull-data
+        imagePullPolicy: IfNotPresent
+        image: garland/aws-cli-docker
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://neuroblastoma-cell-atlas/nb_PMC_cellxgene.h5ad', '/data']
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secret
+                key: AWS_SECRET_ACCESS_KEY
+        volumeMounts:
+          - name: data
+            mountPath: /data
+---

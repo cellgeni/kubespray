@@ -1,0 +1,65 @@
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: neuroblastoma-cell-atlas-cellgeni
+spec:
+  virtualhost:
+    fqdn: neuroblastoma.cellgeni.sanger.ac.uk
+  routes:
+    - match: /
+      services:
+        - name: neuroblastoma-cell-atlas
+          port: 80
+    - match: /all
+      prefixRewrite: "/" 
+      services:
+        - name: neuroblastoma-cell-atlas-all
+          port: 80
+    - match: /pmc
+      prefixRewrite: "/"
+      services:
+        - name: neuroblastoma-cell-atlas-pmc
+          port: 80
+    - match: /gosh
+      prefixRewrite: "/"
+      services:
+        - name: neuroblastoma-cell-atlas-gosh
+          port: 80
+    - match: /static
+      services:
+        - name: neuroblastoma-cell-atlas-all
+          port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: neuroblastoma-cell-atlas
+spec:
+  virtualhost:
+    fqdn: www.neuroblastoma.org
+  routes:
+    - match: /
+      services:
+        - name: neuroblastoma-cell-atlas
+          port: 80
+    - match: /all
+      prefixRewrite: "/" 
+      services:
+        - name: neuroblastoma-cell-atlas-all
+          port: 80
+    - match: /pmc
+      prefixRewrite: "/"
+      services:
+        - name: neuroblastoma-cell-atlas-pmc
+          port: 80
+    - match: /gosh
+      prefixRewrite: "/"
+      services:
+        - name: neuroblastoma-cell-atlas-gosh
+          port: 80
+    - match: /static
+      services:
+        - name: neuroblastoma-cell-atlas-all
+          port: 80
+---
