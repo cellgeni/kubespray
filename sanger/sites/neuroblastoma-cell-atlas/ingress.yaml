@@ -5,7 +5,7 @@ metadata:
   name: neuroblastoma-cell-atlas-cellgeni
 spec:
   virtualhost:
-    fqdn: neuroblastoma.cellgeni.sanger.ac.uk
+    fqdn: neuroblastomacellatlas.cellgeni.sanger.ac.uk
   routes:
     - match: /
       services:
