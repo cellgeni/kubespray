@@ -40,5 +40,10 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: cvid-activation-gex-and-soupx-denoised
-          port: 80       
+          port: 80  
+    - match: /object6
+      prefixRewrite: "/" 
+      services:
+        - name: cvid-activation-gex-bbknn-all-samples
+          port: 80 
 ---
