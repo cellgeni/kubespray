@@ -85,15 +85,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: vid-activation-gex-bbknn-all-samples 
+  name: cvid-activation-gex-bbknn-all-samples 
   labels:
-    app: vid-activation-gex-bbknn-all-samples 
+    app: cvid-activation-gex-bbknn-all-samples 
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: vid-activation-gex-bbknn-all-samples 
+    app: cvid-activation-gex-bbknn-all-samples 
 ---
 
