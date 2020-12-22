@@ -13,27 +13,27 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: reproductivecellatlas-endometrium-epithelial-regenerative
+        - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /all
+    - match: /endometrium-all
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-all
           port: 80
-    - match: /stromal
+    - match: /endometrium-stromal
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-stromal
           port: 80
-    - match: /epithelial
+    - match: /endometrium-epithelial
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /epithelial-regenerative
+    - match: /endometrium-nuceli
       prefixRewrite: "/" 
       services:
-        - name: reproductivecellatlas-endometrium-epithelial-regenerative
+        - name: reproductivecellatlas-endometrium-nuceli
           port: 80
     - match: /endometrium-organoid
       prefixRewrite: "/" 
@@ -55,27 +55,27 @@ spec:
           port: 80
     - match: /static
       services:
-        - name: reproductivecellatlas-endometrium-epithelial-regenerative
+        - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /all
+    - match: /endometrium-all
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-all
           port: 80
-    - match: /stromal
+    - match: /endometrium-stromal
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-stromal
           port: 80
-    - match: /epithelial
+    - match: /endometrium-epithelial
       prefixRewrite: "/" 
       services:
         - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /epithelial-regenerative
+    - match: /endometrium-nuceli
       prefixRewrite: "/" 
       services:
-        - name: reproductivecellatlas-endometrium-epithelial-regenerative
+        - name: reproductivecellatlas-endometrium-nuceli
           port: 80
     - match: /endometrium-organoid
       prefixRewrite: "/" 

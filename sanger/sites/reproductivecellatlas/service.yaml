@@ -29,20 +29,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: reproductivecellatlas-endometrium-stromal
-  labels:
-    app: reproductivecellatlas-endometrium-stromal
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: cellxgene
-  selector:
-    app: reproductivecellatlas-endometrium-stromal
----
-apiVersion: v1
-kind: Service
-metadata:
   name: reproductivecellatlas-endometrium-epithelial
   labels:
     app: reproductivecellatlas-endometrium-epithelial
@@ -57,16 +43,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: reproductivecellatlas-endometrium-epithelial-regenerative
+  name: reproductivecellatlas-endometrium-nuceli
   labels:
-    app: reproductivecellatlas-endometrium-epithelial-regenerative
+    app: reproductivecellatlas-endometrium-nuceli
 spec:
   type: NodePort
   ports:
   - port: 80
     targetPort: cellxgene
   selector:
-    app: reproductivecellatlas-endometrium-epithelial-regenerative
+    app: reproductivecellatlas-endometrium-nuceli
 ---
 apiVersion: v1
 kind: Service
