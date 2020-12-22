@@ -30,10 +30,10 @@ spec:
       services:
         - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /endometrium-nuceli
+    - match: /endometrium-nuclei
       prefixRewrite: "/" 
       services:
-        - name: reproductivecellatlas-endometrium-nuceli
+        - name: reproductivecellatlas-endometrium-nuclei
           port: 80
     - match: /endometrium-organoid
       prefixRewrite: "/" 
@@ -72,10 +72,10 @@ spec:
       services:
         - name: reproductivecellatlas-endometrium-epithelial
           port: 80
-    - match: /endometrium-nuceli
+    - match: /endometrium-nuclei
       prefixRewrite: "/" 
       services:
-        - name: reproductivecellatlas-endometrium-nuceli
+        - name: reproductivecellatlas-endometrium-nuclei
           port: 80
     - match: /endometrium-organoid
       prefixRewrite: "/" 
