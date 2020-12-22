@@ -111,7 +111,7 @@
 							</div>
 							<div class="row my-2">
 								<div class="btn-group btn-block" role="group" aria-label="epithelial-nuceli">
-									<a href="/epithelial-nuceli" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Nuclei</strong></a>
+									<a href="/endometrium-nuceli" class="btn btn-sm btn-primary col-md-9"> View <strong>Endometrium Nuclei</strong></a>
 									<a href="https://cellgeni.cog.sanger.ac.uk/vento/reproductivecellatlas/endometrium_nuceli.h5ad" class="col-md-3 btn btn-sm btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> download</a>
 								</div>
 							</div>
@@ -139,20 +139,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-s3cmd mv s3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial_regenerative.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial_regenerative.h5ad.old
-s3cmd mv s3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial.h5ad.old
-s3cmd mv s3://cellgeni/vento/reproductivecellatlas/endometrium_organoid.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_organoid.h5ad.old
-s3cmd mv s3://cellgeni/vento/reproductivecellatlas/endometrium_stromal.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_stromal.h5ad.old
-******
-
-x   s3cmd put --acl-public Integrated_donors.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_all.h5ad 
-s3cmd put --acl-public Integrated_donors_Epithelial.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_epithelial.h5ad 
-s3cmd put --acl-public Integrated_nuclei.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_nuceli.h5ad  
-s3cmd put --acl-public Integrated_organoids.h5ad s3://cellgeni/vento/reproductivecellatlas/endometrium_organoid.h5ad  
-
-
-
-
-
