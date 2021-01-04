@@ -45,5 +45,15 @@ spec:
       prefixRewrite: "/" 
       services:
         - name: cvid-activation-gex-bbknn-all-samples
+          port: 80
+    - match: /object7
+      prefixRewrite: "/"
+      services:
+        - name: cvid-activation-gex-bbknn-deionised-protein
           port: 80 
+    - match: /object8
+      prefixRewrite: "/"
+      services:
+        - name: cvid-activation-gex-bbknn-b-cells-deionised-protein
+          port: 80
 ---
