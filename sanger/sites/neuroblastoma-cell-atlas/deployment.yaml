@@ -63,7 +63,7 @@ spec:
           persistentVolumeClaim:
             claimName: neuroblastoma-cell-atlas-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.16.4
+      - image: quay.io/cellgeni/cellxgene:0.16.6
         imagePullPolicy: IfNotPresent
         name: neuroblastoma-cell-atlas-all
         ports:
@@ -120,7 +120,7 @@ spec:
           persistentVolumeClaim:
             claimName: neuroblastoma-cell-atlas-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.16.4
+      - image: quay.io/cellgeni/cellxgene:0.16.6
         imagePullPolicy: IfNotPresent
         name: neuroblastoma-cell-atlas-gosh
         ports:
@@ -177,7 +177,7 @@ spec:
           persistentVolumeClaim:
             claimName: neuroblastoma-cell-atlas-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.16.4
+      - image: quay.io/cellgeni/cellxgene:0.16.6
         imagePullPolicy: IfNotPresent
         name: neuroblastoma-cell-atlas-pmc
         ports:
