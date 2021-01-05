@@ -37,7 +37,7 @@ metadata:
   name: neuroblastoma-cell-atlas
 spec:
   virtualhost:
-    fqdn: www.neuroblastoma.org
+    fqdn: www.neuroblastomacellatlas.org
   routes:
     - match: /
       services:
