@@ -411,7 +411,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_all_cells.h5ad", "--title", "adata_GEX_SoupX_deionised_protein_BBKNN_all_samples", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_20210104.h5ad", "--title", "adata_GEX_SoupX_deionised_protein_BBKNN_all_samples", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -426,7 +426,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_all_cells.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_20210104.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
@@ -468,7 +468,7 @@ spec:
         ports:
         - containerPort: 5005
           name: cellxgene
-        command: ["cellxgene", "launch", "/data/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_B_cells.h5ad", "--title", "adata_GEX_SoupX_deionised_protein_BBKNN_b_cells", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
+        command: ["cellxgene", "launch", "/data/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_B_cells_20210104.h5ad", "--title", "adata_GEX_SoupX_deionised_protein_BBKNN_b_cells", "--host", "0.0.0.0", "--port", "5005", "--disable-annotations"]
         volumeMounts:
           - name: data
             mountPath: /data
@@ -483,7 +483,7 @@ spec:
       - name: pull-data
         imagePullPolicy: IfNotPresent
         image: garland/aws-cli-docker
-        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_B_cells.h5ad', '/data']
+        command: ['aws','--endpoint-url=https://cog.sanger.ac.uk', 's3', 'cp', 's3://cellgeni/vento/CVID/adata_for_cellxgene_GEX_and_SoupX_denoised_protein_BBKNN_all_samples_B_cells_20210104.h5ad', '/data']
         env:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
