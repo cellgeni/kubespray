@@ -288,3 +288,11 @@ services:
     volumes:
     - /home/ubuntu/data:/data
     entrypoint: /bin/sh -c "yes | cellxgene launch /data/warner20_salivary_gland.processed.h5ad -t 'Salivary gland' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js  --disable-annotations"
+  haniffa21:
+    container_name: haniffa21
+    image: quay.io/cellgeni/cellxgene:0.16.4
+    ports:
+    - "5036:5005"
+    volumes:
+    - /home/ubuntu/data:/data
+    entrypoint: /bin/sh -c "yes | cellxgene launch /data/haniffa21.processed.h5ad -t 'COVID-19 PBMC Ncl-Cambridge-UCL' --host 0.0.0.0 --port 5005 --scripts https://www.covid19cellatlas.org/zxtm/piwik2.js  --disable-annotations"
