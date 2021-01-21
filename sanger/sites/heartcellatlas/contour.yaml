@@ -93,7 +93,7 @@ spec:
         - name: heart-cell-atlas-neuronal
           port: 80
     - match: /adipocytes
-      prefixRewrite: "/" 
+      prefixRewrite: "/"
       services:
         - name: heart-cell-atlas-adipocytes
           port: 80

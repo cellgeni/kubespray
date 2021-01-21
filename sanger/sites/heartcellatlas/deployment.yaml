@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: heart-cell-atlas
-  replicas: 1
+  replicas: 2
   template:
     metadata: 
       name: heart-cell-atlas
@@ -63,7 +63,7 @@ spec:
           persistentVolumeClaim:
             claimName: heart-cell-atlas-cellxgene-pvc
       containers:
-      - image: quay.io/cellgeni/cellxgene:0.15.0
+      - image: quay.io/cellgeni/cellxgene:0.15.0 #0.16.6-RdPu
         imagePullPolicy: IfNotPresent
         name: heart-cell-atlas-global
         ports:
@@ -76,11 +76,11 @@ spec:
             mountPath: /data
         resources:
           requests:
-            memory: "2Gi"
-            cpu: "0.5"
-          limits:
-            memory: "20Gi"
+            memory: "4Gi"
             cpu: 1
+          limits:
+            memory: "35Gi"
+            cpu: 3
       initContainers:
       - name: pull-data
         imagePullPolicy: IfNotPresent
